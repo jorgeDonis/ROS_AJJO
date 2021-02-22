@@ -705,32 +705,32 @@ nav_msgs_generate_messages_py/fast:
 	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build
 .PHONY : nav_msgs_generate_messages_py/fast
 
-src/MiTipo.o: src/MiTipo.cpp.o
+src/Opponent.o: src/Opponent.cpp.o
 
-.PHONY : src/MiTipo.o
+.PHONY : src/Opponent.o
 
 # target to build an object file
-src/MiTipo.cpp.o:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o
-.PHONY : src/MiTipo.cpp.o
+src/Opponent.cpp.o:
+	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o
+.PHONY : src/Opponent.cpp.o
 
-src/MiTipo.i: src/MiTipo.cpp.i
+src/Opponent.i: src/Opponent.cpp.i
 
-.PHONY : src/MiTipo.i
+.PHONY : src/Opponent.i
 
 # target to preprocess a source file
-src/MiTipo.cpp.i:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.i
-.PHONY : src/MiTipo.cpp.i
+src/Opponent.cpp.i:
+	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.i
+.PHONY : src/Opponent.cpp.i
 
-src/MiTipo.s: src/MiTipo.cpp.s
+src/Opponent.s: src/Opponent.cpp.s
 
-.PHONY : src/MiTipo.s
+.PHONY : src/Opponent.s
 
 # target to generate assembly for a file
-src/MiTipo.cpp.s:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.s
-.PHONY : src/MiTipo.cpp.s
+src/Opponent.cpp.s:
+	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.s
+.PHONY : src/Opponent.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -808,9 +808,9 @@ help:
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... install/local"
 	@echo "... nav_msgs_generate_messages_py"
-	@echo "... src/MiTipo.o"
-	@echo "... src/MiTipo.i"
-	@echo "... src/MiTipo.s"
+	@echo "... src/Opponent.o"
+	@echo "... src/Opponent.i"
+	@echo "... src/Opponent.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

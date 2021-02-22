@@ -208,7 +208,7 @@ include_directories(
 
 add_executable(${PROJECT_NAME} 
     src/main.cpp
-    src/MiTipo.cpp
+    src/Opponent.cpp
     # include/manejador_adversario/MiTipo.hpp
   ) 
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ) 

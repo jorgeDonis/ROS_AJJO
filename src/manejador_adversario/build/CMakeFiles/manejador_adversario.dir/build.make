@@ -81,40 +81,40 @@ CMakeFiles/manejador_adversario.dir/src/main.cpp.o.provides: CMakeFiles/manejado
 CMakeFiles/manejador_adversario.dir/src/main.cpp.o.provides.build: CMakeFiles/manejador_adversario.dir/src/main.cpp.o
 
 
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o: CMakeFiles/manejador_adversario.dir/flags.make
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o: ../src/MiTipo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/src/manejador_adversario/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o"
-	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o -c /home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o: CMakeFiles/manejador_adversario.dir/flags.make
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o: ../src/Opponent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/src/manejador_adversario/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o"
+	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o -c /home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp
 
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.i"
-	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp > CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.i
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.i"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp > CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.i
 
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.s"
-	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp -o CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.s
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.s"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp -o CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.s
 
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.requires:
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.requires:
 
-.PHONY : CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.requires
+.PHONY : CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.requires
 
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.provides: CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.requires
-	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.provides.build
-.PHONY : CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.provides
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.provides: CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.requires
+	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.provides.build
+.PHONY : CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.provides
 
-CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.provides.build: CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o
+CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.provides.build: CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o
 
 
 # Object files for target manejador_adversario
 manejador_adversario_OBJECTS = \
 "CMakeFiles/manejador_adversario.dir/src/main.cpp.o" \
-"CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o"
+"CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o"
 
 # External object files for target manejador_adversario
 manejador_adversario_EXTERNAL_OBJECTS =
 
 devel/lib/manejador_adversario/manejador_adversario: CMakeFiles/manejador_adversario.dir/src/main.cpp.o
-devel/lib/manejador_adversario/manejador_adversario: CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o
+devel/lib/manejador_adversario/manejador_adversario: CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o
 devel/lib/manejador_adversario/manejador_adversario: CMakeFiles/manejador_adversario.dir/build.make
 devel/lib/manejador_adversario/manejador_adversario: /opt/ros/kinetic/lib/libroscpp.so
 devel/lib/manejador_adversario/manejador_adversario: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -145,7 +145,7 @@ CMakeFiles/manejador_adversario.dir/build: devel/lib/manejador_adversario/maneja
 .PHONY : CMakeFiles/manejador_adversario.dir/build
 
 CMakeFiles/manejador_adversario.dir/requires: CMakeFiles/manejador_adversario.dir/src/main.cpp.o.requires
-CMakeFiles/manejador_adversario.dir/requires: CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o.requires
+CMakeFiles/manejador_adversario.dir/requires: CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o.requires
 
 .PHONY : CMakeFiles/manejador_adversario.dir/requires
 

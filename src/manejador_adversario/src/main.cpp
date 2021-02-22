@@ -1,19 +1,11 @@
 #include <ros/ros.h>
 
-#include "MiTipo.hpp"
+#include "Opponent.hpp"
 
 int main(int argc, char** argv)
 {
-    MiTipo tipo;
     ros::init(argc, argv, "manejador_adversario");
-    ros::NodeHandle nh;
-    ros::Rate rate(1);
-    while (ros::ok())
-    {
-        sleep(1);
-        tipo.decir_hola();
-        ros::spinOnce();
-        rate.sleep();
-    }
+    Opponent opponent;
+    opponent.run();
     return 0;
 }

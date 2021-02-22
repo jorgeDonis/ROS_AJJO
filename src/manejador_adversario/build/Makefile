@@ -750,32 +750,32 @@ gtest_main/fast:
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-src/MiTipo.o: src/MiTipo.cpp.o
+src/Opponent.o: src/Opponent.cpp.o
 
-.PHONY : src/MiTipo.o
+.PHONY : src/Opponent.o
 
 # target to build an object file
-src/MiTipo.cpp.o:
-	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o
-.PHONY : src/MiTipo.cpp.o
+src/Opponent.cpp.o:
+	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o
+.PHONY : src/Opponent.cpp.o
 
-src/MiTipo.i: src/MiTipo.cpp.i
+src/Opponent.i: src/Opponent.cpp.i
 
-.PHONY : src/MiTipo.i
+.PHONY : src/Opponent.i
 
 # target to preprocess a source file
-src/MiTipo.cpp.i:
-	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.i
-.PHONY : src/MiTipo.cpp.i
+src/Opponent.cpp.i:
+	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.i
+.PHONY : src/Opponent.cpp.i
 
-src/MiTipo.s: src/MiTipo.cpp.s
+src/Opponent.s: src/Opponent.cpp.s
 
-.PHONY : src/MiTipo.s
+.PHONY : src/Opponent.s
 
 # target to generate assembly for a file
-src/MiTipo.cpp.s:
-	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.s
-.PHONY : src/MiTipo.cpp.s
+src/Opponent.cpp.s:
+	$(MAKE) -f CMakeFiles/manejador_adversario.dir/build.make CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.s
+.PHONY : src/Opponent.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -862,9 +862,9 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... src/MiTipo.o"
-	@echo "... src/MiTipo.i"
-	@echo "... src/MiTipo.s"
+	@echo "... src/Opponent.o"
+	@echo "... src/Opponent.i"
+	@echo "... src/Opponent.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

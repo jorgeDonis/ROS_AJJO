@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp" "/home/jorge/catkin_ws/build/manejador_adversario/CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o"
+  "/home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp" "/home/jorge/catkin_ws/build/manejador_adversario/CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o"
   "/home/jorge/catkin_ws/src/manejador_adversario/src/main.cpp" "/home/jorge/catkin_ws/build/manejador_adversario/CMakeFiles/manejador_adversario.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

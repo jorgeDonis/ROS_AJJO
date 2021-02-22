@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/manejador_adversario.dir/src/main.cpp.o"
-  "CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o"
+  "CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o"
   "/home/jorge/catkin_ws/devel/lib/manejador_adversario/manejador_adversario.pdb"
   "/home/jorge/catkin_ws/devel/lib/manejador_adversario/manejador_adversario"
 )

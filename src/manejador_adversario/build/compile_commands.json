@@ -6,8 +6,8 @@
 },
 {
   "directory": "/home/jorge/catkin_ws/src/manejador_adversario/build",
-  "command": "/usr/bin/g++-5   -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"manejador_adversario\\\" -I/home/jorge/catkin_ws/src/manejador_adversario/include/manejador_adversario -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -g   -std=c++17 -o CMakeFiles/manejador_adversario.dir/src/MiTipo.cpp.o -c /home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp",
-  "file": "/home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp"
+  "command": "/usr/bin/g++-5   -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"manejador_adversario\\\" -I/home/jorge/catkin_ws/src/manejador_adversario/include/manejador_adversario -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -g   -std=c++17 -o CMakeFiles/manejador_adversario.dir/src/Opponent.cpp.o -c /home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp",
+  "file": "/home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp"
 },
 {
   "directory": "/home/jorge/catkin_ws/src/manejador_adversario/build/gtest",

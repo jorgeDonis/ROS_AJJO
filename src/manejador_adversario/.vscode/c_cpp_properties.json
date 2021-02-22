@@ -1,19 +1,21 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/home/jorge/catkin_ws/devel/include/**",
-        "/opt/ros/kinetic/include/**",
-        "/home/jorge/catkin_ws/src/manejador_adversario/include/**",
-        "/home/jorge/catkin_ws/src/wander/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/jorge/catkin_ws/devel/include/**",
+                "/opt/ros/kinetic/include/**",
+                "/home/jorge/catkin_ws/src/manejador_adversario/include/**",
+                "/home/jorge/catkin_ws/src/wander/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "cppStandard": "c++17",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        }
+    ],
+    "version": 4
 }

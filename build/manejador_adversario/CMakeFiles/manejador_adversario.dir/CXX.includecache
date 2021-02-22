@@ -6,19 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/jorge/catkin_ws/src/manejador_adversario/include/manejador_adversario/MiTipo.hpp
+/home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.cpp
+Opponent.hpp
+/home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.hpp
 
-/home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.cpp
-MiTipo.hpp
-/home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.hpp
-cstdio
+/home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.hpp
+ros/ros.h
+/home/jorge/catkin_ws/src/manejador_adversario/src/ros/ros.h
+sensor_msgs/LaserScan.h
+/home/jorge/catkin_ws/src/manejador_adversario/src/sensor_msgs/LaserScan.h
+cmath
 -
 
 /home/jorge/catkin_ws/src/manejador_adversario/src/main.cpp
 ros/ros.h
 -
-MiTipo.hpp
-/home/jorge/catkin_ws/src/manejador_adversario/src/MiTipo.hpp
+Opponent.hpp
+/home/jorge/catkin_ws/src/manejador_adversario/src/Opponent.hpp
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -226,6 +230,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/kinetic/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/kinetic/include/ros/message_traits.h
@@ -661,6 +669,40 @@ ros/forwards.h
 /opt/ros/kinetic/include/ros/ros/forwards.h
 
 /opt/ros/kinetic/include/rosconsole/macros_generated.h
+
+/opt/ros/kinetic/include/sensor_msgs/LaserScan.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
+/opt/ros/kinetic/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
 /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 ros/macros.h
