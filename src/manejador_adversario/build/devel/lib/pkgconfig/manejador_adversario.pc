@@ -1,0 +1,8 @@
+prefix=/home/jorge/catkin_ws/src/manejador_adversario/build/devel
+
+Name: manejador_adversario
+Description: Description of manejador_adversario
+Version: 0.0.0
+Cflags: -I/home/jorge/catkin_ws/src/manejador_adversario/include/manejador_adversario
+Libs: -L${prefix}/lib 
+Requires: 

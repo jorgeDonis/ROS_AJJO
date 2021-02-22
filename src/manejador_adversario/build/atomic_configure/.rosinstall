@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jorge/catkin_ws/src/manejador_adversario/build/devel/setup.sh

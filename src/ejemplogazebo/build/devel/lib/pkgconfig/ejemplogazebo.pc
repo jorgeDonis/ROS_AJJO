@@ -1,0 +1,8 @@
+prefix=/home/jorge/catkin_ws/src/ejemplogazebo/build/devel
+
+Name: ejemplogazebo
+Description: Description of ejemplogazebo
+Version: 2.2.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
