@@ -26,15 +26,15 @@ void RobotController::apply_keyboard_action(KeyboardAction action)
     {
         case KeyboardAction::STEER_LEFT:
             rotation_speed = TURNING_SPEED;
+            forward_speed = FORWARD_SPEED_TURNING;
             break;
         case KeyboardAction::STEER_RIGHT:
             rotation_speed = -TURNING_SPEED;
-            break;
-        case KeyboardAction::BRAKE:
-            forward_speed = BREAK_SPEED;
+            forward_speed = FORWARD_SPEED_TURNING;
             break;
         case KeyboardAction::NO_ACTION:
             forward_speed = FORWARD_SPEED;
+            rotation_speed = 0;
             break;
     }
 }
@@ -47,23 +47,23 @@ KeyboardAction RobotController::read_keyboard_input()
     else if (turning_right)
         action = KeyboardAction::STEER_RIGHT;
     SDL_Event event;
+    bool read_keys = true;
     while (SDL_PollEvent(&event))
     {
-        if (event.type == SDL_KEYDOWN)
+        if (event.type == SDL_KEYDOWN && read_keys)
         {
             switch (event.key.keysym.sym)
             {
-            case SDLK_SPACE:
-                action = KeyboardAction::BRAKE;
-                break;
-            case SDLK_LEFT:
-                turning_left = true;
-                action = KeyboardAction::STEER_LEFT;
-                break;
-            case SDLK_RIGHT:
-                turning_right = true;
-                action = KeyboardAction::STEER_RIGHT;
-                break;
+                case SDLK_LEFT:
+                    turning_left = true;
+                    action = KeyboardAction::STEER_LEFT;
+                    read_keys = false;
+                    break;
+                case SDLK_RIGHT:
+                    turning_right = true;
+                    action = KeyboardAction::STEER_RIGHT;
+                    read_keys = false;
+                    break;
             }
         }
         else if (event.type == SDL_KEYUP)

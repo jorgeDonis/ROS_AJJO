@@ -8,18 +8,15 @@
 #include <cstring>
 #include <cinttypes>
 
-
 class RobotController
 {
     private:
-
         constexpr static uint8_t RATE = 10;
         constexpr static uint8_t QUEUE_SIZE = 10;
         constexpr static float V_0 = 0.1;
-        constexpr static float FORWARD_SPEED = 0.5;
-        constexpr static float BREAK_SPEED = 0.3;
-        constexpr static float TURNING_SPEED = 0.5;
-
+        constexpr static float FORWARD_SPEED = 0.90;
+        constexpr static float TURNING_SPEED = 0.6;
+        constexpr static float FORWARD_SPEED_TURNING = 0.6;
 
         static const std::string TWIST_TOPIC;
 
