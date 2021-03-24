@@ -296,19 +296,6 @@ _catkin_empty_exported_target/fast:
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================
-# Target rules for targets named manejador_adversario
-
-# Build rule for target.
-manejador_adversario: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario
-.PHONY : manejador_adversario
-
-# fast build rule for target.
-manejador_adversario/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/build
-.PHONY : manejador_adversario/fast
-
-#=============================================================================
 # Target rules for targets named sensor_msgs_generate_messages_py
 
 # Build rule for target.
@@ -318,7 +305,7 @@ sensor_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -331,7 +318,7 @@ sensor_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 .PHONY : sensor_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -344,7 +331,7 @@ sensor_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 .PHONY : sensor_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -357,7 +344,7 @@ sensor_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 .PHONY : sensor_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -370,7 +357,7 @@ rosgraph_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -383,7 +370,7 @@ roscpp_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/build
 .PHONY : roscpp_generate_messages_py/fast
 
 #=============================================================================
@@ -396,7 +383,7 @@ rosgraph_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -409,7 +396,7 @@ rosgraph_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -422,7 +409,7 @@ roscpp_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 .PHONY : roscpp_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -435,7 +422,7 @@ actionlib_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -448,7 +435,7 @@ roscpp_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 .PHONY : roscpp_generate_messages_lisp/fast
 
 #=============================================================================
@@ -461,7 +448,7 @@ std_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 .PHONY : std_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -474,7 +461,7 @@ geometry_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -487,8 +474,21 @@ actionlib_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
 .PHONY : actionlib_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named grabador_datos
+
+# Build rule for target.
+grabador_datos: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos
+.PHONY : grabador_datos
+
+# fast build rule for target.
+grabador_datos/fast:
+	$(MAKE) -f grabador_datos/CMakeFiles/grabador_datos.dir/build.make grabador_datos/CMakeFiles/grabador_datos.dir/build
+.PHONY : grabador_datos/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_cpp
@@ -500,7 +500,7 @@ rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -513,7 +513,7 @@ std_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -526,7 +526,7 @@ sensor_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 .PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -539,7 +539,7 @@ geometry_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -552,7 +552,7 @@ actionlib_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
 .PHONY : actionlib_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -565,7 +565,7 @@ nav_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
 .PHONY : nav_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -578,7 +578,7 @@ std_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -591,7 +591,7 @@ std_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -604,7 +604,7 @@ geometry_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 .PHONY : geometry_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -617,7 +617,7 @@ std_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -630,7 +630,7 @@ geometry_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -643,7 +643,7 @@ rosgraph_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -656,7 +656,7 @@ actionlib_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
 .PHONY : actionlib_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -669,7 +669,7 @@ nav_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
 .PHONY : nav_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -682,7 +682,7 @@ roscpp_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
 
 #=============================================================================
@@ -695,7 +695,7 @@ nav_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
 .PHONY : nav_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -708,7 +708,7 @@ nav_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
 .PHONY : nav_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -721,7 +721,7 @@ roscpp_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_cpp/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 .PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
@@ -734,7 +734,7 @@ geometry_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_eus/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -747,7 +747,7 @@ actionlib_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
 .PHONY : actionlib_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -760,7 +760,7 @@ nav_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_py/fast:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/build
 .PHONY : nav_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -799,7 +799,6 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... _catkin_empty_exported_target"
-	@echo "... manejador_adversario"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_eus"
@@ -814,6 +813,7 @@ help:
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... grabador_datos"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_nodejs"

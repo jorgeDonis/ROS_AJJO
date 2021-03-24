@@ -1,0 +1,8 @@
+prefix=/home/jorge/catkin_ws/install
+
+Name: grabador_datos
+Description: Description of grabador_datos
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

@@ -128,7 +128,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/jorge/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/jorge/catkin_ws/build/ejemplogazebo/cmake_install.cmake")
   include("/home/jorge/catkin_ws/build/teleop_twist_keyboard/cmake_install.cmake")
-  include("/home/jorge/catkin_ws/build/manejador_adversario/cmake_install.cmake")
+  include("/home/jorge/catkin_ws/build/grabador_datos/cmake_install.cmake")
   include("/home/jorge/catkin_ws/build/wander/cmake_install.cmake")
 
 endif()

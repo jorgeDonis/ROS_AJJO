@@ -7,5 +7,5 @@
 subdirs(gtest)
 subdirs(ejemplogazebo)
 subdirs(teleop_twist_keyboard)
-subdirs(manejador_adversario)
+subdirs(grabador_datos)
 subdirs(wander)

@@ -329,7 +329,7 @@ gtest/gtest/preinstall:
 gtest/gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest.dir/build.make gtest/gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest.dir/build.make gtest/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=8,9 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=13,14 "Built target gtest"
 .PHONY : gtest/gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -361,7 +361,7 @@ clean: gtest/gtest/CMakeFiles/gtest.dir/clean
 gtest/gtest/CMakeFiles/gtest_main.dir/all: gtest/gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=10,11 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=15,16 "Built target gtest_main"
 .PHONY : gtest/gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -455,1212 +455,1212 @@ teleop_twist_keyboard/preinstall:
 .PHONY : teleop_twist_keyboard/preinstall
 
 #=============================================================================
-# Directory level rules for directory manejador_adversario
+# Directory level rules for directory grabador_datos
 
 # Convenience name for "all" pass in the directory.
-manejador_adversario/all: manejador_adversario/CMakeFiles/manejador_adversario.dir/all
+grabador_datos/all: grabador_datos/CMakeFiles/grabador_datos.dir/all
 
-.PHONY : manejador_adversario/all
+.PHONY : grabador_datos/all
 
 # Convenience name for "clean" pass in the directory.
-manejador_adversario/clean: manejador_adversario/CMakeFiles/manejador_adversario.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
-manejador_adversario/clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/grabador_datos.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
+grabador_datos/clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
 
-.PHONY : manejador_adversario/clean
+.PHONY : grabador_datos/clean
 
 # Convenience name for "preinstall" pass in the directory.
-manejador_adversario/preinstall:
+grabador_datos/preinstall:
 
-.PHONY : manejador_adversario/preinstall
-
-#=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/manejador_adversario.dir
-
-# All Build rule for target.
-manejador_adversario/CMakeFiles/manejador_adversario.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=12,13,14 "Built target manejador_adversario"
-.PHONY : manejador_adversario/CMakeFiles/manejador_adversario.dir/all
-
-# Include target in all.
-all: manejador_adversario/CMakeFiles/manejador_adversario.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/manejador_adversario.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/manejador_adversario.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/manejador_adversario.dir/rule
-
-# Convenience name for target.
-manejador_adversario: manejador_adversario/CMakeFiles/manejador_adversario.dir/rule
-
-.PHONY : manejador_adversario
-
-# clean rule for target.
-manejador_adversario/CMakeFiles/manejador_adversario.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/manejador_adversario.dir/build.make manejador_adversario/CMakeFiles/manejador_adversario.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/manejador_adversario.dir/clean
-
-# clean rule for target.
-clean: manejador_adversario/CMakeFiles/manejador_adversario.dir/clean
-
-.PHONY : clean
+.PHONY : grabador_datos/preinstall
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_py: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+sensor_msgs_generate_messages_py: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_lisp: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+sensor_msgs_generate_messages_lisp: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_eus: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+sensor_msgs_generate_messages_eus: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_cpp: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+sensor_msgs_generate_messages_cpp: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_eus: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+rosgraph_msgs_generate_messages_eus: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/rule
+roscpp_generate_messages_py: grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 .PHONY : roscpp_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_py: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+rosgraph_msgs_generate_messages_py: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+rosgraph_msgs_generate_messages_lisp: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_nodejs: manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+roscpp_generate_messages_nodejs: grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 .PHONY : roscpp_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target actionlib_msgs_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_lisp: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+actionlib_msgs_generate_messages_lisp: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : actionlib_msgs_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_lisp: manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+roscpp_generate_messages_lisp: grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 .PHONY : roscpp_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_eus: manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+std_msgs_generate_messages_eus: grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 .PHONY : std_msgs_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_py: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+geometry_msgs_generate_messages_py: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target actionlib_msgs_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_nodejs: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+actionlib_msgs_generate_messages_nodejs: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : actionlib_msgs_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/grabador_datos.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+grabador_datos/CMakeFiles/grabador_datos.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/grabador_datos.dir/build.make grabador_datos/CMakeFiles/grabador_datos.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/grabador_datos.dir/build.make grabador_datos/CMakeFiles/grabador_datos.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=8,9,10,11,12 "Built target grabador_datos"
+.PHONY : grabador_datos/CMakeFiles/grabador_datos.dir/all
+
+# Include target in all.
+all: grabador_datos/CMakeFiles/grabador_datos.dir/all
+
+.PHONY : all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/grabador_datos.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/grabador_datos.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/grabador_datos.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+grabador_datos: grabador_datos/CMakeFiles/grabador_datos.dir/rule
+
+.PHONY : grabador_datos
+
+# clean rule for target.
+grabador_datos/CMakeFiles/grabador_datos.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/grabador_datos.dir/build.make grabador_datos/CMakeFiles/grabador_datos.dir/clean
+.PHONY : grabador_datos/CMakeFiles/grabador_datos.dir/clean
+
+# clean rule for target.
+clean: grabador_datos/CMakeFiles/grabador_datos.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
+
+# All Build rule for target.
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_cpp: manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+std_msgs_generate_messages_cpp: grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : std_msgs_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_nodejs: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+sensor_msgs_generate_messages_nodejs: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_cpp: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+geometry_msgs_generate_messages_cpp: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target actionlib_msgs_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_eus: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+actionlib_msgs_generate_messages_eus: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
 
 .PHONY : actionlib_msgs_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target nav_msgs_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-nav_msgs_generate_messages_eus: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+nav_msgs_generate_messages_eus: grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
 
 .PHONY : nav_msgs_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+std_msgs_generate_messages_py: grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 .PHONY : std_msgs_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_lisp: manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+std_msgs_generate_messages_lisp: grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : std_msgs_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_lisp: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+geometry_msgs_generate_messages_lisp: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_nodejs: manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_nodejs: grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : std_msgs_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_nodejs: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+geometry_msgs_generate_messages_nodejs: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+rosgraph_msgs_generate_messages_nodejs: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target actionlib_msgs_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_cpp: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+actionlib_msgs_generate_messages_cpp: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : actionlib_msgs_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target nav_msgs_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-nav_msgs_generate_messages_cpp: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+nav_msgs_generate_messages_cpp: grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : nav_msgs_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_eus: manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+roscpp_generate_messages_eus: grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 .PHONY : roscpp_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir
+# Target rules for target grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target nav_msgs_generate_messages_lisp"
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-nav_msgs_generate_messages_lisp: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+nav_msgs_generate_messages_lisp: grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : nav_msgs_generate_messages_lisp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
+clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir
+# Target rules for target grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target nav_msgs_generate_messages_nodejs"
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-nav_msgs_generate_messages_nodejs: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+nav_msgs_generate_messages_nodejs: grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : nav_msgs_generate_messages_nodejs
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
+clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir
+# Target rules for target grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_cpp"
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_cpp: manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+roscpp_generate_messages_cpp: grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 .PHONY : roscpp_generate_messages_cpp
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+.PHONY : grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+clean: grabador_datos/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir
+# Target rules for target grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_eus"
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_eus: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+geometry_msgs_generate_messages_eus: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_eus
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+.PHONY : grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+clean: grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target actionlib_msgs_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_py: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+actionlib_msgs_generate_messages_py: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
 .PHONY : actionlib_msgs_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir
+# Target rules for target grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num= "Built target nav_msgs_generate_messages_py"
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/all
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-nav_msgs_generate_messages_py: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+nav_msgs_generate_messages_py: grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
 
 .PHONY : nav_msgs_generate_messages_py
 
 # clean rule for target.
-manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
-.PHONY : manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
+grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
+.PHONY : grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: manejador_adversario/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
+clean: grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
@@ -1689,7 +1689,7 @@ wander/preinstall:
 wander/CMakeFiles/wander.dir/all:
 	$(MAKE) -f wander/CMakeFiles/wander.dir/build.make wander/CMakeFiles/wander.dir/depend
 	$(MAKE) -f wander/CMakeFiles/wander.dir/build.make wander/CMakeFiles/wander.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=15,16 "Built target wander"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=17,18 "Built target wander"
 .PHONY : wander/CMakeFiles/wander.dir/all
 
 # Include target in all.

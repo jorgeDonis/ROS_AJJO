@@ -1,0 +1,5 @@
+ROS_NAMESPACE=stereo rosrun stereo_image_proc stereo_image_proc \
+left/image_raw:=/robot1/trasera1/trasera1/rgb/image_raw \
+left/camera_info:=/robot1/trasera1/trasera1/rgb/camera_info \
+right/image_raw:=/robot1/trasera2/trasera2/rgb/image_raw \
+right/camera_info:=/robot1/trasera2/trasera2/rgb/camera_info
