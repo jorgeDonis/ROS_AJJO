@@ -764,6 +764,19 @@ nav_msgs_generate_messages_py/fast:
 .PHONY : nav_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named manejador_gazebo
+
+# Build rule for target.
+manejador_gazebo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo
+.PHONY : manejador_gazebo
+
+# fast build rule for target.
+manejador_gazebo/fast:
+	$(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build
+.PHONY : manejador_gazebo/fast
+
+#=============================================================================
 # Target rules for targets named wander
 
 # Build rule for target.
@@ -835,6 +848,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_py"
+	@echo "... manejador_gazebo"
 	@echo "... wander"
 .PHONY : help
 

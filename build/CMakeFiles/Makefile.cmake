@@ -16,6 +16,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "ejemplogazebo/catkin_generated/package.cmake"
   "grabador_datos/catkin_generated/ordered_paths.cmake"
   "grabador_datos/catkin_generated/package.cmake"
+  "manejador_gazebo/catkin_generated/ordered_paths.cmake"
+  "manejador_gazebo/catkin_generated/package.cmake"
   "teleop_twist_keyboard/catkin_generated/package.cmake"
   "wander/catkin_generated/ordered_paths.cmake"
   "wander/catkin_generated/package.cmake"
@@ -25,6 +27,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/jorge/catkin_ws/src/ejemplogazebo/package.xml"
   "/home/jorge/catkin_ws/src/grabador_datos/CMakeLists.txt"
   "/home/jorge/catkin_ws/src/grabador_datos/package.xml"
+  "/home/jorge/catkin_ws/src/manejador_gazebo/CMakeLists.txt"
+  "/home/jorge/catkin_ws/src/manejador_gazebo/package.xml"
   "/home/jorge/catkin_ws/src/teleop_twist_keyboard/CMakeLists.txt"
   "/home/jorge/catkin_ws/src/teleop_twist_keyboard/package.xml"
   "/home/jorge/catkin_ws/src/teleop_twist_keyboard/teleop_twist_keyboard.py"
@@ -238,6 +242,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "ejemplogazebo/CMakeFiles/CMakeDirectoryInformation.cmake"
   "teleop_twist_keyboard/CMakeFiles/CMakeDirectoryInformation.cmake"
   "grabador_datos/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "manejador_gazebo/CMakeFiles/CMakeDirectoryInformation.cmake"
   "wander/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -289,5 +294,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "grabador_datos/CMakeFiles/geometry_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir/DependInfo.cmake"
   "grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir/DependInfo.cmake"
+  "manejador_gazebo/CMakeFiles/manejador_gazebo.dir/DependInfo.cmake"
   "wander/CMakeFiles/wander.dir/DependInfo.cmake"
   )

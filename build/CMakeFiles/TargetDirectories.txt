@@ -86,6 +86,14 @@
 /home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/actionlib_msgs_generate_messages_py.dir
 /home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/install/local.dir
 /home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/nav_msgs_generate_messages_py.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/list_install_components.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/install.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/rebuild_cache.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/edit_cache.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/install/local.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/install/strip.dir
+/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/test.dir
 /home/jorge/catkin_ws/build/wander/CMakeFiles/list_install_components.dir
 /home/jorge/catkin_ws/build/wander/CMakeFiles/install.dir
 /home/jorge/catkin_ws/build/wander/CMakeFiles/rebuild_cache.dir
