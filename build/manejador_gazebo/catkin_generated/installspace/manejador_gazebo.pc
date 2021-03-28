@@ -1,8 +1,0 @@
-prefix=/home/gnomo/Desktop/ROS_AJJO/install
-
-Name: manejador_gazebo
-Description: Description of manejador_gazebo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
