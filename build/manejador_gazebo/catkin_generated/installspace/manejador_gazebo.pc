@@ -1,4 +1,4 @@
-prefix=/home/jorge/catkin_ws/install
+prefix=/home/gnomo/Desktop/ROS_AJJO/install
 
 Name: manejador_gazebo
 Description: Description of manejador_gazebo

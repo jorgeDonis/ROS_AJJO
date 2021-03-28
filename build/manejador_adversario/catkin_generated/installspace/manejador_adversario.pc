@@ -1,8 +1,0 @@
-prefix=/home/jorge/catkin_ws/install
-
-Name: manejador_adversario
-Description: Description of manejador_adversario
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: 

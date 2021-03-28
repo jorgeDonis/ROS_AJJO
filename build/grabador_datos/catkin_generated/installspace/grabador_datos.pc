@@ -1,4 +1,4 @@
-prefix=/home/jorge/catkin_ws/install
+prefix=/home/gnomo/Desktop/ROS_AJJO/install
 
 Name: grabador_datos
 Description: Description of grabador_datos

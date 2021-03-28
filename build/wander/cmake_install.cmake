@@ -1,8 +1,8 @@
-# Install script for directory: /home/jorge/catkin_ws/src/wander
+# Install script for directory: /home/gnomo/Desktop/ROS_AJJO/src/wander
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/jorge/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/gnomo/Desktop/ROS_AJJO/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jorge/catkin_ws/build/wander/catkin_generated/installspace/wander.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/wander/catkin_generated/installspace/wander.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/wander/cmake" TYPE FILE FILES
-    "/home/jorge/catkin_ws/build/wander/catkin_generated/installspace/wanderConfig.cmake"
-    "/home/jorge/catkin_ws/build/wander/catkin_generated/installspace/wanderConfig-version.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/wander/catkin_generated/installspace/wanderConfig.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/wander/catkin_generated/installspace/wanderConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/wander" TYPE FILE FILES "/home/jorge/catkin_ws/src/wander/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/wander" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/src/wander/package.xml")
 endif()
 

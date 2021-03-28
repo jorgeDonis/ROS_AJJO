@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jorge/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/gnomo/Desktop/ROS_AJJO/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jorge/catkin_ws/build
+CMAKE_BINARY_DIR = /home/gnomo/Desktop/ROS_AJJO/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,14 +135,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles /home/jorge/catkin_ws/build/ejemplogazebo/CMakeFiles/progress.marks
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles /home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/CMakeFiles/progress.marks
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/clean
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/preinstall
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/preinstall
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/rule
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/rule
 .PHONY : ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
@@ -177,7 +177,7 @@ _catkin_empty_exported_target: ejemplogazebo/CMakeFiles/_catkin_empty_exported_t
 
 # fast build rule for target.
 _catkin_empty_exported_target/fast:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/build.make ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/build
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/build.make ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/build
 .PHONY : _catkin_empty_exported_target/fast
 
 # Help Target
@@ -205,6 +205,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

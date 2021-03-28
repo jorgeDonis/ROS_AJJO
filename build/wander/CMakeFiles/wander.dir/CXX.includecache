@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/jorge/catkin_ws/src/wander/src/wander.cpp
+/home/gnomo/Desktop/ROS_AJJO/src/wander/src/wander.cpp
 ros/ros.h
-/home/jorge/catkin_ws/src/wander/src/ros/ros.h
+/home/gnomo/Desktop/ROS_AJJO/src/wander/src/ros/ros.h
 geometry_msgs/Twist.h
-/home/jorge/catkin_ws/src/wander/src/geometry_msgs/Twist.h
+/home/gnomo/Desktop/ROS_AJJO/src/wander/src/geometry_msgs/Twist.h
 sensor_msgs/LaserScan.h
-/home/jorge/catkin_ws/src/wander/src/sensor_msgs/LaserScan.h
+/home/gnomo/Desktop/ROS_AJJO/src/wander/src/sensor_msgs/LaserScan.h
 nav_msgs/Odometry.h
-/home/jorge/catkin_ws/src/wander/src/nav_msgs/Odometry.h
+/home/gnomo/Desktop/ROS_AJJO/src/wander/src/nav_msgs/Odometry.h
 cstdlib
 -
 ctime

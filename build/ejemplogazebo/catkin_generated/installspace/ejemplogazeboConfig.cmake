@@ -67,14 +67,14 @@ set(ejemplogazebo_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(ejemplogazebo_SOURCE_PREFIX /home/jorge/catkin_ws/src/ejemplogazebo)
-  set(ejemplogazebo_DEVEL_PREFIX /home/jorge/catkin_ws/devel)
+  set(ejemplogazebo_SOURCE_PREFIX /home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo)
+  set(ejemplogazebo_DEVEL_PREFIX /home/gnomo/Desktop/ROS_AJJO/devel)
   set(ejemplogazebo_INSTALL_PREFIX "")
   set(ejemplogazebo_PREFIX ${ejemplogazebo_DEVEL_PREFIX})
 else()
   set(ejemplogazebo_SOURCE_PREFIX "")
   set(ejemplogazebo_DEVEL_PREFIX "")
-  set(ejemplogazebo_INSTALL_PREFIX /home/jorge/catkin_ws/install)
+  set(ejemplogazebo_INSTALL_PREFIX /home/gnomo/Desktop/ROS_AJJO/install)
   set(ejemplogazebo_PREFIX ${ejemplogazebo_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/jorge/catkin_ws/install/lib;/home/jorge/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/gnomo/Desktop/ROS_AJJO/install/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

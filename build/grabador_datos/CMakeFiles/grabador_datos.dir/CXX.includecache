@@ -6,23 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/jorge/catkin_ws/src/grabador_datos/src/DatasetGenerator.cpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/DatasetGenerator.cpp
 DatasetGenerator.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/DatasetGenerator.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/DatasetGenerator.hpp
 
-/home/jorge/catkin_ws/src/grabador_datos/src/DatasetGenerator.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/DatasetGenerator.hpp
 KeyboardAction.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/KeyboardAction.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/KeyboardAction.hpp
 opencv2/highgui/highgui.hpp
 -
 string
 -
 
-/home/jorge/catkin_ws/src/grabador_datos/src/ImageCapturer.cpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/ImageCapturer.cpp
 ImageCapturer.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/ImageCapturer.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/ImageCapturer.hpp
 
-/home/jorge/catkin_ws/src/grabador_datos/src/ImageCapturer.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/ImageCapturer.hpp
 ros/ros.h
 -
 image_transport/image_transport.h
@@ -34,13 +34,13 @@ cv_bridge/cv_bridge.h
 string
 -
 
-/home/jorge/catkin_ws/src/grabador_datos/src/KeyboardAction.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/KeyboardAction.hpp
 
-/home/jorge/catkin_ws/src/grabador_datos/src/RobotController.cpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/RobotController.cpp
 RobotController.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/RobotController.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/RobotController.hpp
 DatasetGenerator.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/DatasetGenerator.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/DatasetGenerator.hpp
 geometry_msgs/Twist.h
 -
 SDL/SDL.h
@@ -48,13 +48,13 @@ SDL/SDL.h
 cmath
 -
 
-/home/jorge/catkin_ws/src/grabador_datos/src/RobotController.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/RobotController.hpp
 ImageCapturer.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/ImageCapturer.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/ImageCapturer.hpp
 DatasetGenerator.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/DatasetGenerator.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/DatasetGenerator.hpp
 KeyboardAction.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/KeyboardAction.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/KeyboardAction.hpp
 ros/ros.h
 -
 cstring
@@ -62,11 +62,11 @@ cstring
 cinttypes
 -
 
-/home/jorge/catkin_ws/src/grabador_datos/src/main.cpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/main.cpp
 ros/ros.h
 -
 RobotController.hpp
-/home/jorge/catkin_ws/src/grabador_datos/src/RobotController.hpp
+/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/RobotController.hpp
 
 /opt/ros/kinetic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

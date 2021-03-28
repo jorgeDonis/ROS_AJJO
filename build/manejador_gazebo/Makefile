@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jorge/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/gnomo/Desktop/ROS_AJJO/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jorge/catkin_ws/build
+CMAKE_BINARY_DIR = /home/gnomo/Desktop/ROS_AJJO/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,14 +135,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles /home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/progress.marks
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jorge/catkin_ws/build/CMakeFiles 0
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/CMakeFiles/progress.marks
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/clean
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/preinstall
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/preinstall
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/rule:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/rule
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f CMakeFiles/Makefile2 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/rule
 .PHONY : manejador_gazebo/CMakeFiles/manejador_gazebo.dir/rule
 
 # Convenience name for target.
@@ -177,7 +177,7 @@ manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/rule
 
 # fast build rule for target.
 manejador_gazebo/fast:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build
 .PHONY : manejador_gazebo/fast
 
 src/ImageCapturer.o: src/ImageCapturer.cpp.o
@@ -186,7 +186,7 @@ src/ImageCapturer.o: src/ImageCapturer.cpp.o
 
 # target to build an object file
 src/ImageCapturer.cpp.o:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o
 .PHONY : src/ImageCapturer.cpp.o
 
 src/ImageCapturer.i: src/ImageCapturer.cpp.i
@@ -195,7 +195,7 @@ src/ImageCapturer.i: src/ImageCapturer.cpp.i
 
 # target to preprocess a source file
 src/ImageCapturer.cpp.i:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.i
 .PHONY : src/ImageCapturer.cpp.i
 
 src/ImageCapturer.s: src/ImageCapturer.cpp.s
@@ -204,7 +204,7 @@ src/ImageCapturer.s: src/ImageCapturer.cpp.s
 
 # target to generate assembly for a file
 src/ImageCapturer.cpp.s:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.s
 .PHONY : src/ImageCapturer.cpp.s
 
 src/NeuralNet.o: src/NeuralNet.cpp.o
@@ -213,7 +213,7 @@ src/NeuralNet.o: src/NeuralNet.cpp.o
 
 # target to build an object file
 src/NeuralNet.cpp.o:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o
 .PHONY : src/NeuralNet.cpp.o
 
 src/NeuralNet.i: src/NeuralNet.cpp.i
@@ -222,7 +222,7 @@ src/NeuralNet.i: src/NeuralNet.cpp.i
 
 # target to preprocess a source file
 src/NeuralNet.cpp.i:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.i
 .PHONY : src/NeuralNet.cpp.i
 
 src/NeuralNet.s: src/NeuralNet.cpp.s
@@ -231,7 +231,7 @@ src/NeuralNet.s: src/NeuralNet.cpp.s
 
 # target to generate assembly for a file
 src/NeuralNet.cpp.s:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.s
 .PHONY : src/NeuralNet.cpp.s
 
 src/RobotController.o: src/RobotController.cpp.o
@@ -240,7 +240,7 @@ src/RobotController.o: src/RobotController.cpp.o
 
 # target to build an object file
 src/RobotController.cpp.o:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o
 .PHONY : src/RobotController.cpp.o
 
 src/RobotController.i: src/RobotController.cpp.i
@@ -249,7 +249,7 @@ src/RobotController.i: src/RobotController.cpp.i
 
 # target to preprocess a source file
 src/RobotController.cpp.i:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.i
 .PHONY : src/RobotController.cpp.i
 
 src/RobotController.s: src/RobotController.cpp.s
@@ -258,7 +258,7 @@ src/RobotController.s: src/RobotController.cpp.s
 
 # target to generate assembly for a file
 src/RobotController.cpp.s:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.s
 .PHONY : src/RobotController.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -267,7 +267,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -276,7 +276,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -285,7 +285,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/jorge/catkin_ws/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(MAKE) -f manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -325,6 +325,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
