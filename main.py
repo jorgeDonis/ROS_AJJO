@@ -11,11 +11,13 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 128
-IMG_HEIGHT = 128
+IMG_WIDTH = 64
+IMG_HEIGHT = 64
 
-BATCH_SIZE = 8
-EPOCHS = 20
+TEST_PCTG = 0.3
+
+BATCH_SIZE = 128
+EPOCHS = 3
 
 def preprocess_img(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -36,17 +38,28 @@ def cnn_model():
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(4, 4)))
 
-    model.add(layers.Conv2D(16, (5, 5)))
+    model.add(layers.Conv2D(16, (4, 4)))
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
+    model.add(layers.Conv2D(3, (2, 2)))
+    model.add(layers.Activation('relu'))
+
+    model.add(layers.BatchNormalization())
+
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(120))
+    model.add(layers.Dense(200))
     model.add(layers.Activation('relu'))
 
-    model.add(layers.Dense(84))
+    model.add(layers.BatchNormalization())
+
+    model.add(layers.Dense(100))
     model.add(layers.Activation('relu'))
+
+    model.add(layers.Dense(16))
+    model.add(layers.Activation('relu'))
+
 
     model.add(layers.Dense(3))
     model.add(layers.Activation('softmax'))
@@ -56,10 +69,10 @@ def cnn_model():
 
     return model
 
-def load_dataset():
+def load_dataset(directory):
     X = []
     Y = []
-    for filename in (glob.glob("./dataset/*")):
+    for filename in (glob.glob(directory + "/*.jpg")):
         regex = r"([A-Z_]+)_\d+\.jpg"
         category = re.findall(regex, filename, re.MULTILINE)[0]
         img = cv2.imread(filename)
@@ -111,36 +124,37 @@ def show_img(img, label):
     plt.show()
 
 def generator():
-    X = []
-    Y = []
-    i = 0
-    for filename in (glob.glob("./dataset/*")):
-        regex = r"([A-Z_]+)_\d+\.jpg"
-        category = re.findall(regex, filename, re.MULTILINE)[0]
-        img = cv2.imread(filename)
-        X.append(img)
-        if (category == "NO_ACTION"):
-            Y.append(np.array([1, 0, 0]))
-        elif (category == "STEER_LEFT"):
-            Y.append(np.array([0, 1, 0]))
-        elif (category == "STEER_RIGHT"):
-            Y.append(np.array([0, 0, 1]))
-        i += 1
-        if i == BATCH_SIZE:
-            X = [preprocess_img(x) for x in X]
-            X, Y = shuffle_ds(X, Y)
-            X, Y = balance_ds(X, Y)
-            if (len(Y) != 0):
+    while True:
+        X = []
+        Y = []
+        i = 0
+        filenames = glob.glob("./dataset/train/*.jpg")
+        random.shuffle(filenames)
+        for filename in filenames:
+            regex = r"([A-Z_]+)_\d+\.jpg"
+            category = re.findall(regex, filename, re.MULTILINE)[0]
+            img = cv2.imread(filename)
+            X.append(img)
+            if (category == "NO_ACTION"):
+                Y.append(np.array([1, 0, 0]))
+            elif (category == "STEER_LEFT"):
+                Y.append(np.array([0, 1, 0]))
+            elif (category == "STEER_RIGHT"):
+                Y.append(np.array([0, 0, 1]))
+            i += 1
+            if i == BATCH_SIZE:
+                i = 0
+                X = [preprocess_img(x) for x in X]
+                X, Y = shuffle_ds(X, Y)
                 yield np.array(X), np.array(Y)
-            X = []
-            Y = []
-            i = 0
+                X = []
+                Y = []
 
 def balance_ds_directory(directory):
     no_action_filenames = []
     steer_left_filenames = []
     steer_right_filenames = []
-    for filename in (glob.glob("./dataset/*")):
+    for filename in (glob.glob("./dataset/.jpg*")):
         regex = r"([A-Z_]+)_\d+\.jpg"
         category = re.findall(regex, filename, re.MULTILINE)[0]
         if (category == "NO_ACTION"):
@@ -162,9 +176,19 @@ def balance_ds_directory(directory):
         system("rm " + steer_right_filenames[i])
 
 
+def split_train_test_dir():
+    filenames = glob.glob("./dataset/*.jpg")
+    random.shuffle(filenames)
+    for i in range(0, round(TEST_PCTG * len(filenames))):
+        system("mv " + filenames[i] + " ./dataset/test")
+    filenames = glob.glob("./dataset/*.jpg")
+    for filename in filenames:
+        system("mv " + filename + " ./dataset/train")
+
 
 # balance_ds_directory("dataset")
-X, Y = load_dataset()
+# split_train_test_dir()
+# X, Y = load_dataset()
 # X, Y = shuffle_ds(X, Y)
 # X, Y = balance_ds(X, Y)
 
@@ -172,9 +196,16 @@ X, Y = load_dataset()
 #     show_img(X[i], Y[i])
 
 model = cnn_model()
-# print(model.summary())
+print(model.summary())
 
-# gen = generator()
+gen = generator()
 
-model.fit(X, Y, batch_size = BATCH_SIZE, epochs = EPOCHS)
+X_test, Y_test_true = load_dataset("./dataset/test")
+
+# for i in range(0, 5):
+#     X, Y = next(gen)
+#     print(X.shape)
+
+total_samples = len(glob.glob("./dataset/train/*.jpg"))
+model.fit(gen, validation_data=(X_test, Y_test_true), epochs=EPOCHS, steps_per_epoch=total_samples / BATCH_SIZE)
 model.save('tf_model_driving.h5', include_optimizer=False)
