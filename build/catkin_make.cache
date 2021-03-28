@@ -1,2 +1,0 @@
-ejemplogazebo:grabador_datos:manejador_gazebo:wander
--DCATKIN_DEVEL_PREFIX=/home/gnomo/Desktop/ROS_AJJO/devel -DCMAKE_INSTALL_PREFIX=/home/gnomo/Desktop/ROS_AJJO/install -G Unix Makefiles
