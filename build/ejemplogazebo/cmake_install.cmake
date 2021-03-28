@@ -1,8 +1,8 @@
-# Install script for directory: /home/jorge/catkin_ws/src/ejemplogazebo
+# Install script for directory: /home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/jorge/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/gnomo/Desktop/ROS_AJJO/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,37 +33,37 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jorge/catkin_ws/build/ejemplogazebo/catkin_generated/installspace/ejemplogazebo.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/catkin_generated/installspace/ejemplogazebo.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo/cmake" TYPE FILE FILES
-    "/home/jorge/catkin_ws/build/ejemplogazebo/catkin_generated/installspace/ejemplogazeboConfig.cmake"
-    "/home/jorge/catkin_ws/build/ejemplogazebo/catkin_generated/installspace/ejemplogazeboConfig-version.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/catkin_generated/installspace/ejemplogazeboConfig.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/catkin_generated/installspace/ejemplogazeboConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE FILE FILES "/home/jorge/catkin_ws/src/ejemplogazebo/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/etc/catkin/profile.d" TYPE FILE FILES "/home/jorge/catkin_ws/build/ejemplogazebo/catkin_generated/installspace/25.turtlebot-gazebo.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/etc/catkin/profile.d" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/catkin_generated/installspace/25.turtlebot-gazebo.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo/catkin_env_hook" TYPE FILE FILES "/home/jorge/catkin_ws/build/ejemplogazebo/catkin_generated/installspace/25.turtlebot-gazebo.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo/catkin_env_hook" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/catkin_generated/installspace/25.turtlebot-gazebo.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE DIRECTORY FILES "/home/jorge/catkin_ws/src/ejemplogazebo/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE DIRECTORY FILES "/home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo/launch")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE DIRECTORY FILES "/home/jorge/catkin_ws/src/ejemplogazebo/maps")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE DIRECTORY FILES "/home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo/maps")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE DIRECTORY FILES "/home/jorge/catkin_ws/src/ejemplogazebo/worlds")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ejemplogazebo" TYPE DIRECTORY FILES "/home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo/worlds")
 endif()
 

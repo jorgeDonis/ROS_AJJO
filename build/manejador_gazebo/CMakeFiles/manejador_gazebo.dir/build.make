@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jorge/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/gnomo/Desktop/ROS_AJJO/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jorge/catkin_ws/build
+CMAKE_BINARY_DIR = /home/gnomo/Desktop/ROS_AJJO/build
 
 # Include any dependencies generated for this target.
 include manejador_gazebo/CMakeFiles/manejador_gazebo.dir/depend.make
@@ -58,17 +58,17 @@ include manejador_gazebo/CMakeFiles/manejador_gazebo.dir/progress.make
 include manejador_gazebo/CMakeFiles/manejador_gazebo.dir/flags.make
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/flags.make
-manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o: /home/jorge/catkin_ws/src/manejador_gazebo/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/main.cpp.o -c /home/jorge/catkin_ws/src/manejador_gazebo/src/main.cpp
+manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o: /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/main.cpp.o -c /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/main.cpp
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/manejador_gazebo.dir/src/main.cpp.i"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/manejador_gazebo/src/main.cpp > CMakeFiles/manejador_gazebo.dir/src/main.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/main.cpp > CMakeFiles/manejador_gazebo.dir/src/main.cpp.i
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/manejador_gazebo.dir/src/main.cpp.s"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/manejador_gazebo/src/main.cpp -o CMakeFiles/manejador_gazebo.dir/src/main.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/main.cpp -o CMakeFiles/manejador_gazebo.dir/src/main.cpp.s
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o.requires:
 
@@ -82,17 +82,17 @@ manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o.provides.build: 
 
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/flags.make
-manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o: /home/jorge/catkin_ws/src/manejador_gazebo/src/RobotController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o -c /home/jorge/catkin_ws/src/manejador_gazebo/src/RobotController.cpp
+manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o: /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/RobotController.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o -c /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/RobotController.cpp
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.i"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/manejador_gazebo/src/RobotController.cpp > CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/RobotController.cpp > CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.i
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.s"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/manejador_gazebo/src/RobotController.cpp -o CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/RobotController.cpp -o CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.s
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o.requires:
 
@@ -106,17 +106,17 @@ manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o.provi
 
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/flags.make
-manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o: /home/jorge/catkin_ws/src/manejador_gazebo/src/ImageCapturer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o -c /home/jorge/catkin_ws/src/manejador_gazebo/src/ImageCapturer.cpp
+manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o: /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/ImageCapturer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o -c /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/ImageCapturer.cpp
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.i"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/manejador_gazebo/src/ImageCapturer.cpp > CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/ImageCapturer.cpp > CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.i
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.s"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/manejador_gazebo/src/ImageCapturer.cpp -o CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/ImageCapturer.cpp -o CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.s
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o.requires:
 
@@ -130,17 +130,17 @@ manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o.provide
 
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/flags.make
-manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o: /home/jorge/catkin_ws/src/manejador_gazebo/src/NeuralNet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o -c /home/jorge/catkin_ws/src/manejador_gazebo/src/NeuralNet.cpp
+manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o: /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/NeuralNet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o -c /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/NeuralNet.cpp
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.i"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/manejador_gazebo/src/NeuralNet.cpp > CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/NeuralNet.cpp > CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.i
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.s"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/manejador_gazebo/src/NeuralNet.cpp -o CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/NeuralNet.cpp -o CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.s
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o.requires:
 
@@ -163,51 +163,51 @@ manejador_gazebo_OBJECTS = \
 # External object files for target manejador_gazebo
 manejador_gazebo_EXTERNAL_OBJECTS =
 
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libcv_bridge.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgcodecs3.so.3.3.1
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libimage_transport.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libmessage_filters.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libclass_loader.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/libPocoFoundation.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libroslib.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librospack.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libroscpp.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librosconsole.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librostime.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libcpp_common.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo"
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/manejador_gazebo.dir/link.txt --verbose=$(VERBOSE)
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build.make
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libcv_bridge.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgcodecs3.so.3.3.1
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libimage_transport.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libmessage_filters.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libclass_loader.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/libPocoFoundation.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libroslib.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librospack.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libroscpp.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librosconsole.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/librostime.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /opt/ros/kinetic/lib/libcpp_common.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo: manejador_gazebo/CMakeFiles/manejador_gazebo.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/manejador_gazebo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build: /home/jorge/catkin_ws/devel/lib/manejador_gazebo/manejador_gazebo
+manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build: /home/gnomo/Desktop/ROS_AJJO/devel/lib/manejador_gazebo/manejador_gazebo
 
 .PHONY : manejador_gazebo/CMakeFiles/manejador_gazebo.dir/build
 
@@ -219,10 +219,10 @@ manejador_gazebo/CMakeFiles/manejador_gazebo.dir/requires: manejador_gazebo/CMak
 .PHONY : manejador_gazebo/CMakeFiles/manejador_gazebo.dir/requires
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/clean:
-	cd /home/jorge/catkin_ws/build/manejador_gazebo && $(CMAKE_COMMAND) -P CMakeFiles/manejador_gazebo.dir/cmake_clean.cmake
+	cd /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo && $(CMAKE_COMMAND) -P CMakeFiles/manejador_gazebo.dir/cmake_clean.cmake
 .PHONY : manejador_gazebo/CMakeFiles/manejador_gazebo.dir/clean
 
 manejador_gazebo/CMakeFiles/manejador_gazebo.dir/depend:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jorge/catkin_ws/src /home/jorge/catkin_ws/src/manejador_gazebo /home/jorge/catkin_ws/build /home/jorge/catkin_ws/build/manejador_gazebo /home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gnomo/Desktop/ROS_AJJO/src /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo /home/gnomo/Desktop/ROS_AJJO/build /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo /home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : manejador_gazebo/CMakeFiles/manejador_gazebo.dir/depend
 

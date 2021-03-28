@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jorge/catkin_ws/src/manejador_gazebo/src/ImageCapturer.cpp" "/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o"
-  "/home/jorge/catkin_ws/src/manejador_gazebo/src/NeuralNet.cpp" "/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o"
-  "/home/jorge/catkin_ws/src/manejador_gazebo/src/RobotController.cpp" "/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o"
-  "/home/jorge/catkin_ws/src/manejador_gazebo/src/main.cpp" "/home/jorge/catkin_ws/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/ImageCapturer.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/ImageCapturer.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/NeuralNet.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/NeuralNet.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/RobotController.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/RobotController.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/src/main.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/CMakeFiles/manejador_gazebo.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -24,7 +24,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/kinetic/include/opencv-3.3.1-dev"
   "/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/jorge/catkin_ws/src/manejador_gazebo/include/frugally-deep/include"
+  "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/include/frugally-deep/include"
   )
 
 # Targets to which this target links.

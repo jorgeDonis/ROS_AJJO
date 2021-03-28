@@ -1,4 +1,4 @@
-prefix=/home/jorge/catkin_ws/devel
+prefix=/home/gnomo/Desktop/ROS_AJJO/devel
 
 Name: ejemplogazebo
 Description: Description of ejemplogazebo

@@ -2,7 +2,7 @@
 DEVELSPACE = False
 INSTALLSPACE = True
 
-CATKIN_DEVEL_PREFIX = '/home/jorge/catkin_ws/devel'
+CATKIN_DEVEL_PREFIX = '/home/gnomo/Desktop/ROS_AJJO/devel'
 
 CATKIN_GLOBAL_BIN_DESTINATION = 'bin'
 CATKIN_GLOBAL_ETC_DESTINATION = 'etc'
@@ -20,14 +20,14 @@ CATKIN_PACKAGE_LIBEXEC_DESTINATION = 'lib/ejemplogazebo'
 CATKIN_PACKAGE_PYTHON_DESTINATION = 'lib/python2.7/dist-packages/ejemplogazebo'
 CATKIN_PACKAGE_SHARE_DESTINATION = 'share/ejemplogazebo'
 
-CMAKE_BINARY_DIR = '/home/jorge/catkin_ws/build'
-CMAKE_CURRENT_BINARY_DIR = '/home/jorge/catkin_ws/build/ejemplogazebo'
-CMAKE_CURRENT_SOURCE_DIR = '/home/jorge/catkin_ws/src/ejemplogazebo'
-CMAKE_INSTALL_PREFIX = '/home/jorge/catkin_ws/install'
-CMAKE_SOURCE_DIR = '/home/jorge/catkin_ws/src'
+CMAKE_BINARY_DIR = '/home/gnomo/Desktop/ROS_AJJO/build'
+CMAKE_CURRENT_BINARY_DIR = '/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo'
+CMAKE_CURRENT_SOURCE_DIR = '/home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo'
+CMAKE_INSTALL_PREFIX = '/home/gnomo/Desktop/ROS_AJJO/install'
+CMAKE_SOURCE_DIR = '/home/gnomo/Desktop/ROS_AJJO/src'
 
 PROJECT_NAME = 'ejemplogazebo'
-PROJECT_BINARY_DIR = '/home/jorge/catkin_ws/build/ejemplogazebo'
-PROJECT_SOURCE_DIR = '/home/jorge/catkin_ws/src/ejemplogazebo'
+PROJECT_BINARY_DIR = '/home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo'
+PROJECT_SOURCE_DIR = '/home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo'
 
 PYTHON_EXECUTABLE = '/usr/bin/python2'

@@ -1,8 +1,8 @@
-# Install script for directory: /home/jorge/catkin_ws/src/grabador_datos
+# Install script for directory: /home/gnomo/Desktop/ROS_AJJO/src/grabador_datos
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/jorge/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/gnomo/Desktop/ROS_AJJO/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jorge/catkin_ws/build/grabador_datos/catkin_generated/installspace/grabador_datos.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/catkin_generated/installspace/grabador_datos.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/grabador_datos/cmake" TYPE FILE FILES
-    "/home/jorge/catkin_ws/build/grabador_datos/catkin_generated/installspace/grabador_datosConfig.cmake"
-    "/home/jorge/catkin_ws/build/grabador_datos/catkin_generated/installspace/grabador_datosConfig-version.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/catkin_generated/installspace/grabador_datosConfig.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/catkin_generated/installspace/grabador_datosConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/grabador_datos" TYPE FILE FILES "/home/jorge/catkin_ws/src/grabador_datos/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/grabador_datos" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/package.xml")
 endif()
 

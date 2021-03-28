@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jorge/catkin_ws/src/grabador_datos/src/DatasetGenerator.cpp" "/home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/DatasetGenerator.cpp.o"
-  "/home/jorge/catkin_ws/src/grabador_datos/src/ImageCapturer.cpp" "/home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/ImageCapturer.cpp.o"
-  "/home/jorge/catkin_ws/src/grabador_datos/src/RobotController.cpp" "/home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/RobotController.cpp.o"
-  "/home/jorge/catkin_ws/src/grabador_datos/src/main.cpp" "/home/jorge/catkin_ws/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/main.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/DatasetGenerator.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/DatasetGenerator.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/ImageCapturer.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/ImageCapturer.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/RobotController.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/RobotController.cpp.o"
+  "/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/src/main.cpp" "/home/gnomo/Desktop/ROS_AJJO/build/grabador_datos/CMakeFiles/grabador_datos.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,7 +20,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/jorge/catkin_ws/src/grabador_datos/include/grabador_datos"
+  "/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/include/grabador_datos"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/opt/ros/kinetic/include/opencv-3.3.1-dev"

@@ -1,8 +1,8 @@
-# Install script for directory: /home/jorge/catkin_ws/src/manejador_gazebo
+# Install script for directory: /home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/jorge/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/gnomo/Desktop/ROS_AJJO/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,32 +33,32 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jorge/catkin_ws/build/manejador_gazebo/catkin_generated/installspace/manejador_gazebo.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/catkin_generated/installspace/manejador_gazebo.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/manejador_gazebo/cmake" TYPE FILE FILES
-    "/home/jorge/catkin_ws/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig.cmake"
-    "/home/jorge/catkin_ws/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig-version.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/manejador_gazebo" TYPE FILE FILES "/home/jorge/catkin_ws/src/manejador_gazebo/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/manejador_gazebo" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jorge/catkin_ws/build/manejador_gazebo/catkin_generated/installspace/manejador_gazebo.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/catkin_generated/installspace/manejador_gazebo.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/manejador_gazebo/cmake" TYPE FILE FILES
-    "/home/jorge/catkin_ws/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig.cmake"
-    "/home/jorge/catkin_ws/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig-version.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig.cmake"
+    "/home/gnomo/Desktop/ROS_AJJO/build/manejador_gazebo/catkin_generated/installspace/manejador_gazeboConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/manejador_gazebo" TYPE FILE FILES "/home/jorge/catkin_ws/src/manejador_gazebo/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/manejador_gazebo" TYPE FILE FILES "/home/gnomo/Desktop/ROS_AJJO/src/manejador_gazebo/package.xml")
 endif()
 

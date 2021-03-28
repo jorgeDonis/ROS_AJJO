@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jorge/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/gnomo/Desktop/ROS_AJJO/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jorge/catkin_ws/build
+CMAKE_BINARY_DIR = /home/gnomo/Desktop/ROS_AJJO/build
 
 # Include any dependencies generated for this target.
 include wander/CMakeFiles/wander.dir/depend.make
@@ -58,17 +58,17 @@ include wander/CMakeFiles/wander.dir/progress.make
 include wander/CMakeFiles/wander.dir/flags.make
 
 wander/CMakeFiles/wander.dir/src/wander.cpp.o: wander/CMakeFiles/wander.dir/flags.make
-wander/CMakeFiles/wander.dir/src/wander.cpp.o: /home/jorge/catkin_ws/src/wander/src/wander.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object wander/CMakeFiles/wander.dir/src/wander.cpp.o"
-	cd /home/jorge/catkin_ws/build/wander && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wander.dir/src/wander.cpp.o -c /home/jorge/catkin_ws/src/wander/src/wander.cpp
+wander/CMakeFiles/wander.dir/src/wander.cpp.o: /home/gnomo/Desktop/ROS_AJJO/src/wander/src/wander.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object wander/CMakeFiles/wander.dir/src/wander.cpp.o"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/wander && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/wander.dir/src/wander.cpp.o -c /home/gnomo/Desktop/ROS_AJJO/src/wander/src/wander.cpp
 
 wander/CMakeFiles/wander.dir/src/wander.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/wander.dir/src/wander.cpp.i"
-	cd /home/jorge/catkin_ws/build/wander && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jorge/catkin_ws/src/wander/src/wander.cpp > CMakeFiles/wander.dir/src/wander.cpp.i
+	cd /home/gnomo/Desktop/ROS_AJJO/build/wander && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gnomo/Desktop/ROS_AJJO/src/wander/src/wander.cpp > CMakeFiles/wander.dir/src/wander.cpp.i
 
 wander/CMakeFiles/wander.dir/src/wander.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wander.dir/src/wander.cpp.s"
-	cd /home/jorge/catkin_ws/build/wander && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jorge/catkin_ws/src/wander/src/wander.cpp -o CMakeFiles/wander.dir/src/wander.cpp.s
+	cd /home/gnomo/Desktop/ROS_AJJO/build/wander && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gnomo/Desktop/ROS_AJJO/src/wander/src/wander.cpp -o CMakeFiles/wander.dir/src/wander.cpp.s
 
 wander/CMakeFiles/wander.dir/src/wander.cpp.o.requires:
 
@@ -88,33 +88,33 @@ wander_OBJECTS = \
 # External object files for target wander
 wander_EXTERNAL_OBJECTS =
 
-/home/jorge/catkin_ws/devel/lib/wander/wander: wander/CMakeFiles/wander.dir/src/wander.cpp.o
-/home/jorge/catkin_ws/devel/lib/wander/wander: wander/CMakeFiles/wander.dir/build.make
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/libroscpp.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/librosconsole.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/librostime.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /opt/ros/kinetic/lib/libcpp_common.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/jorge/catkin_ws/devel/lib/wander/wander: wander/CMakeFiles/wander.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jorge/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/jorge/catkin_ws/devel/lib/wander/wander"
-	cd /home/jorge/catkin_ws/build/wander && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wander.dir/link.txt --verbose=$(VERBOSE)
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: wander/CMakeFiles/wander.dir/src/wander.cpp.o
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: wander/CMakeFiles/wander.dir/build.make
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/libroscpp.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/librosconsole.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/librostime.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /opt/ros/kinetic/lib/libcpp_common.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander: wander/CMakeFiles/wander.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gnomo/Desktop/ROS_AJJO/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander"
+	cd /home/gnomo/Desktop/ROS_AJJO/build/wander && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wander.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-wander/CMakeFiles/wander.dir/build: /home/jorge/catkin_ws/devel/lib/wander/wander
+wander/CMakeFiles/wander.dir/build: /home/gnomo/Desktop/ROS_AJJO/devel/lib/wander/wander
 
 .PHONY : wander/CMakeFiles/wander.dir/build
 
@@ -123,10 +123,10 @@ wander/CMakeFiles/wander.dir/requires: wander/CMakeFiles/wander.dir/src/wander.c
 .PHONY : wander/CMakeFiles/wander.dir/requires
 
 wander/CMakeFiles/wander.dir/clean:
-	cd /home/jorge/catkin_ws/build/wander && $(CMAKE_COMMAND) -P CMakeFiles/wander.dir/cmake_clean.cmake
+	cd /home/gnomo/Desktop/ROS_AJJO/build/wander && $(CMAKE_COMMAND) -P CMakeFiles/wander.dir/cmake_clean.cmake
 .PHONY : wander/CMakeFiles/wander.dir/clean
 
 wander/CMakeFiles/wander.dir/depend:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jorge/catkin_ws/src /home/jorge/catkin_ws/src/wander /home/jorge/catkin_ws/build /home/jorge/catkin_ws/build/wander /home/jorge/catkin_ws/build/wander/CMakeFiles/wander.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gnomo/Desktop/ROS_AJJO/src /home/gnomo/Desktop/ROS_AJJO/src/wander /home/gnomo/Desktop/ROS_AJJO/build /home/gnomo/Desktop/ROS_AJJO/build/wander /home/gnomo/Desktop/ROS_AJJO/build/wander/CMakeFiles/wander.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : wander/CMakeFiles/wander.dir/depend
 

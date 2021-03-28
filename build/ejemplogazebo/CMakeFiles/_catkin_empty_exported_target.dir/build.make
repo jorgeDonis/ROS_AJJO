@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jorge/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/gnomo/Desktop/ROS_AJJO/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jorge/catkin_ws/build
+CMAKE_BINARY_DIR = /home/gnomo/Desktop/ROS_AJJO/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empty_
 .PHONY : ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/jorge/catkin_ws/build/ejemplogazebo && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/jorge/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jorge/catkin_ws/src /home/jorge/catkin_ws/src/ejemplogazebo /home/jorge/catkin_ws/build /home/jorge/catkin_ws/build/ejemplogazebo /home/jorge/catkin_ws/build/ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gnomo/Desktop/ROS_AJJO/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gnomo/Desktop/ROS_AJJO/src /home/gnomo/Desktop/ROS_AJJO/src/ejemplogazebo /home/gnomo/Desktop/ROS_AJJO/build /home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo /home/gnomo/Desktop/ROS_AJJO/build/ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ejemplogazebo/CMakeFiles/_catkin_empty_exported_target.dir/depend
 
