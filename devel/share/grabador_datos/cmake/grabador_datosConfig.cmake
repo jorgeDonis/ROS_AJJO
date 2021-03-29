@@ -67,14 +67,14 @@ set(grabador_datos_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(grabador_datos_SOURCE_PREFIX /home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/src/grabador_datos)
-  set(grabador_datos_DEVEL_PREFIX /home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/devel)
+  set(grabador_datos_SOURCE_PREFIX /home/jorge/catkin_ws/src/grabador_datos)
+  set(grabador_datos_DEVEL_PREFIX /home/jorge/catkin_ws/devel)
   set(grabador_datos_INSTALL_PREFIX "")
   set(grabador_datos_PREFIX ${grabador_datos_DEVEL_PREFIX})
 else()
   set(grabador_datos_SOURCE_PREFIX "")
   set(grabador_datos_DEVEL_PREFIX "")
-  set(grabador_datos_INSTALL_PREFIX /home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/install)
+  set(grabador_datos_INSTALL_PREFIX /home/jorge/catkin_ws/install)
   set(grabador_datos_PREFIX ${grabador_datos_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(grabador_datos_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/src/grabador_datos/include/grabador_datos " STREQUAL " ")
+if(NOT "/home/jorge/catkin_ws/src/grabador_datos/include/grabador_datos " STREQUAL " ")
   set(grabador_datos_INCLUDE_DIRS "")
-  set(_include_dirs "/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/src/grabador_datos/include/grabador_datos")
+  set(_include_dirs "/home/jorge/catkin_ws/src/grabador_datos/include/grabador_datos")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/src/grabador_datos/include/
         message(FATAL_ERROR "Project 'grabador_datos' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'grabador_datos' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/src/grabador_datos/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'grabador_datos' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/jorge/catkin_ws/src/grabador_datos/${idir}'.  ${_report}")
     endif()
     _list_append_unique(grabador_datos_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/jorge/catkin_ws/devel/lib;/home/jorge/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

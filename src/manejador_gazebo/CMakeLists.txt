@@ -41,6 +41,11 @@ include_directories(
   include/frugally-deep/include
 )
 
+# execute_process(
+#   COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/include/install_frugal.sh
+#   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
+# )
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
