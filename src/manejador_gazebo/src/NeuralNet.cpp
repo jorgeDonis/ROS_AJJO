@@ -8,7 +8,7 @@
 namespace NeuralNet
 {
     const static auto model 
-    = fdeep::load_model("/home/jorge/catkin_ws/src/manejador_gazebo/tf_model_driving_frugal.json");
+    = fdeep::load_model("tf_model_driving_frugal.json");
 
     KeyboardAction get_action(const size_t best_index)
     {
