@@ -10,8 +10,8 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 128
-IMG_HEIGHT = 128
+IMG_WIDTH = 32
+IMG_HEIGHT = 32
 
 TEST_PCTG = 0.3
 
@@ -20,8 +20,7 @@ EPOCHS = 60
 
 def preprocess_img(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    img = np.delete(img, slice(1, 80), 0)
-    img = np.delete(img, slice(300, img.shape[0]), 0)
+    img = np.delete(img, slice(0, 30), 0)
     img = cv2.resize(img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LANCZOS4)
     img = np.reshape(img, (img.shape[0], img.shape[1], 1))
     img = img / 255
@@ -49,12 +48,12 @@ def cnn_model():
 
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(100))
+    model.add(layers.Dense(128))
     model.add(layers.Activation('relu'))
 
     model.add(layers.Dropout(0.3))
 
-    model.add(layers.Dense(16))
+    model.add(layers.Dense(32))
     model.add(layers.Activation('relu'))
 
     model.add(layers.BatchNormalization())
