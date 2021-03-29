@@ -15,7 +15,7 @@ IMG_HEIGHT = 128
 
 TEST_PCTG = 0.3
 
-BATCH_SIZE = 32
+BATCH_SIZE = 128
 EPOCHS = 60
 
 def preprocess_img(img):
@@ -32,17 +32,17 @@ def cnn_model():
     model = tf.keras.Sequential()
 
     model.add(layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1)))
-    model.add(layers.Conv2D(6, (8, 8)))
+    model.add(layers.Conv2D(8, (8, 8)))
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-    model.add(layers.Conv2D(8, (4, 4)))
+    model.add(layers.Conv2D(16, (4, 4)))
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-    model.add(layers.Conv2D(3, (2, 2)))
+    model.add(layers.Conv2D(16, (2, 2)))
     model.add(layers.Activation('relu'))
-    model.add(layers.MaxPooling2D(pool_size=(16, 32)))
+    model.add(layers.MaxPooling2D(pool_size=(8, 16)))
 
     model.add(layers.BatchNormalization())
 
@@ -53,7 +53,7 @@ def cnn_model():
 
     model.add(layers.Dropout(0.3))
 
-    model.add(layers.Dense(32))
+    model.add(layers.Dense(64))
     model.add(layers.Activation('relu'))
 
     model.add(layers.BatchNormalization())
