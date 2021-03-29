@@ -25,10 +25,10 @@ namespace NeuralNet
 
     cv::Mat preprocess_img(cv::Mat img)
     {
-        cv::Rect rect(0, 90, 640, 290);
+        cv::Rect rect(0, 0, 640, 430);
         cv::Mat cropped_img = img(rect);
         cv::Mat resized_img;
-        cv::resize(cropped_img, resized_img, cv::Size(128, 64), 0, 0, CV_INTER_LANCZOS4);
+        cv::resize(cropped_img, resized_img, cv::Size(256, 128), 0, 0, CV_INTER_LANCZOS4);
         return resized_img;
     }
 
@@ -41,8 +41,8 @@ namespace NeuralNet
         const auto input = fdeep::tensor_from_bytes
         (
             processed_img.ptr(),
-            static_cast<std::size_t>(64),
             static_cast<std::size_t>(128),
+            static_cast<std::size_t>(256),
             static_cast<std::size_t>(1)
         );
         const auto result = model.predict_class( {input} );
