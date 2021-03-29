@@ -10,7 +10,7 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 128
+IMG_WIDTH = 256
 IMG_HEIGHT = 128
 
 TEST_PCTG = 0.3
@@ -48,12 +48,12 @@ def cnn_model():
 
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(100))
+    model.add(layers.Dense(128))
     model.add(layers.Activation('relu'))
 
     model.add(layers.Dropout(0.3))
 
-    model.add(layers.Dense(16))
+    model.add(layers.Dense(32))
     model.add(layers.Activation('relu'))
 
     model.add(layers.BatchNormalization())
