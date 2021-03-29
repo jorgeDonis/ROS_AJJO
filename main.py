@@ -10,8 +10,8 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 256
-IMG_HEIGHT = 128
+IMG_WIDTH = 32
+IMG_HEIGHT = 32
 
 TEST_PCTG = 0.3
 
