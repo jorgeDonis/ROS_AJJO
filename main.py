@@ -10,12 +10,12 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 32
-IMG_HEIGHT = 32
+IMG_WIDTH = 256
+IMG_HEIGHT = 128
 
 TEST_PCTG = 0.3
 
-BATCH_SIZE = 16
+BATCH_SIZE = 32
 EPOCHS = 60
 
 def preprocess_img(img):
@@ -36,19 +36,19 @@ def cnn_model():
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-    model.add(layers.Conv2D(16, (4, 4)))
+    model.add(layers.Conv2D(8, (4, 4)))
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
     model.add(layers.Conv2D(3, (2, 2)))
     model.add(layers.Activation('relu'))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+    model.add(layers.MaxPooling2D(pool_size=(16, 32)))
 
     model.add(layers.BatchNormalization())
 
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(128))
+    model.add(layers.Dense(64))
     model.add(layers.Activation('relu'))
 
     model.add(layers.Dropout(0.3))
