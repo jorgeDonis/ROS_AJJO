@@ -20,8 +20,7 @@ EPOCHS = 60
 
 def preprocess_img(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    img = np.delete(img, slice(1, 80), 0)
-    img = np.delete(img, slice(300, img.shape[0]), 0)
+    img = np.delete(img, slice(0, 30), 0)
     img = cv2.resize(img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LANCZOS4)
     img = np.reshape(img, (img.shape[0], img.shape[1], 1))
     img = img / 255
