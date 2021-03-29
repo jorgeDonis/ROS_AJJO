@@ -1,8 +1,8 @@
-prefix=/home/gnomo/Desktop/ROS_AJJO/devel
+prefix=/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/devel
 
 Name: grabador_datos
 Description: Description of grabador_datos
 Version: 0.0.0
-Cflags: -I/home/gnomo/Desktop/ROS_AJJO/src/grabador_datos/include/grabador_datos
+Cflags: -I/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/src/grabador_datos/include/grabador_datos
 Libs: -L${prefix}/lib 
 Requires: 

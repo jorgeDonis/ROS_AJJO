@@ -1,4 +1,4 @@
-prefix=/home/gnomo/Desktop/ROS_AJJO/devel
+prefix=/home/gnomo/Desktop/Cuarto2oSem/VAR/ROS_AJJO/devel
 
 Name: manejador_gazebo
 Description: Description of manejador_gazebo
