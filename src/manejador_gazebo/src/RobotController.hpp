@@ -15,7 +15,7 @@ class RobotController
         constexpr static float V_0 = 0.1;
         constexpr static float FORWARD_SPEED = 0.90;
         constexpr static float TURNING_SPEED = 0.6;
-        constexpr static float FORWARD_SPEED_TURNING = 0.1;
+        constexpr static float FORWARD_SPEED_TURNING = 0.6;
 
         static const std::string TWIST_TOPIC;
 
