@@ -15,7 +15,7 @@ IMG_HEIGHT = 128
 
 TEST_PCTG = 0.3
 
-BATCH_SIZE = 128
+BATCH_SIZE = 16
 EPOCHS = 60
 
 def preprocess_img(img):
