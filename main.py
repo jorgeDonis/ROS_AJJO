@@ -10,17 +10,16 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 256
+IMG_WIDTH = 64
 IMG_HEIGHT = 128
 
-TEST_PCTG = 0.3
+TEST_PCTG = 0.1
 
-BATCH_SIZE = 16
-EPOCHS = 60
+BATCH_SIZE = 32
+EPOCHS = 20
 
 def preprocess_img(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    img = np.delete(img, slice(0, 30), 0)
     img = cv2.resize(img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LANCZOS4)
     img = np.reshape(img, (img.shape[0], img.shape[1], 1))
     img = img / 255
@@ -32,26 +31,29 @@ def cnn_model():
     model = tf.keras.Sequential()
 
     model.add(layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1)))
-    model.add(layers.Conv2D(8, (8, 8)))
-    model.add(layers.Activation('relu'))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
-
-    model.add(layers.Conv2D(16, (4, 4)))
+    model.add(layers.Conv2D(8, (2, 2)))
     model.add(layers.Activation('relu'))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
     model.add(layers.Conv2D(16, (2, 2)))
     model.add(layers.Activation('relu'))
-    model.add(layers.MaxPooling2D(pool_size=(8, 16)))
+    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+
+    model.add(layers.Conv2D(4, (2, 2)))
+    model.add(layers.Activation('relu'))
+
+    model.add(layers.Conv2D(4, (2, 2)))
+    model.add(layers.Activation('relu'))
 
     model.add(layers.BatchNormalization())
 
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(64))
+    model.add(layers.Dense(128))
     model.add(layers.Activation('relu'))
 
-    model.add(layers.Dropout(0.3))
+    model.add(layers.Dense(128))
+    model.add(layers.Activation('relu'))
 
     model.add(layers.Dense(64))
     model.add(layers.Activation('relu'))
@@ -172,7 +174,8 @@ def generator():
             if i == BATCH_SIZE:
                 i = 0
                 X = [preprocess_img(x) for x in X]
-                X, Y = shuffle_ds(X, Y)
+                # for i in range(0, len(X)):
+                #     show_img(X[i], Y[i])
                 yield np.array(X), np.array(Y)
                 X = []
                 Y = []
@@ -222,8 +225,8 @@ def split_train_test_dir():
 # for i in range(0, len(X)):
 #     show_img(X[i], Y[i])
 
-model = cnn_model()
-# model = red_alex()
+# model = cnn_model()
+model = red_alex()
 print(model.summary())
 
 gen = generator()
@@ -234,6 +237,14 @@ X_test, Y_test_true = load_dataset("./dataset/test")
 #     X, Y = next(gen)
 #     print(X.shape)
 
+callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=3)
 total_samples = len(glob.glob("./dataset/train/*.jpg"))
-model.fit(gen, validation_data=(X_test, Y_test_true), epochs=EPOCHS, steps_per_epoch=total_samples / BATCH_SIZE)
+model.fit(
+    gen, 
+    validation_data=(X_test, Y_test_true),
+    epochs=EPOCHS,
+    steps_per_epoch=total_samples / BATCH_SIZE,
+    callbacks=[callback]
+)
+system("rm tf_model_driving.h5")
 model.save('tf_model_driving.h5', include_optimizer=False)
