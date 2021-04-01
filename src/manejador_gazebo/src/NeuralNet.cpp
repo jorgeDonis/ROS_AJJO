@@ -7,8 +7,12 @@
 
 namespace NeuralNet
 {
+    const static uint8_t IMG_WIDTH = 222;
+    const static uint8_t IMG_HEIGHT = 222;
+    
     const static auto model 
-    = fdeep::load_model("tf_model_driving_frugal.json");
+    // = fdeep::load_model("tf_model_driving_frugal.json");
+    = fdeep::load_model("modelo_overfitted.json");
 
     KeyboardAction get_action(const size_t best_index)
     {
@@ -28,7 +32,7 @@ namespace NeuralNet
         // cv::Rect rect(0, 0, 640, 430);
         // cv::Mat cropped_img = img(rect);
         cv::Mat resized_img;
-        cv::resize(img, resized_img, cv::Size(64, 128), 0, 0, CV_INTER_LANCZOS4);
+        cv::resize(img, resized_img, cv::Size(IMG_WIDTH, IMG_HEIGHT), 0, 0, CV_INTER_LANCZOS4);
         return resized_img;
     }
 
@@ -42,8 +46,8 @@ namespace NeuralNet
         const auto input = fdeep::tensor_from_bytes
         (
             img_processed.ptr(),
-            static_cast<std::size_t>(128),  //IMG_HEIGHT
-            static_cast<std::size_t>(64),   //IMG_WIDTH
+            static_cast<std::size_t>(IMG_HEIGHT),  //IMG_HEIGHT
+            static_cast<std::size_t>(IMG_WIDTH),   //IMG_WIDTH
             static_cast<std::size_t>(1)
         );
         const auto result = model.predict_class( {input} );
