@@ -10,13 +10,13 @@ import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 
-IMG_WIDTH = 222
-IMG_HEIGHT = 222
+IMG_WIDTH = 256
+IMG_HEIGHT = 256
 
-TEST_PCTG = 0.1
+TEST_PCTG = 0.05
 
 BATCH_SIZE = 32
-EPOCHS = 100
+EPOCHS = 20
 
 def preprocess_img(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -28,42 +28,35 @@ def preprocess_img(img):
 
 def cnn_model():
 
-    model = tf.keras.Sequential()
+    model = Sequential()
 
     model.add(layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1)))
     model.add(layers.Conv2D(6, (5, 5)))
-    model.add(layers.Activation("relu"))
+    model.add(layers.Activation("tanh"))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
     model.add(layers.Conv2D(16, (5, 5)))
-    model.add(layers.Activation("relu"))
+    model.add(layers.Activation("tanh"))
     model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
-    model.add(layers.BatchNormalization())
-
-    # model.add(layers.Conv2D(16, (8, 8)))
-    # model.add(layers.Activation("relu"))
-    # model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+    model.add(layers.Conv2D(16, (5, 5)))
+    model.add(layers.Activation("tanh"))
+    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 
     model.add(layers.Flatten())
 
     model.add(layers.BatchNormalization())
 
-    model.add(layers.Dense(64))
+    model.add(layers.Dense(120))
     model.add(layers.Activation("tanh"))
 
-    model.add(layers.BatchNormalization())
-
-    model.add(layers.Dense(32))
+    model.add(layers.Dense(84))
     model.add(layers.Activation("tanh"))
-
-    # model.add(layers.Dense(16))
-    # model.add(layers.Activation("tanh"))
 
     model.add(layers.Dense(3))
-    model.add(layers.Activation("tanh"))
+    model.add(layers.Activation('softmax'))
 
-    model.compile(optimizer='adam', loss='categorical_crossentropy',
+    model.compile(optimizer='adamax', loss='categorical_crossentropy',
                   metrics=['accuracy'])
 
     return model
@@ -216,8 +209,8 @@ def split_train_test_dir():
         system("mv " + filename + " ./dataset/train")
 
 
-# balance_ds_directory("dataset")
-# split_train_test_dir()
+balance_ds_directory("dataset")
+split_train_test_dir()
 # X, Y = load_dataset()
 # X, Y = shuffle_ds(X, Y)
 # X, Y = balance_ds(X, Y)
@@ -237,7 +230,7 @@ X_test, Y_test_true = load_dataset("./dataset/test")
 #     X, Y = next(gen)
 #     print(X.shape)
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=4)
+callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
 total_samples = len(glob.glob("./dataset/train/*.jpg"))
 model.fit(
     gen, 
