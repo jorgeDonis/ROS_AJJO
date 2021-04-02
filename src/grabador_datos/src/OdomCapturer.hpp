@@ -6,7 +6,7 @@
 
 struct OdomInfo
 {
-    float x, y, yaw, x_speed, angular_speed;
+    float x, y, yaw;
 
     std::string to_string() const;
 };
@@ -24,5 +24,5 @@ class OdomCapturer
         void odom_callback(nav_msgs::Odometry::ConstPtr const& msg);
     public:
         OdomCapturer(ros::NodeHandle const& n);
-        OdomInfo const { return odom_info; }
+        OdomInfo get_info() const { return odom_info; }
 };

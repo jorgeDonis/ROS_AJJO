@@ -20,15 +20,14 @@ void OdomCapturer::odom_callback(nav_msgs::Odometry::ConstPtr const& msg)
     tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
     odom_info.x = msg->pose.pose.position.x;
     odom_info.y = msg->pose.pose.position.y;
-    odom_info.x_speed = msg->twist.twist.linear.x;
-    odom_info.angular_speed = msg->twist.twist.angular.z;
+    odom_info.yaw = yaw;
 }
 
 std::string OdomInfo::to_string() const
 {
     std::stringstream ss;
 
-    ss << x << "_" << y << "_" << "_" << yaw << "_" << x_speed << "_" << angular_speed;
+    ss << x << "_" << y << "_" << yaw;
 
     return ss.str();
 }
