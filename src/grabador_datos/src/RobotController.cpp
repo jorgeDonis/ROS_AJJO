@@ -7,7 +7,7 @@
 
 const std::string RobotController::TWIST_TOPIC = "/robot1/mobile_base/commands/velocity";
 
-RobotController::RobotController(ros::NodeHandle& nh) : img_capturer(nh)
+RobotController::RobotController(ros::NodeHandle& nh) : img_capturer(nh), odom_capturer(nh)
 {
     node_handle = nh;
     pub = nh.advertise<geometry_msgs::Twist>(TWIST_TOPIC, QUEUE_SIZE);

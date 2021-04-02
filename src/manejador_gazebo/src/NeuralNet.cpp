@@ -7,12 +7,11 @@
 
 namespace NeuralNet
 {
-    const static uint8_t IMG_WIDTH = 222;
-    const static uint8_t IMG_HEIGHT = 222;
+    const static uint16_t IMG_WIDTH = 256;
+    const static uint16_t IMG_HEIGHT = 256;
     
     const static auto model 
-    // = fdeep::load_model("tf_model_driving_frugal.json");
-    = fdeep::load_model("modelo_overfitted.json");
+    = fdeep::load_model("tf_model_driving.json");
 
     KeyboardAction get_action(const size_t best_index)
     {

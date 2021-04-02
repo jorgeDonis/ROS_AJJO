@@ -1,22 +1,34 @@
-#include "ImageCapturer.hpp"
+#include "OdomCapturer.hpp"
 
-const std::string ImageCapturer::IMG_TOPIC = "/robot1/odom";
+#include <geometry_msgs/Quaternion.h>
+#include <tf/transform_datatypes.h>
+#include <tf/LinearMath/Matrix3x3.h>
+#include <sstream>
 
-ImageCapturer::ImageCapturer(ros::NodeHandle const& n) : nh(n), image_transport(nh)
+const std::string OdomCapturer::ODOM_TOPIC = "/robot1/odom";
+
+OdomCapturer::OdomCapturer(ros::NodeHandle const& n) : nh(n)
 {
-    sub = image_transport.subscribe(IMG_TOPIC, 1, &ImageCapturer::image_callback, this);
+    sub = nh.subscribe(ODOM_TOPIC, 100, &OdomCapturer::odom_callback, this);
 }
 
-void ImageCapturer::image_callback(sensor_msgs::ImageConstPtr const& msg)
+void OdomCapturer::odom_callback(nav_msgs::Odometry::ConstPtr const& msg)
 {
-    auto cv_ptr = cv_bridge::toCvCopy(msg);
+    tf::Quaternion quat;
+    tf::quaternionMsgToTF(msg->pose.pose.orientation, quat);
+    double roll, pitch, yaw;
+    tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
+    odom_info.x = msg->pose.pose.position.x;
+    odom_info.y = msg->pose.pose.position.y;
+    odom_info.x_speed = msg->twist.twist.linear.x;
+    odom_info.angular_speed = msg->twist.twist.angular.z;
+}
 
-    cv::Mat depth_float_img = cv_ptr->image;
-    cv::Mat depth_mono8_img;
+std::string OdomInfo::to_string() const
+{
+    std::stringstream ss;
 
-    if (depth_mono8_img.rows != depth_float_img.rows || depth_mono8_img.cols != depth_float_img.cols)
-        depth_mono8_img = cv::Mat(depth_float_img.size(), CV_8UC1);
-    
-    cv::convertScaleAbs(depth_float_img, depth_mono8_img, 55, -45);
-    this->img = depth_mono8_img;
+    ss << x << "_" << y << "_" << "_" << yaw << "_" << x_speed << "_" << angular_speed;
+
+    return ss.str();
 }

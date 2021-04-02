@@ -1,25 +1,28 @@
 #pragma once
 
 #include <ros/ros.h>
-#include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
-#include <image_transport/image_transport.h>
-#include <opencv2/highgui/highgui.hpp>
-#include <cv_bridge/cv_bridge.h>
 #include <string>
+
+struct OdomInfo
+{
+    float x, y, yaw, x_speed, angular_speed;
+
+    std::string to_string() const;
+};
 
 class OdomCapturer
 {
     private:
-        static const std::string IMG_TOPIC;
+        static const std::string ODOM_TOPIC;
+
+        OdomInfo odom_info;
 
         ros::NodeHandle nh;
-        image_transport::Subscriber sub;
-        image_transport::ImageTransport image_transport;
-        cv::Mat img;
+        ros::Subscriber sub;
 
-        void image_callback(sensor_msgs::ImageConstPtr const& msg);
+        void odom_callback(nav_msgs::Odometry::ConstPtr const& msg);
     public:
-        OdonCapturer(ros::NodeHandle const& n);
-        cv::Mat get_odom() const { return img; }
+        OdomCapturer(ros::NodeHandle const& n);
+        OdomInfo const { return odom_info; }
 };
