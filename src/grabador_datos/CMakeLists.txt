@@ -211,6 +211,7 @@ find_package(catkin REQUIRED COMPONENTS
   image_transport
   std_msgs
   cv_bridge
+  tf
 )
 
 add_compile_options(-std=c++17)

@@ -3,6 +3,7 @@
 #include "ImageCapturer.hpp"
 #include "DatasetGenerator.hpp"
 #include "KeyboardAction.hpp"
+#include "OdomCapturer.hpp"
 
 #include <ros/ros.h>
 #include <cstring>
@@ -34,6 +35,7 @@ class RobotController
         ros::NodeHandle node_handle;
         ros::Publisher pub;
         ImageCapturer img_capturer;
+        OdomCapturer odom_capturer;
         DatasetGenerator dataset_gen;
     public:
         RobotController(ros::NodeHandle& node_handle);
