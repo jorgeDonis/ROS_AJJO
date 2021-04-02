@@ -18,7 +18,7 @@ IMG_HEIGHT = 256
 
 TEST_PCTG = 0.2
 
-BATCH_SIZE = 32
+BATCH_SIZE = 64
 EPOCHS = 20
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
@@ -141,5 +141,5 @@ model.fit(
     callbacks=[callback],
     class_weight=get_class_weights()
 )
-# system("rm tf_model_driving.h5")
-# model.save('tf_model_driving.h5', include_optimizer=False)
+system("rm tf_model_driving.h5")
+model.save('tf_model_driving.h5', include_optimizer=False)
