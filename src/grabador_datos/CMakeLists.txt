@@ -219,7 +219,8 @@ add_compile_options(-std=c++17)
 add_executable(${PROJECT_NAME} 
     src/main.cpp
     src/RobotController.cpp
-    src/ImageCapturer.cpp
+    src/ImageCapturer.cpp    
+    src/OdomCapturer.cpp
     src/DatasetGenerator.cpp
   ) 
 
