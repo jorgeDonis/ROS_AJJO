@@ -99,11 +99,13 @@ void RobotController::main_loop()
 
         printf("FORWARD_SPEED = %.2f\n", forward_speed);
         printf("ROTATION_SPEED = %.2f\n\n", rotation_speed);
+        const OdomInfo odom_info = odom_capturer.get_info();
 
+        printf("YAW = %.2f\n\n", odom_info.yaw);
         const auto img = img_capturer.get_img();
 
         if (img.rows != 0)
-            dataset_gen.add_to_dataset(action, img);
+            dataset_gen.add_to_dataset(action, img, odom_info);
 
         ros::spinOnce();
         rate.sleep();
