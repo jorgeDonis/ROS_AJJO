@@ -1,4 +1,5 @@
 from os import system
+import os
 import numpy as np
 import tensorflow as tf
 import glob
@@ -6,84 +7,108 @@ import re
 import cv2
 import matplotlib.pyplot as plt
 import random
+import math
 
+from sklearn.utils.class_weight import compute_class_weight
 from tensorflow.keras.models import Sequential
-from tensorflow.keras import layers
+from tensorflow.keras import layers, Model
 
 IMG_WIDTH = 256
 IMG_HEIGHT = 256
 
-TEST_PCTG = 0.05
+TEST_PCTG = 0.2
 
 BATCH_SIZE = 32
 EPOCHS = 20
 
-def preprocess_img(img):
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    img = cv2.resize(img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LANCZOS4)
-    img = np.reshape(img, (img.shape[0], img.shape[1], 1))
-    img = img / 255
-    return img
+REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
 
+CATEGORIES = ['NO_ACTION', 'STEER_LEFT', 'STEER_RIGHT']
+
+def process_path(path):
+    parts = tf.strings.split(path, os.path.sep)[-1]
+    parts = tf.strings.split(parts, "_")
+    category = tf.strings.join([parts[0], "_", parts[1]])
+    one_hot = category == CATEGORIES
+    
+    img = tf.io.read_file(path)
+    img = tf.image.decode_jpeg(img, channels=1)
+    img = tf.image.resize(img, [IMG_HEIGHT, IMG_WIDTH], method='bilinear')
+    img = tf.math.divide(img, 255)
+
+    odom_x = tf.strings.to_number(parts[2])
+    odom_y = tf.strings.to_number(parts[3])
+    odom_x = tf.math.divide(odom_x, 20)
+    odom_y = tf.math.divide(odom_y, 20)
+    odom_yaw = tf.strings.to_number(parts[4])
+    odom_y = tf.math.divide(odom_yaw, math.pi)
+
+    input = {
+        'image' : img,
+        'odometry' : tf.stack([
+            odom_x, odom_y, odom_yaw
+        ])
+    }
+
+    return input, one_hot
+
+def configure_for_performance(ds):
+  ds = ds.cache()
+  ds = ds.shuffle(buffer_size=1000)
+  ds = ds.batch(BATCH_SIZE)
+  ds = ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+  return ds
+
+def load_datsets():
+    image_count = len(glob.glob("./dataset/*.jpg"))
+    list_ds = tf.data.Dataset.list_files("./dataset/*.jpg", shuffle=False)
+    list_ds = list_ds.shuffle(image_count, reshuffle_each_iteration=False)
+    val_size = int(image_count * TEST_PCTG)
+    train_ds = list_ds.skip(val_size)
+    val_ds = list_ds.take(val_size)
+
+    train_ds = train_ds.map(process_path, num_parallel_calls=tf.data.AUTOTUNE)
+    val_ds = val_ds.map(process_path, num_parallel_calls=tf.data.AUTOTUNE)
+    train_ds = configure_for_performance(train_ds)
+    val_ds = configure_for_performance(val_ds)
+
+    return train_ds, val_ds
 
 def cnn_model():
 
-    model = Sequential()
+    input_A = layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1), name='image')
+    input_B = layers.Input(shape=(3,), name='odometry')
 
-    model.add(layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1)))
-    model.add(layers.Conv2D(6, (5, 5)))
-    model.add(layers.Activation("tanh"))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+    # Conv2D inputA
+    Conv2d1 = layers.Conv2D(6, (5, 5), activation="tanh")(input_A)
+    max_pool_2d1 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d1)
 
-    model.add(layers.Conv2D(16, (5, 5)))
-    model.add(layers.Activation("tanh"))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+    Conv2d2 = layers.Conv2D(6, (5, 5), activation="tanh")(max_pool_2d1)
+    max_pool_2d2 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d2)
 
-    model.add(layers.Conv2D(16, (5, 5)))
-    model.add(layers.Activation("tanh"))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+    Conv2d3 = layers.Conv2D(6, (5, 5), activation="tanh")(max_pool_2d2)
+    max_pool_2d3 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d3)
 
-    model.add(layers.Flatten())
+    flatten = layers.Flatten()(max_pool_2d3)
+    norm = layers.BatchNormalization()(flatten)
 
-    model.add(layers.BatchNormalization())
+    hidden1 = layers.Dense(120, activation="relu")(norm)
+    hidden2 = layers.Dense(84, activation='relu')(hidden1)
+    hidden3 = layers.Dense(16, activation='relu')(hidden2)
+    hidden4 = layers.Dense(16, activation='relu')(hidden3)
 
-    model.add(layers.Dense(120))
-    model.add(layers.Activation("tanh"))
+    denseB_1 = layers.Dense(16, activation='relu')(input_B)
+    denseB_2 = layers.Dense(16, activation='relu')(denseB_1)
 
-    model.add(layers.Dense(84))
-    model.add(layers.Activation("tanh"))
+    concat_A = layers.Concatenate()([denseB_2, hidden4])
 
-    model.add(layers.Dense(3))
-    model.add(layers.Activation('softmax'))
+    hidden5 = layers.Dense(32, activation='relu') (concat_A)
+    hidden6 = layers.Dense(32, activation='relu')(hidden5)
+    hidden7 = layers.Dense(16, activation='relu')(hidden6)
 
-    model.compile(optimizer='adamax', loss='categorical_crossentropy',
-                  metrics=['accuracy'])
+    output = layers.Dense(3, activation='softmax')(hidden7)
 
-    return model
-
-def red_alex():
-
-    model = Sequential()
-
-    model.add(layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1)))
-    model.add(layers.Conv2D(6, (5, 5)))
-    model.add(layers.Activation("tanh"))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
-
-    model.add(layers.Conv2D(16, (5, 5)))
-    model.add(layers.Activation("tanh"))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2)))
-
-    model.add(layers.Flatten())
-
-    model.add(layers.Dense(120))
-    model.add(layers.Activation("tanh"))
-
-    model.add(layers.Dense(84))
-    model.add(layers.Activation("tanh"))
-
-    model.add(layers.Dense(3))
-    model.add(layers.Activation('softmax'))
+    model = Model(inputs=[input_A, input_B], outputs=[output])
 
     model.compile(optimizer='adamax', loss='categorical_crossentropy',
                   metrics=['accuracy'])
@@ -91,153 +116,30 @@ def red_alex():
     return model
 
 
-def load_dataset(directory):
-    X = []
-    Y = []
-    for filename in (glob.glob(directory + "/*.jpg")):
-        regex = r"([A-Z_]+)_\d+\.jpg"
-        category = re.findall(regex, filename, re.MULTILINE)[0]
-        img = cv2.imread(filename)
-        X.append(img)
-        if (category == "NO_ACTION"):
-            Y.append(np.array([1, 0, 0]))
-        elif (category == "STEER_LEFT"):
-            Y.append(np.array([0, 1, 0]))
-        elif (category == "STEER_RIGHT"):
-            Y.append(np.array([0, 0, 1]))
-    X = [preprocess_img(x) for x in X]
-    return np.array(X), np.array(Y)
+def get_class_weights():
+    all_filenames = glob.glob("./dataset/*.jpg")
+    y_integers = []
+    for path in all_filenames:
+        filename = os.path.basename(path)
+        r = re.findall(REGEX, filename)
+        category = r[0][0] + "_" + r[0][1]
+        one_hot = [1 if x == category else 0 for x in CATEGORIES]
+        y_integers.append(np.argmax(one_hot))
+    class_weights = compute_class_weight('balanced', np.unique(y_integers), y_integers)
+    d_class_weights = dict(enumerate(class_weights))
+    return d_class_weights
 
-def balance_ds(X, Y):
-    left_indices = [i for i, x in enumerate(Y) if np.array_equal(x, [0, 1, 0])]
-    right_indices = [i for i, x in enumerate(Y) if np.array_equal(x, [0, 0, 1])]
-    no_action_indices = [i for i, x in enumerate(Y) if np.array_equal(x, [1, 0, 0])]
-    final_samples_per_class = min(len(left_indices), len(right_indices))
-    final_samples_per_class = min(final_samples_per_class, len(no_action_indices))
-    new_X = []
-    new_Y = []
-    for i in range(0, round(final_samples_per_class / 3)):
-        new_X.append(X[left_indices[i]])
-        new_Y.append(Y[left_indices[i]])
-        new_X.append(X[right_indices[i]])
-        new_Y.append(Y[right_indices[i]])
-        new_X.append(X[no_action_indices[i]])
-        new_Y.append(Y[no_action_indices[i]])
-
-    return np.array(new_X), np.array(new_Y)
-
-def shuffle_ds(X, Y):
-    new_X = []
-    new_Y = []
-    indices = [i for i, x in enumerate(X)]
-    random.shuffle(indices)
-    new_X = [X[i] for i in indices]
-    new_Y = [Y[i] for i in indices]
-    return np.array(new_X), np.array(new_Y)
-
-def show_img(img, label):
-    plt.imshow(img, cmap='gray')
-    if (label[0] == 1):
-        plt.title("NO ACTION")
-    elif (label[1] == 1):
-        plt.title("STEER_LEFT")
-    elif (label[2] == 1):
-        plt.title("STEER_RIGHT")
-    plt.show()
-
-def generator():
-    while True:
-        X = []
-        Y = []
-        i = 0
-        filenames = glob.glob("./dataset/train/*.jpg")
-        random.shuffle(filenames)
-        for filename in filenames:
-            regex = r"([A-Z_]+)_\d+\.jpg"
-            category = re.findall(regex, filename, re.MULTILINE)[0]
-            img = cv2.imread(filename)
-            X.append(img)
-            if (category == "NO_ACTION"):
-                Y.append(np.array([1, 0, 0]))
-            elif (category == "STEER_LEFT"):
-                Y.append(np.array([0, 1, 0]))
-            elif (category == "STEER_RIGHT"):
-                Y.append(np.array([0, 0, 1]))
-            i += 1
-            if i == BATCH_SIZE:
-                i = 0
-                X = [preprocess_img(x) for x in X]
-                # for i in range(0, len(X)):
-                #     show_img(X[i], Y[i])
-                yield np.array(X), np.array(Y)
-                X = []
-                Y = []
-
-def balance_ds_directory(directory):
-    no_action_filenames = []
-    steer_left_filenames = []
-    steer_right_filenames = []
-    for filename in (glob.glob("./dataset/.jpg*")):
-        regex = r"([A-Z_]+)_\d+\.jpg"
-        category = re.findall(regex, filename, re.MULTILINE)[0]
-        if (category == "NO_ACTION"):
-            no_action_filenames.append(filename)
-        elif (category == "STEER_LEFT"):
-            steer_left_filenames.append(filename)
-        elif (category == "STEER_RIGHT"):
-            steer_right_filenames.append(filename)
-    samples_per_cat = min(len(no_action_filenames), len(steer_left_filenames))
-    samples_per_cat = min(len(steer_right_filenames), samples_per_cat)
-    random.shuffle(no_action_filenames)
-    random.shuffle(steer_left_filenames)
-    random.shuffle(steer_right_filenames)
-    for i in range(0, len(no_action_filenames) - samples_per_cat):
-        system("rm " + no_action_filenames[i])
-    for i in range(0, len(steer_left_filenames) - samples_per_cat):
-        system("rm " + steer_left_filenames[i])
-    for i in range(0, len(steer_right_filenames) - samples_per_cat):
-        system("rm " + steer_right_filenames[i])
-
-
-def split_train_test_dir():
-    filenames = glob.glob("./dataset/*.jpg")
-    random.shuffle(filenames)
-    for i in range(0, round(TEST_PCTG * len(filenames))):
-        system("mv " + filenames[i] + " ./dataset/test")
-    filenames = glob.glob("./dataset/*.jpg")
-    for filename in filenames:
-        system("mv " + filename + " ./dataset/train")
-
-
-balance_ds_directory("dataset")
-split_train_test_dir()
-# X, Y = load_dataset()
-# X, Y = shuffle_ds(X, Y)
-# X, Y = balance_ds(X, Y)
-
-# for i in range(0, len(X)):
-#     show_img(X[i], Y[i])
+train_ds, test_ds = load_datsets()
 
 model = cnn_model()
-# model = red_alex()
-print(model.summary())
-
-gen = generator()
-
-X_test, Y_test_true = load_dataset("./dataset/test")
-
-# for i in range(0, 5):
-#     X, Y = next(gen)
-#     print(X.shape)
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
-total_samples = len(glob.glob("./dataset/train/*.jpg"))
 model.fit(
-    gen, 
-    validation_data=(X_test, Y_test_true),
+    train_ds, 
+    validation_data=test_ds,
     epochs=EPOCHS,
-    steps_per_epoch=total_samples / BATCH_SIZE,
-    callbacks=[callback]
+    callbacks=[callback],
+    class_weight=get_class_weights()
 )
-system("rm tf_model_driving.h5")
-model.save('tf_model_driving.h5', include_optimizer=False)
+# system("rm tf_model_driving.h5")
+# model.save('tf_model_driving.h5', include_optimizer=False)
