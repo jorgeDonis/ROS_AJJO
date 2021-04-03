@@ -12,6 +12,8 @@ for path in glob.glob(directory + "*.jpg"):
     img = cv2.imread(path)
     img_hash = hash(str(img))
     if img_hash in img_hashes:
-        system("rm " + path)
+	command = "rm " + "\"" + path + "\""
+	print(command)
+        system(command)
     else:
         img_hashes.add(img_hash)

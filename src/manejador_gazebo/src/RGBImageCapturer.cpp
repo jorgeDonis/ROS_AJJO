@@ -1,5 +1,7 @@
 #include "RGBImageCapturer.hpp"
 
+#include <string>
+
 const std::string RGBImageCapturer::IMG_TOPIC = "/robot1/camera/rgb/image_raw";
 
 RGBImageCapturer::RGBImageCapturer(ros::NodeHandle const &n) : nh(n), image_transport(nh)
