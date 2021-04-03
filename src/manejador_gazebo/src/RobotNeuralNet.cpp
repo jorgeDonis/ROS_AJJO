@@ -40,6 +40,12 @@ namespace RobotNeuralNet
             static_cast<std::size_t>(1)
         );
         const auto result = model.predict_class( {input} );
+
+        const auto confidence = model.predict({
+            input
+        });
+        std::cout << fdeep::show_tensors(confidence) << std::endl;
+
         return result;
     }
 }
