@@ -13,12 +13,19 @@ from sklearn.utils.class_weight import compute_class_weight
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers, Model
 
-IMG_WIDTH = 222
-IMG_HEIGHT = 222
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
+
+config = ConfigProto()
+config.gpu_options.allow_growth = True
+session = InteractiveSession(config=config)
+
+IMG_WIDTH = 180
+IMG_HEIGHT = 128
 
 TEST_PCTG = 0.2
 
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 EPOCHS = 60
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
@@ -79,33 +86,32 @@ def cnn_model():
     input_A = layers.Input(shape=(IMG_HEIGHT, IMG_WIDTH, 1), name='image')
     input_B = layers.Input(shape=(3,), name='odometry')
 
-    # Conv2D inputA
-    Conv2d1 = layers.Conv2D(6, (5, 5), activation="relu")(input_A)
+    # Conv2D img
+    Conv2d1 = layers.Conv2D(6, (4, 4), activation="relu")(input_A)
     max_pool_2d1 = layers.MaxPooling2D(pool_size=(4, 4))(Conv2d1)
 
-    Conv2d2 = layers.Conv2D(6, (5, 5), activation="relu")(max_pool_2d1)
+    Conv2d2 = layers.Conv2D(6, (4, 4), activation="relu")(max_pool_2d1)
     max_pool_2d2 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d2)
 
-    Conv2d3 = layers.Conv2D(6, (10, 10), activation="relu")(max_pool_2d2)
-    max_pool_2d3 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d3)
+    flatten = layers.Flatten()(max_pool_2d2)
 
-    flatten = layers.Flatten()(max_pool_2d3)
-    norm = layers.BatchNormalization()(flatten)
+    hidden1 = layers.Dense(64, activation='relu')(flatten)
+    hidden1_2 = layers.Dense(64, activation='relu')(hidden1)
+    hidden2 = layers.Dense(64, activation='relu')(hidden1_2)
 
-    hidden1 = layers.Dense(120, activation="relu")(norm)
-    hidden2 = layers.Dense(84, activation='relu')(hidden1)
-    hidden4 = layers.Dense(16, activation='relu')(hidden2)
 
-    denseB_1 = layers.Dense(64, activation='relu')(input_B)
+    # dnn odom
+    denseB_1 = layers.Dense(8, activation='relu')(input_B)
     denseB_2 = layers.Dense(16, activation='relu')(denseB_1)
 
-    concat_A = layers.Concatenate()([denseB_2, hidden4])
+    concat = layers.Concatenate()([denseB_2, hidden2])
 
-    hidden5 = layers.Dense(128, activation='relu') (concat_A)
-    hidden6 = layers.Dense(32, activation='relu')(hidden5)
-    hidden7 = layers.Dense(16, activation='relu')(hidden6)
+    hidden3 = layers.Dense(128, activation='relu')(concat)
+    hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
+    hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
+    hidden4 = layers.Dense(16, activation='relu')(hidden3_2)
 
-    output = layers.Dense(3, activation='softmax')(hidden7)
+    output = layers.Dense(3, activation='softmax')(hidden4)
 
     model = Model(inputs=[input_A, input_B], outputs=[output])
 
@@ -147,7 +153,7 @@ model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     mode='min',
     save_best_only=True
 )
-early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=4)
+early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
 model.fit(
     train_ds, 
     validation_data=test_ds,
@@ -155,5 +161,7 @@ model.fit(
     callbacks=[early_stopping_callback, model_checkpoint_callback],
 )
 model.load_weights(checkpoint_filepath)
+results = model.evaluate(test_ds, batch_size=1)
+print("test loss, test acc:", results)
 system("rm tf_model_driving.h5")
 model.save('tf_model_driving.h5', include_optimizer=False)
