@@ -11,7 +11,7 @@ namespace NeuralNet
     const static uint16_t IMG_HEIGHT = 128;
     
     const static auto model 
-    = fdeep::load_model("tf_model_driving.json");
+    = fdeep::load_model("tf_model_driving_general.json");
 
     KeyboardAction get_action(const size_t best_index)
     {
