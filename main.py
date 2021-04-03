@@ -107,7 +107,7 @@ def cnn_model():
     concat = layers.Concatenate()([denseB_2, hidden2])
 
     hidden3 = layers.Dense(128, activation='relu')(concat)
-    hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
+    hidden3_2 = layers.Dense(58, activation='relu')(hidden3)
     hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
     hidden4 = layers.Dense(16, activation='relu')(hidden3_2)
 
