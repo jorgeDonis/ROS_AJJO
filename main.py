@@ -19,7 +19,7 @@ IMG_HEIGHT = 222
 TEST_PCTG = 0.2
 
 BATCH_SIZE = 64
-EPOCHS = 26
+EPOCHS = 40
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
 
