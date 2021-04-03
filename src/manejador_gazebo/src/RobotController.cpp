@@ -6,7 +6,8 @@
 
 const std::string RobotController::TWIST_TOPIC = "/robot1/mobile_base/commands/velocity";
 
-RobotController::RobotController(ros::NodeHandle& nh) : img_capturer(nh)
+RobotController::RobotController(ros::NodeHandle& nh) : 
+img_capturer(nh), odom_capturer(nh), rgb_img_capturer(nh)
 {
     node_handle = nh;
     pub = nh.advertise<geometry_msgs::Twist>(TWIST_TOPIC, QUEUE_SIZE);
@@ -37,7 +38,7 @@ void RobotController::main_loop()
     while (ros::ok())
     {
         const cv::Mat img = img_capturer.get_img();
-        KeyboardAction action = NeuralNet::predict(img);
+        KeyboardAction action = NeuralNet::predict(img, odom_capturer.get_info());
         apply_keyboard_action(action);
 
         geometry_msgs::Twist msg;

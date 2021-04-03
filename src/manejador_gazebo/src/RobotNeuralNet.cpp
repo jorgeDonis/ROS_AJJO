@@ -1,11 +1,11 @@
-#include "NeuralNet.hpp"
+#include "RobotNeuralNet.hpp"
 
 #include <fdeep/fdeep.hpp>
 #include <vector>
 #include <cmath>
 #include <cinttypes>
 
-namespace NeuralNet
+namespace RobotNeuralNet
 {
     const static uint16_t IMG_WIDTH = 256;
     const static uint16_t IMG_HEIGHT = 256;

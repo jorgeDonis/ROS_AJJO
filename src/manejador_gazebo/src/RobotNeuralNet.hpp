@@ -6,7 +6,7 @@
 #include "KeyboardAction.hpp"
 #include "OdomCapturer.hpp"
 
-namespace NeuralNet
+namespace RobotNeuralNet
 {
-    KeyboardAction predict(cv::Mat const& img, OdomInfo const& info);
+    bool is_robot_present(cv::Mat const& img);
 }
