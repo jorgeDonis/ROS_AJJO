@@ -118,30 +118,35 @@ def cnn_model():
 
 def balance_ds_directory():
     all_filenames = glob.glob("./dataset/*.jpg")
-    y_integers = []
+    category_samples = [0, 0, 0]
+    category_paths = [[], [], []]
     for path in all_filenames:
         filename = os.path.basename(path)
         r = re.findall(REGEX, filename)
         category = r[0][0] + "_" + r[0][1]
         one_hot = [1 if x == category else 0 for x in CATEGORIES]
-        y_integers.append(np.argmax(one_hot))
-    class_weights = compute_class_weight('balanced', np.unique(y_integers), y_integers)
-    d_class_weights = dict(enumerate(class_weights))
-    return d_class_weights
-
+        category_index = np.argmax(one_hot)
+        category_samples[category_index] += 1
+        category_paths[category_index].append(path)
+    samples_per_category = np.argmin(category_samples)
+    for category_names in category_paths:
+        imgs_to_be_deleted = len(category_names) - samples_per_category
+        random.shuffle(category_names)
+        for i in range(0, imgs_to_be_deleted):
+            ("rm " + category_names[i])
 
 balance_ds_directory()
-train_ds, test_ds = load_datsets()
+# train_ds, test_ds = load_datsets()
 
-model = cnn_model()
+# model = cnn_model()
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
-model.fit(
-    train_ds, 
-    validation_data=test_ds,
-    epochs=EPOCHS,
-    callbacks=[callback],
-    class_weight=get_class_weights()
-)
-system("rm tf_model_driving.h5")
-model.save('tf_model_driving.h5', include_optimizer=False)
+# callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
+# model.fit(
+#     train_ds, 
+#     validation_data=test_ds,
+#     epochs=EPOCHS,
+#     callbacks=[callback],
+#     class_weight=get_class_weights()
+# )
+# system("rm tf_model_driving.h5")
+# model.save('tf_model_driving.h5', include_optimizer=False)
