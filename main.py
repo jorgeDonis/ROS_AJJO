@@ -18,8 +18,8 @@ IMG_HEIGHT = 222
 
 TEST_PCTG = 0.2
 
-BATCH_SIZE = 64
-EPOCHS = 40
+BATCH_SIZE = 70
+EPOCHS = 60
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
 
@@ -135,17 +135,26 @@ def balance_ds_directory():
         for i in range(0, imgs_to_be_deleted):
             system("rm " + category_names[i])
 
-# balance_ds_directory()
+balance_ds_directory()
 train_ds, test_ds = load_datsets()
 
 model = cnn_model()
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
+checkpoint_filepath = '/tmp/checkpoint'
+model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+    filepath=checkpoint_filepath,
+    save_weights_only=True,
+    monitor='val_accuracy',
+    mode='max',
+    save_best_only=True
+)
+early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=4)
 model.fit(
     train_ds, 
     validation_data=test_ds,
     epochs=EPOCHS,
-    callbacks=[callback],
+    callbacks=[early_stopping_callback, model_checkpoint_callback],
 )
+model.load_weights(checkpoint_filepath)
 system("rm tf_model_driving.h5")
 model.save('tf_model_driving.h5', include_optimizer=False)
