@@ -7,8 +7,8 @@
 
 namespace NeuralNet
 {
-    const static uint16_t IMG_WIDTH = 222;
-    const static uint16_t IMG_HEIGHT = 222;
+    const static uint16_t IMG_WIDTH = 180;
+    const static uint16_t IMG_HEIGHT = 128;
     
     const static auto model 
     = fdeep::load_model("tf_model_driving.json");
