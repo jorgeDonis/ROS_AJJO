@@ -19,7 +19,7 @@ IMG_HEIGHT = 222
 TEST_PCTG = 0.2
 
 BATCH_SIZE = 64
-EPOCHS = 60
+EPOCHS = 26
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
 
@@ -128,25 +128,24 @@ def balance_ds_directory():
         category_index = np.argmax(one_hot)
         category_samples[category_index] += 1
         category_paths[category_index].append(path)
-    samples_per_category = np.argmin(category_samples)
+    samples_per_category = min(category_samples)
     for category_names in category_paths:
         imgs_to_be_deleted = len(category_names) - samples_per_category
         random.shuffle(category_names)
         for i in range(0, imgs_to_be_deleted):
-            ("rm " + category_names[i])
+            system("rm " + category_names[i])
 
-balance_ds_directory()
-# train_ds, test_ds = load_datsets()
+# balance_ds_directory()
+train_ds, test_ds = load_datsets()
 
-# model = cnn_model()
+model = cnn_model()
 
-# callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
-# model.fit(
-#     train_ds, 
-#     validation_data=test_ds,
-#     epochs=EPOCHS,
-#     callbacks=[callback],
-#     class_weight=get_class_weights()
-# )
-# system("rm tf_model_driving.h5")
-# model.save('tf_model_driving.h5', include_optimizer=False)
+callback = tf.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)
+model.fit(
+    train_ds, 
+    validation_data=test_ds,
+    epochs=EPOCHS,
+    callbacks=[callback],
+)
+system("rm tf_model_driving.h5")
+model.save('tf_model_driving.h5', include_optimizer=False)
