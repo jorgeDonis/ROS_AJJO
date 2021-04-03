@@ -13,8 +13,8 @@ from sklearn.utils.class_weight import compute_class_weight
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers, Model
 
-IMG_WIDTH = 256
-IMG_HEIGHT = 256
+IMG_WIDTH = 222
+IMG_HEIGHT = 222
 
 TEST_PCTG = 0.2
 
@@ -116,7 +116,7 @@ def cnn_model():
     return model
 
 
-def get_class_weights():
+def balance_ds_directory():
     all_filenames = glob.glob("./dataset/*.jpg")
     y_integers = []
     for path in all_filenames:
@@ -129,6 +129,8 @@ def get_class_weights():
     d_class_weights = dict(enumerate(class_weights))
     return d_class_weights
 
+
+balance_ds_directory()
 train_ds, test_ds = load_datsets()
 
 model = cnn_model()
