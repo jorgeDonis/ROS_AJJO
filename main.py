@@ -19,7 +19,7 @@ IMG_HEIGHT = 256
 TEST_PCTG = 0.2
 
 BATCH_SIZE = 64
-EPOCHS = 20
+EPOCHS = 60
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
 
@@ -56,7 +56,7 @@ def configure_for_performance(ds):
   ds = ds.cache()
   ds = ds.shuffle(buffer_size=1000)
   ds = ds.batch(BATCH_SIZE)
-  ds = ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+  ds = ds.prefetch(buffer_size=1000)
   return ds
 
 def load_datsets():
@@ -67,8 +67,8 @@ def load_datsets():
     train_ds = list_ds.skip(val_size)
     val_ds = list_ds.take(val_size)
 
-    train_ds = train_ds.map(process_path, num_parallel_calls=tf.data.AUTOTUNE)
-    val_ds = val_ds.map(process_path, num_parallel_calls=tf.data.AUTOTUNE)
+    train_ds = train_ds.map(process_path, num_parallel_calls=1000)
+    val_ds = val_ds.map(process_path, num_parallel_calls=1000)
     train_ds = configure_for_performance(train_ds)
     val_ds = configure_for_performance(val_ds)
 
