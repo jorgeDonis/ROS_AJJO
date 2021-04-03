@@ -7,64 +7,40 @@
 
 namespace RobotNeuralNet
 {
-    const static uint16_t IMG_WIDTH = 256;
-    const static uint16_t IMG_HEIGHT = 256;
-    
-    const static auto model 
-    = fdeep::load_model("tf_model_driving.json");
+    constexpr static uint16_t CROPPED_IMG_WIDTH = 64;
+    constexpr static uint16_t CROPPED_IMG_HEIGHT = 128;
+    constexpr static uint16_t ORIGINAL_IMG_WIDTH = 640;
+    constexpr static uint16_t ORIGINAL_IMG_HEIGHT = 460;
+    constexpr static uint16_t TOP_CROP_ROWS = 100;
+    constexpr static uint16_t BOTTOM_CROP_ROWS = 70;
 
-    KeyboardAction get_action(const size_t best_index)
-    {
-        switch (best_index)
-        {
-            case 0:
-                return KeyboardAction::NO_ACTION;
-            case 1:
-                return KeyboardAction::STEER_LEFT;
-            case 2:
-                return KeyboardAction::STEER_RIGHT;
-        }
-    }
+    const static auto model = fdeep::load_model("modelo_clasificador_robot.json");
 
-    const auto get_odom_tensor(OdomInfo const& odom_info)
-    {
-        return fdeep::tensor
-        (
-            fdeep::tensor_shape(static_cast<std::size_t>(3)),
-            std::vector<float>
-            {
-                odom_info.x   / 20  ,
-                odom_info.y   / 20  ,
-                odom_info.yaw / 3.141592f 
-            }
-        );
-    }
 
     cv::Mat preprocess_img(cv::Mat img)
     {
-        // cv::Rect rect(0, 0, 640, 430);
-        // cv::Mat cropped_img = img(rect);
+        cv::Rect rect(0, BOTTOM_CROP_ROWS, ORIGINAL_IMG_WIDTH, ORIGINAL_IMG_HEIGHT - TOP_CROP_ROWS);
+        cv::Mat cropped_img = img(rect);
         cv::Mat resized_img;
-        cv::resize(img, resized_img, cv::Size(IMG_WIDTH, IMG_HEIGHT), 0, 0, CV_INTER_LINEAR);
+        cv::resize(img, resized_img, cv::Size(CROPPED_IMG_WIDTH, CROPPED_IMG_HEIGHT), 0, 0, CV_INTER_LANCZOS4);
         return resized_img;
     }
 
-    KeyboardAction predict(cv::Mat const& img, OdomInfo const& odom_info)
+    bool is_robot_present(cv::Mat const& img)
     {
         if (img.rows == 0)
-            return KeyboardAction::NO_ACTION;
+            return false;
         const auto img_processed = preprocess_img(img);
-        // cv::Mat processed_img = preprocess_img(img);
-        // printf("rows: %d, cols: %d\n", resized_img.rows, resized_img.cols);
+        cv::imwrite("imagen_pre_red.jpg", img_processed);
+        // printf("rows: %d, cols: %d\n", img_processed.rows, img_processed.cols);
         const auto input = fdeep::tensor_from_bytes
         (
             img_processed.ptr(),
-            static_cast<std::size_t>(IMG_HEIGHT),  //IMG_HEIGHT
-            static_cast<std::size_t>(IMG_WIDTH),   //IMG_WIDTH
+            static_cast<std::size_t>(CROPPED_IMG_WIDTH),   //IMG_WIDTH
+            static_cast<std::size_t>(CROPPED_IMG_HEIGHT),  //IMG_HEIGHT
             static_cast<std::size_t>(1)
         );
-        const auto result = model.predict_class( {input, get_odom_tensor(odom_info)} );
-        std::cout << result << std::endl;
-        return get_action(result);
+        const auto result = model.predict_class( {input} );
+        return result;
     }
 }
