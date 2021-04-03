@@ -18,7 +18,7 @@ IMG_HEIGHT = 222
 
 TEST_PCTG = 0.2
 
-BATCH_SIZE = 70
+BATCH_SIZE = 64
 EPOCHS = 60
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
@@ -80,13 +80,13 @@ def cnn_model():
     input_B = layers.Input(shape=(3,), name='odometry')
 
     # Conv2D inputA
-    Conv2d1 = layers.Conv2D(6, (5, 5), activation="tanh")(input_A)
-    max_pool_2d1 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d1)
+    Conv2d1 = layers.Conv2D(6, (5, 5), activation="relu")(input_A)
+    max_pool_2d1 = layers.MaxPooling2D(pool_size=(4, 4))(Conv2d1)
 
-    Conv2d2 = layers.Conv2D(6, (5, 5), activation="tanh")(max_pool_2d1)
+    Conv2d2 = layers.Conv2D(6, (5, 5), activation="relu")(max_pool_2d1)
     max_pool_2d2 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d2)
 
-    Conv2d3 = layers.Conv2D(6, (5, 5), activation="tanh")(max_pool_2d2)
+    Conv2d3 = layers.Conv2D(6, (10, 10), activation="relu")(max_pool_2d2)
     max_pool_2d3 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d3)
 
     flatten = layers.Flatten()(max_pool_2d3)
@@ -94,15 +94,14 @@ def cnn_model():
 
     hidden1 = layers.Dense(120, activation="relu")(norm)
     hidden2 = layers.Dense(84, activation='relu')(hidden1)
-    hidden3 = layers.Dense(16, activation='relu')(hidden2)
-    hidden4 = layers.Dense(16, activation='relu')(hidden3)
+    hidden4 = layers.Dense(16, activation='relu')(hidden2)
 
-    denseB_1 = layers.Dense(16, activation='relu')(input_B)
+    denseB_1 = layers.Dense(64, activation='relu')(input_B)
     denseB_2 = layers.Dense(16, activation='relu')(denseB_1)
 
     concat_A = layers.Concatenate()([denseB_2, hidden4])
 
-    hidden5 = layers.Dense(32, activation='relu') (concat_A)
+    hidden5 = layers.Dense(128, activation='relu') (concat_A)
     hidden6 = layers.Dense(32, activation='relu')(hidden5)
     hidden7 = layers.Dense(16, activation='relu')(hidden6)
 
@@ -110,7 +109,7 @@ def cnn_model():
 
     model = Model(inputs=[input_A, input_B], outputs=[output])
 
-    model.compile(optimizer='adamax', loss='categorical_crossentropy',
+    model.compile(optimizer='adam', loss='categorical_crossentropy',
                   metrics=['accuracy'])
 
     return model
