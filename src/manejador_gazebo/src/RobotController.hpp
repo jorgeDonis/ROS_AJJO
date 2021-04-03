@@ -19,6 +19,8 @@ class RobotController
         constexpr static float TURNING_SPEED = 0.6;
         constexpr static float FORWARD_SPEED_TURNING = 0.6;
 
+        void cls() const { std::cout << "\033[2J" << "\033[1;1H"; }
+
         static const std::string TWIST_TOPIC;
 
         void apply_keyboard_action(KeyboardAction action);

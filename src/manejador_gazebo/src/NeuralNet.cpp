@@ -64,7 +64,6 @@ namespace NeuralNet
             static_cast<std::size_t>(1)
         );
         const auto result = model.predict_class( {input, get_odom_tensor(odom_info)} );
-        std::cout << result << std::endl;
         return get_action(result);
     }
 }
