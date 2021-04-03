@@ -144,11 +144,11 @@ checkpoint_filepath = '/tmp/checkpoint'
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_filepath,
     save_weights_only=True,
-    monitor='val_accuracy',
-    mode='max',
+    monitor='val_loss',
+    mode='min',
     save_best_only=True
 )
-early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=4)
+early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=4)
 model.fit(
     train_ds, 
     validation_data=test_ds,
