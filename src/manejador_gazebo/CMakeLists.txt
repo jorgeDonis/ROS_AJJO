@@ -21,6 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   std_msgs
+  tf
 )
 
 add_executable(${PROJECT_NAME} 
@@ -28,6 +29,9 @@ add_executable(${PROJECT_NAME}
     src/RobotController.cpp
     src/ImageCapturer.cpp
     src/NeuralNet.cpp
+    src/OdomCapturer.cpp
+    src/RGBImageCapturer.cpp
+    src/RobotNeuralNet.cpp
   ) 
 
 target_link_libraries(

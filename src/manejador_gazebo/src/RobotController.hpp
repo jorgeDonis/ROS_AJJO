@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ImageCapturer.hpp"
+#include "RGBImageCapturer.hpp"
 #include "KeyboardAction.hpp"
+#include "OdomCapturer.hpp"
 
 #include <ros/ros.h>
 #include <cstring>
@@ -29,6 +31,9 @@ class RobotController
         ros::NodeHandle node_handle;
         ros::Publisher pub;
         ImageCapturer img_capturer;
+        RGBImageCapturer rgb_img_capturer;
+        OdomCapturer odom_capturer;
+        
     public:
         RobotController(ros::NodeHandle& node_handle);
         void main_loop();
