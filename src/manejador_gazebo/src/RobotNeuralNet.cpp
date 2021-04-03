@@ -7,8 +7,8 @@
 
 namespace RobotNeuralNet
 {
-    constexpr static uint16_t CROPPED_IMG_WIDTH = 64;
-    constexpr static uint16_t CROPPED_IMG_HEIGHT = 128;
+    constexpr static uint16_t CROPPED_IMG_WIDTH = 128;
+    constexpr static uint16_t CROPPED_IMG_HEIGHT = 64;
     constexpr static uint16_t ORIGINAL_IMG_WIDTH = 640;
     constexpr static uint16_t ORIGINAL_IMG_HEIGHT = 460;
     constexpr static uint16_t TOP_CROP_ROWS = 100;
@@ -31,13 +31,12 @@ namespace RobotNeuralNet
         if (img.rows == 0)
             return false;
         const auto img_processed = preprocess_img(img);
-        cv::imwrite("imagen_pre_red.jpg", img_processed);
         // printf("rows: %d, cols: %d\n", img_processed.rows, img_processed.cols);
         const auto input = fdeep::tensor_from_bytes
         (
             img_processed.ptr(),
-            static_cast<std::size_t>(CROPPED_IMG_WIDTH),   //IMG_WIDTH
             static_cast<std::size_t>(CROPPED_IMG_HEIGHT),  //IMG_HEIGHT
+            static_cast<std::size_t>(CROPPED_IMG_WIDTH),   //IMG_WIDTH
             static_cast<std::size_t>(1)
         );
         const auto result = model.predict_class( {input} );
