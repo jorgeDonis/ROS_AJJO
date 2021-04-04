@@ -97,10 +97,11 @@ void RobotController::main_loop()
         msg.angular.z = rotation_speed;
         pub.publish(msg);
 
-        printf("FORWARD_SPEED = %.2f\n", forward_speed);
-        printf("ROTATION_SPEED = %.2f\n\n", rotation_speed);
+        // printf("FORWARD_SPEED = %.2f\n", forward_speed);
+        // printf("ROTATION_SPEED = %.2f\n\n", rotation_speed);
         const OdomInfo odom_info = odom_capturer.get_info();
-
+        printf("X = %.2f\n\n", odom_info.x);
+        printf("Y = %.2f\n\n", odom_info.y);
         printf("YAW = %.2f\n\n", odom_info.yaw);
         const auto img = img_capturer.get_img();
 
