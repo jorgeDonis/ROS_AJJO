@@ -28,6 +28,5 @@ void DatasetGenerator::add_to_dataset(KeyboardAction user_input, cv::Mat const& 
     );
     std::string filename = to_str(user_input) + "_" + odom_info.to_string() + "_" 
                            +  timestamp + ".jpg";
-    std::cout << timestamp << std::endl;
     cv::imwrite(DATASET_PATH + "/" + filename, img);
 }

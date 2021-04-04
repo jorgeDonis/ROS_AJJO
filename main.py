@@ -26,7 +26,7 @@ IMG_HEIGHT = 128
 TEST_PCTG = 0.2
 
 BATCH_SIZE = 128
-EPOCHS = 60
+EPOCHS = 100
 
 REGEX = r"([A-Z]+)_([A-Z]+)_(.*)_(.*)_(.*)_(.*)\.jpg"
 
@@ -90,24 +90,27 @@ def cnn_model():
     Conv2d1 = layers.Conv2D(6, (4, 4), activation="relu")(input_A)
     max_pool_2d1 = layers.MaxPooling2D(pool_size=(4, 4))(Conv2d1)
 
-    Conv2d2 = layers.Conv2D(6, (4, 4), activation="relu")(max_pool_2d1)
+    Conv2d2 = layers.Conv2D(13, (4, 4), activation="relu")(max_pool_2d1)
     max_pool_2d2 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d2)
 
-    flatten = layers.Flatten()(max_pool_2d2)
+    Conv2d3 = layers.Conv2D(8, (4, 4), activation="relu")(max_pool_2d2)
+    max_pool_2d3 = layers.MaxPooling2D(pool_size=(2, 2))(Conv2d3)
 
-    hidden1 = layers.Dense(64, activation='relu')(flatten)
-    hidden1_2 = layers.Dense(64, activation='relu')(hidden1)
+    flatten = layers.Flatten()(max_pool_2d3)
+
+    hidden1 = layers.Dense(256, activation='relu')(flatten)
+    hidden1_2 = layers.Dense(128, activation='relu')(hidden1)
     hidden2 = layers.Dense(64, activation='relu')(hidden1_2)
 
 
     # dnn odom
-    denseB_1 = layers.Dense(8, activation='relu')(input_B)
+    denseB_1 = layers.Dense(64, activation='relu')(input_B)
     denseB_2 = layers.Dense(16, activation='relu')(denseB_1)
 
     concat = layers.Concatenate()([denseB_2, hidden2])
 
     hidden3 = layers.Dense(128, activation='relu')(concat)
-    hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
+    hidden3_2 = layers.Dense(128, activation='relu')(hidden3)
     hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
     hidden4 = layers.Dense(16, activation='relu')(hidden3_2)
 
@@ -149,11 +152,11 @@ checkpoint_filepath = '/tmp/checkpoint'
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_filepath,
     save_weights_only=True,
-    monitor='val_loss',
+    monitor='loss',
     mode='min',
     save_best_only=True
 )
-early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=5)
 model.fit(
     train_ds, 
     validation_data=test_ds,
