@@ -46,15 +46,15 @@ void RobotController::main_loop()
 
         msg.linear.x = forward_speed;
         msg.angular.z = rotation_speed;
-        // pub.publish(msg);
+        pub.publish(msg);
 
-        // printf("FORWARD_SPEED = %.2f\n", forward_speed);
-        // printf("ROTATION_SPEED = %.2f\n\n", rotation_speed);
+        printf("FORWARD_SPEED = %.2f\n", forward_speed);
+        printf("ROTATION_SPEED = %.2f\n\n", rotation_speed);
 
-        if (RobotNeuralNet::is_robot_present(rgb_img_capturer.get_img()))
-            printf("ROBOT IS PRESENT\n");
-        else
-            printf("ROBOT IS NOT PRESENT\n");
+        // if (RobotNeuralNet::is_robot_present(rgb_img_capturer.get_img()))
+        //     printf("ROBOT IS PRESENT\n");
+        // else
+        //     printf("ROBOT IS NOT PRESENT\n");
         
         cls();
 
