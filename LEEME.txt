@@ -1,3 +1,6 @@
+## Jorge Donis del Álamo
+## Alejandro Galán Cuenca
+
 
 #### NAVEGACIÓN ####
 
@@ -5,18 +8,22 @@ Para la compilación del directorio catkin es necesario tener instalado ROS y
 todos los paquetes necesarios para lanzar el paquete ejemplogazebo (turtlebot, gazebo...).
 Simplemente
 
-cd catkin_ws
-catkin_make
-source devel/setup.bash
+- cd catkin_ws
+- catkin_make
+- source devel/setup.bash
 
-Para ejecutar
+Para ejecutar (borrar la carpeta de ejemplogazebo en caso de que ya se tenga en otra localización)
 
-roslaunch ejemplogazebo create_multi_robot.launch
+- roslaunch ejemplogazebo create_multi_robot.launch
+
 esperar a que cargue el mapa
-rosrun manejador_gazebo manejador_gazebo
+
+- rosrun manejador_gazebo manejador_gazebo
 
 El paquete grabador_datos sirve para obtener el conjunto de entrenamiento de la red neuronal de navegación.
 La arquitectura de la red y el script de entrenamiento está en train_neural_network.py
+
+Si se quiere volver a ejecutar el manejador, se debería reiniciar gazebo, para resetear la odometría.
 
 
 #### CLASIFICACIÓN DEL OTRO ROBOT ####
@@ -30,6 +37,8 @@ El código en C++ de la predicción también se puede encontrar en src/manejador
 #### IMAGEN STEREO ####
 
 Toda la información está en memoria.pdf
+
+
 
 
 
