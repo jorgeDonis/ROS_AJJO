@@ -44,7 +44,7 @@ namespace RobotNeuralNet
         const auto confidence = model.predict({
             input
         });
-        std::cout << fdeep::show_tensors(confidence) << std::endl;
+        // std::cout << fdeep::show_tensors(confidence) << std::endl;
 
         return result;
     }

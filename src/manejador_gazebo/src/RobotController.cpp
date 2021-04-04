@@ -46,7 +46,7 @@ void RobotController::main_loop()
 
         msg.linear.x = forward_speed;
         msg.angular.z = rotation_speed;
-        pub.publish(msg);
+        // pub.publish(msg);
 
         // printf("FORWARD_SPEED = %.2f\n", forward_speed);
         // printf("ROTATION_SPEED = %.2f\n\n", rotation_speed);
@@ -56,7 +56,7 @@ void RobotController::main_loop()
         else
             printf("ROBOT IS NOT PRESENT\n");
         
-        // cls();
+        cls();
 
         ros::spinOnce();
         rate.sleep();
