@@ -114,7 +114,7 @@ def cnn_model():
     hidden3_2 = layers.Dense(64, activation='relu')(hidden3)
     hidden4 = layers.Dense(16, activation='relu')(hidden3_2)
 
-    output = layers.Dense(3, activation='softmax')(hidden4)
+    output = layers.Dense(3, activation='softmax', name = 'output')(hidden4)
 
     model = Model(inputs=[input_A, input_B], outputs=[output])
 
@@ -157,14 +157,19 @@ model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     save_best_only=True
 )
 early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=5)
-model.fit(
-    train_ds, 
-    validation_data=test_ds,
-    epochs=EPOCHS,
-    callbacks=[early_stopping_callback, model_checkpoint_callback],
+# model.fit(
+#     train_ds, 
+#     validation_data=test_ds,
+#     epochs=EPOCHS,
+#     callbacks=[early_stopping_callback, model_checkpoint_callback],
+# )
+# model.load_weights(checkpoint_filepath)
+# results = model.evaluate(test_ds, batch_size=1)
+# print("test loss, test acc:", results)
+# system("rm tf_model_driving.h5")
+# model.save('tf_model_driving.h5', include_optimizer=False)
+
+tf.keras.utils.plot_model(
+    model, to_file='model.png', show_shapes=True,
+    show_layer_names=True, rankdir='TB', expand_nested=False, dpi=96
 )
-model.load_weights(checkpoint_filepath)
-results = model.evaluate(test_ds, batch_size=1)
-print("test loss, test acc:", results)
-system("rm tf_model_driving.h5")
-model.save('tf_model_driving.h5', include_optimizer=False)
