@@ -1,8 +1,0 @@
-prefix=/home/jorge/catkin_ws/src/grabador_datos/build/devel
-
-Name: grabador_datos
-Description: Description of grabador_datos
-Version: 0.0.0
-Cflags: -I/home/jorge/catkin_ws/src/grabador_datos/include/grabador_datos
-Libs: -L${prefix}/lib 
-Requires: 
