@@ -10,7 +10,10 @@ using PointCloud = pcl::PointCloud<pcl::PointXYZRGB>;
 class MapBuilder
 {
     private:
-        static const uint8_t FPS = 5;
+        static constexpr float FPS = 10.0f;
+
+        pcl::PointCloud<pcl::PFHSignature125> ::Ptr previous_pc_features;
+        PointCloud::Ptr previous_pc_keypoints;
 
         PointCloud::Ptr& pc_visu;
         rosbag::Bag bag;

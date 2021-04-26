@@ -1,0 +1,6 @@
+ejemplogazebo
+/home/jorge/catkin_ws/devel/.private/ejemplogazebo/cmake.lock /home/jorge/catkin_ws/devel/./cmake.lock
+/home/jorge/catkin_ws/devel/.private/ejemplogazebo/share/ejemplogazebo/cmake/ejemplogazeboConfig-version.cmake /home/jorge/catkin_ws/devel/share/ejemplogazebo/cmake/ejemplogazeboConfig-version.cmake
+/home/jorge/catkin_ws/devel/.private/ejemplogazebo/share/ejemplogazebo/cmake/ejemplogazeboConfig.cmake /home/jorge/catkin_ws/devel/share/ejemplogazebo/cmake/ejemplogazeboConfig.cmake
+/home/jorge/catkin_ws/devel/.private/ejemplogazebo/etc/catkin/profile.d/25.turtlebot-gazebo.sh /home/jorge/catkin_ws/devel/etc/catkin/profile.d/25.turtlebot-gazebo.sh
+/home/jorge/catkin_ws/devel/.private/ejemplogazebo/lib/pkgconfig/ejemplogazebo.pc /home/jorge/catkin_ws/devel/lib/pkgconfig/ejemplogazebo.pc
