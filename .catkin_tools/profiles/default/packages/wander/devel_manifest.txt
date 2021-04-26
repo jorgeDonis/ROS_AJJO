@@ -1,6 +1,0 @@
-wander
-/home/jorge/catkin_ws/devel/.private/wander/cmake.lock /home/jorge/catkin_ws/devel/./cmake.lock
-/home/jorge/catkin_ws/devel/.private/wander/share/wander/cmake/wanderConfig-version.cmake /home/jorge/catkin_ws/devel/share/wander/cmake/wanderConfig-version.cmake
-/home/jorge/catkin_ws/devel/.private/wander/share/wander/cmake/wanderConfig.cmake /home/jorge/catkin_ws/devel/share/wander/cmake/wanderConfig.cmake
-/home/jorge/catkin_ws/devel/.private/wander/lib/pkgconfig/wander.pc /home/jorge/catkin_ws/devel/lib/pkgconfig/wander.pc
-/home/jorge/catkin_ws/devel/.private/wander/lib/wander/wander /home/jorge/catkin_ws/devel/lib/wander/wander

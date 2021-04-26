@@ -1,5 +1,0 @@
-teleop_twist_keyboard
-/home/jorge/catkin_ws/devel/.private/teleop_twist_keyboard/cmake.lock /home/jorge/catkin_ws/devel/./cmake.lock
-/home/jorge/catkin_ws/devel/.private/teleop_twist_keyboard/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig.cmake /home/jorge/catkin_ws/devel/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig.cmake
-/home/jorge/catkin_ws/devel/.private/teleop_twist_keyboard/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig-version.cmake /home/jorge/catkin_ws/devel/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig-version.cmake
-/home/jorge/catkin_ws/devel/.private/teleop_twist_keyboard/lib/pkgconfig/teleop_twist_keyboard.pc /home/jorge/catkin_ws/devel/lib/pkgconfig/teleop_twist_keyboard.pc
