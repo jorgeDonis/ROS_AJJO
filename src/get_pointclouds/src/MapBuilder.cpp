@@ -10,6 +10,8 @@
 #include <pcl/features/rift.h>
 #include <pcl/point_types_conversion.h>
 #include <pcl/features/pfh.h>
+#include <pcl/correspondence.h>
+#include <pcl/recognition/cg/geometric_consistency.h>
 
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename, PointCloud::Ptr& point_cloud_to_visualize)
     : pc_visu(point_cloud_to_visualize)
@@ -77,7 +79,7 @@ PointCloud::Ptr get_keypoints(PointCloud::ConstPtr cloud)
     return keypoints;
 }
 
-pcl::PointCloud<pcl::PFHSignature125>::Ptr get_descriptors(PointCloud::Ptr cloud)
+pcl::PointCloud<pcl::PFHSignature125>::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::Ptr full_cloud)
 {
     // Object for storing the normals.
     pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
@@ -86,7 +88,7 @@ pcl::PointCloud<pcl::PFHSignature125>::Ptr get_descriptors(PointCloud::Ptr cloud
 
     // Estimate the normals.
     pcl::NormalEstimation<pcl::PointXYZRGB, pcl::Normal> normalEstimation;
-    normalEstimation.setInputCloud(cloud);
+    normalEstimation.setInputCloud(full_cloud);
     normalEstimation.setRadiusSearch(0.03);
     pcl::search::KdTree<pcl::PointXYZRGB>::Ptr kdtree(new pcl::search::KdTree<pcl::PointXYZRGB>);
     normalEstimation.setSearchMethod(kdtree);
@@ -94,7 +96,8 @@ pcl::PointCloud<pcl::PFHSignature125>::Ptr get_descriptors(PointCloud::Ptr cloud
 
     // PFH estimation object.
     pcl::PFHEstimation<pcl::PointXYZRGB, pcl::Normal, pcl::PFHSignature125> pfh;
-    pfh.setInputCloud(cloud);
+    pfh.setInputCloud(key_points);
+    pfh.setSearchSurface(full_cloud);
     pfh.setInputNormals(normals);
     pfh.setSearchMethod(kdtree);
     // Search radius, to look for neighbors. Note: the value given here has to be
@@ -102,6 +105,7 @@ pcl::PointCloud<pcl::PFHSignature125>::Ptr get_descriptors(PointCloud::Ptr cloud
     pfh.setRadiusSearch(0.05);
 
     pfh.compute(*descriptors);
+
     return descriptors;
 }
 
@@ -121,60 +125,75 @@ void MapBuilder::process_cloud(PointCloud::ConstPtr cloud)
 
 	PointCloud::Ptr cloud_filtered = downsample(cloud);
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
-    pcl::PointCloud<pcl::PFHSignature125>::Ptr descriptors = get_descriptors(keypoints);
+    pcl::PointCloud<pcl::PFHSignature125>::Ptr descriptors = get_descriptors(keypoints, cloud_filtered);
 
-    if (previous_pc_features != nullptr)
+    if (previous_pc_keypoints != nullptr)
     {
-		cout << "Keypoints[i-1]: " << previous_pc_keypoints->size() << endl;
-		cout << "Características[i-1]: " << previous_pc_features->size() << endl;
-		cout << "Keypoints[i]: " << keypoints->size() << endl;
-		cout << "Características[i]: " << descriptors->size() << endl;
+        cout << "Keypoints[i-1]: " << previous_pc_keypoints->size() << endl;
+        cout << "Características[i-1]: " << previous_pc_features->size() << endl;
+        cout << "Keypoints[i]: " << keypoints->size() << endl;
+        cout << "Características[i]: " << descriptors->size() << endl;
 
-        pcl::PointCloud<pcl::PointXYZRGB>::Ptr alignedModel(new pcl::PointCloud<pcl::PointXYZRGB>);
+        // A kd-tree object that uses the FLANN library for fast search of nearest neighbors.
+        pcl::KdTreeFLANN<pcl::PFHSignature125> matching;
+        matching.setInputCloud(previous_pc_features);
+        // A Correspondence object stores the indices of the query and the match,
+        // and the distance/weight.
+        pcl::CorrespondencesPtr correspondences(new pcl::Correspondences());
 
-        // Note: here you would compute or load the descriptors for both
-        // the scene and the model. It has been omitted here for simplicity.
-
-        // Object for pose estimation.
-        pcl::SampleConsensusPrerejective<pcl::PointXYZRGB, pcl::PointXYZRGB, pcl::PFHSignature125> pose;
-        pose.setInputSource(previous_pc_keypoints);
-        pose.setInputTarget(keypoints);
-        pose.setSourceFeatures(previous_pc_features);
-        pose.setTargetFeatures(descriptors);
-        // // Instead of matching a descriptor with its nearest neighbor, choose randomly between
-        // // the N closest ones, making it more robust to outliers, but increasing time.
-        pose.setCorrespondenceRandomness(20);
-        // // Set the fraction (0-1) of inlier points required for accepting a transformation.
-        // // At least this number of points will need to be aligned to accept a pose.
-        pose.setInlierFraction(0.55f);
-        // // Set the number of samples to use during each iteration (minimum for 6 DoF is 3).
-        pose.setNumberOfSamples(3);
-        // // Set the similarity threshold (0-1) between edge lengths of the polygons. The
-        // // closer to 1, the more strict the rejector will be, probably discarding acceptable poses.
-        pose.setSimilarityThreshold(0.8f);
-        // // Set the maximum distance threshold between two correspondent points in source and target.
-        // // If the distance is larger, the points will be ignored in the alignment process.
-        pose.setMaxCorrespondenceDistance(0.0001f);
-
-        
-        pose.align(*alignedModel);
-
-        if (pose.hasConverged())
+        // Check every descriptor computed for the scene.
+        for (size_t i = 0; i < descriptors->size(); ++i)
         {
-            Eigen::Matrix4f transformation = pose.getFinalTransformation();
-            Eigen::Matrix3f rotation = transformation.block<3, 3>(0, 0);
-            Eigen::Vector3f translation = transformation.block<3, 1>(0, 3);
+            std::vector<int> neighbors(1);
+            std::vector<float> squaredDistances(1);
+            // Ignore NaNs.
+            if (pcl_isfinite(descriptors->at(i).histogram[0]))
+            {
+                // Find the nearest neighbor (in descriptor space)...
+                int neighborCount = matching.nearestKSearch(descriptors->at(i), 1, neighbors, squaredDistances);
+                // ...and add a new correspondence if the distance is less than a threshold
+                // (SHOT distances are between 0 and 1, other descriptors use different metrics).
+                if (neighborCount == 1 && squaredDistances[0] < 0.25f)
+                {
+                    pcl::Correspondence correspondence(neighbors[0], static_cast<int>(i), squaredDistances[0]);
+                    correspondences->push_back(correspondence);
+                }
+            }
+        }
+        std::cout << "Found " << correspondences->size() << " correspondences." << std::endl;
 
-            std::cout << "Transformation matrix:" << std::endl
+        pcl::GeometricConsistencyGrouping<pcl::PointXYZRGB, pcl::PointXYZRGB> grouping;
+        std::vector<Eigen::Matrix4f, Eigen::aligned_allocator<Eigen::Matrix4f>> transformations;
+        std::vector<pcl::Correspondences> clusteredCorrespondences;
+        
+        grouping.setSceneCloud(previous_pc_keypoints);
+        grouping.setInputCloud(keypoints);
+        grouping.setModelSceneCorrespondences(correspondences);
+        // Minimum cluster size. Default is 3 (as at least 3 correspondences
+        // are needed to compute the 6 DoF pose).
+        grouping.setGCThreshold(3);
+        // Resolution of the consensus set used to cluster correspondences together,
+        // in metric units. Default is 1.0.
+        grouping.setGCSize(0.01);
+
+        grouping.recognize(transformations, clusteredCorrespondences);
+
+        std::cout << "Model instances found: " << transformations.size() << std::endl
+                  << std::endl;
+        for (size_t i = 0; i < transformations.size(); i++)
+        {
+            std::cout << "Instance " << (i + 1) << ":" << std::endl;
+            std::cout << "\tHas " << clusteredCorrespondences[i].size() << " correspondences." << std::endl
                       << std::endl;
+
+            Eigen::Matrix3f rotation = transformations[i].block<3, 3>(0, 0);
+            Eigen::Vector3f translation = transformations[i].block<3, 1>(0, 3);
             printf("\t\t    | %6.3f %6.3f %6.3f | \n", rotation(0, 0), rotation(0, 1), rotation(0, 2));
             printf("\t\tR = | %6.3f %6.3f %6.3f | \n", rotation(1, 0), rotation(1, 1), rotation(1, 2));
             printf("\t\t    | %6.3f %6.3f %6.3f | \n", rotation(2, 0), rotation(2, 1), rotation(2, 2));
             std::cout << std::endl;
             printf("\t\tt = < %0.3f, %0.3f, %0.3f >\n", translation(0), translation(1), translation(2));
         }
-        else
-            std::cout << "Did not converge." << std::endl;
     }
 	previous_pc_features = descriptors;
     previous_pc_keypoints = keypoints;
