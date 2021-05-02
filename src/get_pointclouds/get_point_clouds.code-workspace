@@ -9,6 +9,9 @@
 			"/home/jorge/catkin_ws/devel/lib/python2.7/dist-packages",
 			"/opt/ros/kinetic/lib/python2.7/dist-packages"
 		],
-		"git.ignoreLimitWarning": true
+		"git.ignoreLimitWarning": true,
+		"files.associations": {
+			"ostream": "cpp"
+		}
 	}
 }

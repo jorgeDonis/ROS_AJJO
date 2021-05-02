@@ -137,6 +137,7 @@ include_directories(
  add_executable(get_pointclouds_node
   src/node.cpp
   src/MapBuilder.cpp
+  src/Plotter.cpp
  )
 
 ## Add cmake target dependencies of the executable

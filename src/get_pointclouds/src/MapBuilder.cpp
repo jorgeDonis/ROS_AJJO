@@ -1,21 +1,32 @@
 #include "MapBuilder.hpp"
+#include "Plotter.hpp"
 
+#include <chrono>
 #include <rosbag/view.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/keypoints/iss_3d.h>
+#include <pcl/keypoints/sift_keypoint.h>
 #include <pcl/features/shot.h>
 #include <pcl/registration/sample_consensus_prerejective.h>
+#include <pcl/registration/correspondence_estimation_backprojection.h>
+#include <pcl/registration/ia_ransac.h>
+#include <pcl/registration/correspondence_rejection_median_distance.h>
 #include <pcl/features/intensity_gradient.h>
 #include <pcl/features/rift.h>
 #include <pcl/point_types_conversion.h>
 #include <pcl/features/pfh.h>
 #include <pcl/correspondence.h>
+#include <pcl/registration/correspondence_rejection_sample_consensus.h>
 #include <pcl/recognition/cg/geometric_consistency.h>
+#include <pcl/common/transforms.h>
+#include <pcl/features/fpfh.h>
+#include <pcl/features/integral_image_normal.h>
 
-MapBuilder::MapBuilder(std::string const &cloud_bag_filename, PointCloud::Ptr& point_cloud_to_visualize)
-    : pc_visu(point_cloud_to_visualize)
- {
+using namespace std;
+
+MapBuilder::MapBuilder(std::string const &cloud_bag_filename)
+{
     bag.open("point_cloud_messages.bag");
 }
 
@@ -51,81 +62,112 @@ computeCloudResolution(const PointCloud::ConstPtr& cloud)
     return resolution;
 }
 
-PointCloud::Ptr get_keypoints(PointCloud::ConstPtr cloud)
+PointCloud::Ptr get_keypoints(PointCloud::Ptr cloud)
 {
-    // Object for storing the keypoints.
-    PointCloud::Ptr keypoints(new PointCloud);
 
-    // ISS keypoint detector object.
-    pcl::ISSKeypoint3D<pcl::PointXYZRGB, pcl::PointXYZRGB> detector;
-    detector.setInputCloud(cloud);
-    pcl::search::KdTree<pcl::PointXYZRGB>::Ptr kdtree(new pcl::search::KdTree<pcl::PointXYZRGB>);
-    detector.setSearchMethod(kdtree);
-    double resolution = computeCloudResolution(cloud);
-    // Set the radius of the spherical neighborhood used to compute the scatter matrix.
-    detector.setSalientRadius(6 * resolution);
-    // Set the radius for the application of the non maxima supression algorithm.
-    detector.setNonMaxRadius(4 * resolution);
-    // Set the minimum number of neighbors that has to be found while applying the non maxima suppression algorithm.
-    detector.setMinNeighbors(5);
-    // Set the upper bound on the ratio between the second and the first eigenvalue.
-    detector.setThreshold21(0.975);
-    // Set the upper bound on the ratio between the third and the second eigenvalue.
-    detector.setThreshold32(0.975);
-    // Set the number of prpcessing threads to use. 0 sets it to automatic.
-    detector.setNumberOfThreads(0);
+    const auto t_0 = std::chrono::high_resolution_clock::now();
+    // Parameters for sift computation
+    const float min_scale = 0.008f;
+    const int n_octaves = 7;
+    const int n_scales_per_octave = 8;
+    const float min_contrast = 0.02f;
 
-    detector.compute(*keypoints);
-    return keypoints;
+    // Estimate the sift interest points using Intensity values from RGB values
+    pcl::SIFTKeypoint<pcl::PointXYZRGB, pcl::PointWithScale> sift;
+    pcl::PointCloud<pcl::PointWithScale> result;
+    pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>());
+    sift.setSearchMethod(tree);
+    sift.setScales(min_scale, n_octaves, n_scales_per_octave);
+    sift.setMinimumContrast(min_contrast);
+    sift.setInputCloud(cloud);
+    sift.compute(result);
+    PointCloud::Ptr cloud_temp(new PointCloud);
+    pcl::copyPointCloud(result, *cloud_temp);
+
+    const auto t_1 = std::chrono::high_resolution_clock::now();
+    const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
+    printf("Calculado keypoints en %.4f segundos\n", seconds_spent);
+
+    return cloud_temp;
 }
 
-pcl::PointCloud<pcl::PFHSignature125>::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::Ptr full_cloud)
+pcl::PointCloud<pcl::FPFHSignature33>::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals)
 {
-    // Object for storing the normals.
-    pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
+    const auto t_0 = std::chrono::high_resolution_clock::now();
+
     // Object for storing the PFH descriptors for each point.
-    pcl::PointCloud<pcl::PFHSignature125>::Ptr descriptors(new pcl::PointCloud<pcl::PFHSignature125>());
-
-    // Estimate the normals.
-    pcl::NormalEstimation<pcl::PointXYZRGB, pcl::Normal> normalEstimation;
-    normalEstimation.setInputCloud(full_cloud);
-    normalEstimation.setRadiusSearch(0.03);
+    pcl::PointCloud<pcl::FPFHSignature33>::Ptr descriptors(new pcl::PointCloud<pcl::FPFHSignature33>());
     pcl::search::KdTree<pcl::PointXYZRGB>::Ptr kdtree(new pcl::search::KdTree<pcl::PointXYZRGB>);
-    normalEstimation.setSearchMethod(kdtree);
-    normalEstimation.compute(*normals);
 
-    // PFH estimation object.
-    pcl::PFHEstimation<pcl::PointXYZRGB, pcl::Normal, pcl::PFHSignature125> pfh;
-    pfh.setInputCloud(key_points);
-    pfh.setSearchSurface(full_cloud);
-    pfh.setInputNormals(normals);
-    pfh.setSearchMethod(kdtree);
-    // Search radius, to look for neighbors. Note: the value given here has to be
-    // larger than the radius used to estimate the normals.
-    pfh.setRadiusSearch(0.05);
+	// FPFH estimation object.
+    pcl::FPFHEstimation<pcl::PointXYZRGB, pcl::Normal, pcl::FPFHSignature33> fpfh;
+    fpfh.setInputCloud(key_points);
+    fpfh.setSearchSurface(full_cloud);
+	fpfh.setInputNormals(normals);
+	fpfh.setSearchMethod(kdtree);
+	// Search radius, to look for neighbors. Note: the value given here has to be
+	// larger than the radius used to estimate the normals.
+	fpfh.setRadiusSearch(0.18);
 
-    pfh.compute(*descriptors);
+	fpfh.compute(*descriptors);
+
+    const auto t_1 = std::chrono::high_resolution_clock::now();
+    const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
+    printf("Calculado descriptores en %.4f segundos\n", seconds_spent);
 
     return descriptors;
 }
 
-PointCloud::Ptr downsample(PointCloud::ConstPtr cloud)
+PointCloud::Ptr downsample(PointCloud::ConstPtr cloud, float leaf_size)
 {
 	PointCloud::Ptr cloud_filtered(new PointCloud);
 	pcl::VoxelGrid<pcl::PointXYZRGB> v_grid;
 	v_grid.setInputCloud(cloud);
-	v_grid.setLeafSize(0.025f, 0.025f, 0.025f);
+	v_grid.setLeafSize(leaf_size, leaf_size, leaf_size);
 	v_grid.filter(*cloud_filtered);
 	return cloud_filtered;
 }
 
-void MapBuilder::process_cloud(PointCloud::ConstPtr cloud)
+pcl::PointCloud<pcl::Normal>::Ptr get_normals_integral(PointCloud::ConstPtr cloud)
 {
-    using namespace std;
+    pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
+    pcl::IntegralImageNormalEstimation<pcl::PointXYZRGB, pcl::Normal> ne;
+    ne.setNormalEstimationMethod(ne.COVARIANCE_MATRIX);
+    ne.setMaxDepthChangeFactor(0.02f);
+    ne.setNormalSmoothingSize(10.0f);
+    ne.setInputCloud(cloud);
+    ne.compute(*normals);
+    return normals;
+}
 
-	PointCloud::Ptr cloud_filtered = downsample(cloud);
+pcl::PointCloud<pcl::Normal>::Ptr estimate_normals(PointCloud::Ptr cloud)
+{
+    pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
+    pcl::NormalEstimation<pcl::PointXYZRGB, pcl::Normal> ne;
+    ne.setInputCloud(cloud);
+    pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>());
+    ne.setSearchMethod(tree);
+    ne.setRadiusSearch(0.06);
+    ne.compute(*normals);
+    return normals;
+}
+
+void print(Eigen::Matrix4f const& m)
+{
+    using namespace Eigen;
+    using namespace std;
+    IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+    cout << m.format(CleanFmt) << endl;
+}
+
+Eigen::Matrix4f align_points()
+
+void MapBuilder::process_cloud(PointCloud::Ptr cloud)
+{
+    PointCloud::Ptr cloud_filtered = downsample(cloud, 0.02);
+    pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
-    pcl::PointCloud<pcl::PFHSignature125>::Ptr descriptors = get_descriptors(keypoints, cloud_filtered);
+    pcl::PointCloud<pcl::FPFHSignature33>::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
 
     if (previous_pc_keypoints != nullptr)
     {
@@ -134,79 +176,45 @@ void MapBuilder::process_cloud(PointCloud::ConstPtr cloud)
         cout << "Keypoints[i]: " << keypoints->size() << endl;
         cout << "Características[i]: " << descriptors->size() << endl;
 
-        // A kd-tree object that uses the FLANN library for fast search of nearest neighbors.
-        pcl::KdTreeFLANN<pcl::PFHSignature125> matching;
-        matching.setInputCloud(previous_pc_features);
-        // A Correspondence object stores the indices of the query and the match,
-        // and the distance/weight.
-        pcl::CorrespondencesPtr correspondences(new pcl::Correspondences());
+        pcl::SampleConsensusInitialAlignment<pcl::PointXYZRGB, pcl::PointXYZRGB, pcl::FPFHSignature33> scia;
+        scia.setInputTarget(previous_pc_keypoints);
+        scia.setInputSource(keypoints);
+        scia.setTargetFeatures(previous_pc_features);
+        scia.setSourceFeatures(descriptors);
+        scia.setMinSampleDistance(0.025f);
+        scia.setMaxCorrespondenceDistance(0.005f);
+        scia.setMaximumIterations(1000);
+        PointCloud r;
+        scia.align(r);
+        PointCloud::Ptr transformed_cloud(new PointCloud);
+        auto transform = scia.getFinalTransformation();
+        print(transform);
+        T *= transform;
+        pcl::transformPointCloud(*cloud_filtered, *transformed_cloud, T);
+        *transformed_cloud += *previous_pc;
+        PointCloud::Ptr old_pc = previous_pc;
+        previous_pc = transformed_cloud;
 
-        // Check every descriptor computed for the scene.
-        for (size_t i = 0; i < descriptors->size(); ++i)
-        {
-            std::vector<int> neighbors(1);
-            std::vector<float> squaredDistances(1);
-            // Ignore NaNs.
-            if (pcl_isfinite(descriptors->at(i).histogram[0]))
-            {
-                // Find the nearest neighbor (in descriptor space)...
-                int neighborCount = matching.nearestKSearch(descriptors->at(i), 1, neighbors, squaredDistances);
-                // ...and add a new correspondence if the distance is less than a threshold
-                // (SHOT distances are between 0 and 1, other descriptors use different metrics).
-                if (neighborCount == 1 && squaredDistances[0] < 0.25f)
-                {
-                    pcl::Correspondence correspondence(neighbors[0], static_cast<int>(i), squaredDistances[0]);
-                    correspondences->push_back(correspondence);
-                }
-            }
-        }
-        std::cout << "Found " << correspondences->size() << " correspondences." << std::endl;
+        *cloud_filtered += *old_pc;
 
-        pcl::GeometricConsistencyGrouping<pcl::PointXYZRGB, pcl::PointXYZRGB> grouping;
-        std::vector<Eigen::Matrix4f, Eigen::aligned_allocator<Eigen::Matrix4f>> transformations;
-        std::vector<pcl::Correspondences> clusteredCorrespondences;
-        
-        grouping.setSceneCloud(previous_pc_keypoints);
-        grouping.setInputCloud(keypoints);
-        grouping.setModelSceneCorrespondences(correspondences);
-        // Minimum cluster size. Default is 3 (as at least 3 correspondences
-        // are needed to compute the 6 DoF pose).
-        grouping.setGCThreshold(3);
-        // Resolution of the consensus set used to cluster correspondences together,
-        // in metric units. Default is 1.0.
-        grouping.setGCSize(0.01);
-
-        grouping.recognize(transformations, clusteredCorrespondences);
-
-        std::cout << "Model instances found: " << transformations.size() << std::endl
-                  << std::endl;
-        for (size_t i = 0; i < transformations.size(); i++)
-        {
-            std::cout << "Instance " << (i + 1) << ":" << std::endl;
-            std::cout << "\tHas " << clusteredCorrespondences[i].size() << " correspondences." << std::endl
-                      << std::endl;
-
-            Eigen::Matrix3f rotation = transformations[i].block<3, 3>(0, 0);
-            Eigen::Vector3f translation = transformations[i].block<3, 1>(0, 3);
-            printf("\t\t    | %6.3f %6.3f %6.3f | \n", rotation(0, 0), rotation(0, 1), rotation(0, 2));
-            printf("\t\tR = | %6.3f %6.3f %6.3f | \n", rotation(1, 0), rotation(1, 1), rotation(1, 2));
-            printf("\t\t    | %6.3f %6.3f %6.3f | \n", rotation(2, 0), rotation(2, 1), rotation(2, 2));
-            std::cout << std::endl;
-            printf("\t\tt = < %0.3f, %0.3f, %0.3f >\n", translation(0), translation(1), translation(2));
-        }
+        Plotter::plot_transformation(cloud_filtered, old_pc, transformed_cloud);
     }
+    else
+        previous_pc = cloud_filtered;
 	previous_pc_features = descriptors;
     previous_pc_keypoints = keypoints;
-	
-    pc_visu = cloud_filtered;
 }
 
 void MapBuilder::build_map()
 {
     ros::Rate rate(FPS);
+    static uint16_t i = 0;
     for (rosbag::MessageInstance const& m : rosbag::View(bag))
     {
-        PointCloud::ConstPtr cloud = m.instantiate<PointCloud>();
+        ++i;
+        PointCloud::Ptr cloud = m.instantiate<PointCloud>();
+        if (i <= 20)
+            continue;
         process_cloud(cloud);
         sleep(1000 / FPS);
     }
