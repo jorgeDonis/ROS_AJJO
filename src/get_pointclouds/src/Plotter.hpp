@@ -13,5 +13,12 @@ class Plotter
     public:
         static void plot_correspondences(PointCloud::Ptr cloud_1, PointCloud::Ptr cloud_2, pcl::CorrespondencesConstPtr correspondences);
         static void plot_normals(PointCloud::ConstPtr surface, pcl::PointCloud<pcl::Normal>::Ptr normals);
-        static void plot_transformation(PointCloud::Ptr cloud_1, PointCloud::Ptr cloud_2, PointCloud::Ptr cloud_merge);
+        static void plot_transformation();
+
+        static void simple_vis();
+
+        static PointCloud::Ptr unmerged_clouds;
+        static PointCloud::Ptr new_cloud;
+        static PointCloud::Ptr merged_clouds;
+        static PointCloud::Ptr simple_vis_cloud;
 };

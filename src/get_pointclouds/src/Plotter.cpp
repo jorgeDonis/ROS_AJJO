@@ -6,6 +6,12 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/console/parse.h>
 
+PointCloud::Ptr Plotter::unmerged_clouds = PointCloud::Ptr(new PointCloud);
+PointCloud::Ptr Plotter::new_cloud = PointCloud::Ptr(new PointCloud);
+PointCloud::Ptr Plotter::merged_clouds = PointCloud::Ptr(new PointCloud);
+PointCloud::Ptr Plotter::simple_vis_cloud = PointCloud::Ptr(new PointCloud);
+
+
 void Plotter::plot_correspondences(PointCloud::Ptr cloud_1, PointCloud::Ptr cloud_2, pcl::CorrespondencesConstPtr correspondences)
 {
     std::function<void()> f1 = [cloud_1, cloud_2, correspondences] ()
@@ -49,34 +55,46 @@ void Plotter::plot_normals(PointCloud::ConstPtr surface, pcl::PointCloud<pcl::No
     t.join();
 }
 
-void Plotter::plot_transformation(PointCloud::Ptr cloud_1, PointCloud::Ptr cloud_2, PointCloud::Ptr cloud_merge)
+void Plotter::plot_transformation()
 {
-    std::function<void()> f1 = [cloud_1, cloud_2, cloud_merge]() {
+    std::function<void()> f1 = [] () {
         pcl::visualization::PCLVisualizer viewer("Merge");
         
         int viewport_1(0);
         viewer.createViewPort(0.5, 0.5, 1, 1, viewport_1);
         viewer.setBackgroundColor(0.0, 0.0, 0.0, viewport_1);
-        viewer.addPointCloud(cloud_1, "cloud_1", viewport_1);
-        viewer.addText("merge no transform", 10, 10, "text_t0", viewport_1);
+        printf("%lu puntos\n", Plotter::unmerged_clouds->size());
+        viewer.addPointCloud(Plotter::unmerged_clouds, "cloud_1", viewport_1);
+        viewer.addText("Known map + new cloud (before transformation)", 10, 10, "text_t0", viewport_1);
         viewer.addCoordinateSystem(1.0, "1-1", viewport_1);
 
         int viewport_2(0);
         viewer.createViewPort(0.5, 0, 1, 0.5, viewport_2);
         viewer.setBackgroundColor(0.3, 0.3, 0.3, viewport_2);
-        viewer.addPointCloud(cloud_2, "cloud_2", viewport_2);
-        viewer.addText("t_0", 10, 10, "text_t1", viewport_2);
+        viewer.addPointCloud(Plotter::new_cloud, "cloud_2", viewport_2);
+        viewer.addText("New cloud", 10, 10, "text_t1", viewport_2);
         viewer.addCoordinateSystem(1.0, "2-2", viewport_2);
 
         int viewport_3(0);
         viewer.createViewPort(0, 0, 0.5, 1, viewport_3);
         viewer.setBackgroundColor(0.2, 0.2, 0.3, viewport_3);
-        viewer.addPointCloud(cloud_merge, "cloud_merge", viewport_3);
-        viewer.addText("merge", 10, 10, "text_merge", viewport_3);
+        viewer.addPointCloud(Plotter::merged_clouds, "cloud_3", viewport_3);
+        viewer.addText("Known map + new cloud (after transformation)", 10, 10, "text_merge", viewport_3);
         viewer.addCoordinateSystem(1.0, "3-3", viewport_3);
 
         // viewer.initCameraParameters();
         viewer.spin();
     };
     boost::thread t(f1);
+    t.join();
+}
+
+void Plotter::simple_vis()
+{
+    pcl::visualization::CloudViewer viewer("Reconstrucción 3D");
+    while (!viewer.wasStopped())
+    {
+        viewer.showCloud(Plotter::simple_vis_cloud);
+        boost::this_thread::sleep(boost::posix_time::milliseconds(10));
+    }
 }
