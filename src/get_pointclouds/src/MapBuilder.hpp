@@ -10,8 +10,6 @@ using PointCloud = pcl::PointCloud<pcl::PointXYZRGB>;
 class MapBuilder
 {
     private:
-        static constexpr float FPS = 10.0f;
-
         pcl::PointCloud<pcl::FPFHSignature33>::Ptr previous_pc_features;
         PointCloud::Ptr previous_pc_keypoints;
         PointCloud::Ptr previous_pc;
