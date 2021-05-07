@@ -1,0 +1,6 @@
+get_pointclouds
+/home/jorge/catkin_ws/devel/.private/get_pointclouds/cmake.lock /home/jorge/catkin_ws/devel/./cmake.lock
+/home/jorge/catkin_ws/devel/.private/get_pointclouds/share/get_pointclouds/cmake/get_pointcloudsConfig-version.cmake /home/jorge/catkin_ws/devel/share/get_pointclouds/cmake/get_pointcloudsConfig-version.cmake
+/home/jorge/catkin_ws/devel/.private/get_pointclouds/share/get_pointclouds/cmake/get_pointcloudsConfig.cmake /home/jorge/catkin_ws/devel/share/get_pointclouds/cmake/get_pointcloudsConfig.cmake
+/home/jorge/catkin_ws/devel/.private/get_pointclouds/lib/pkgconfig/get_pointclouds.pc /home/jorge/catkin_ws/devel/lib/pkgconfig/get_pointclouds.pc
+/home/jorge/catkin_ws/devel/.private/get_pointclouds/lib/get_pointclouds/get_pointclouds_node /home/jorge/catkin_ws/devel/lib/get_pointclouds/get_pointclouds_node

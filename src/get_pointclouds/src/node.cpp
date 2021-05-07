@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 {
   	ros::init(argc, argv, "sub_pcl");
   	ros::NodeHandle nh;
-	MapBuilder map_builder("point_cloud_messages.bag");
+	MapBuilder map_builder("/home/jorge/catkin_ws/point_cloud_messages.bag");
 	const auto t_0 = std::chrono::high_resolution_clock::now();
 	map_builder.build_map();
 	const auto t_1 = std::chrono::high_resolution_clock::now();

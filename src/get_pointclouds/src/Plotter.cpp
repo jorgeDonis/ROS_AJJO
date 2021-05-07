@@ -63,7 +63,6 @@ void Plotter::plot_transformation()
         int viewport_1(0);
         viewer.createViewPort(0.5, 0.5, 1, 1, viewport_1);
         viewer.setBackgroundColor(0.0, 0.0, 0.0, viewport_1);
-        printf("%lu puntos\n", Plotter::unmerged_clouds->size());
         viewer.addPointCloud(Plotter::unmerged_clouds, "cloud_1", viewport_1);
         viewer.addText("Known map + new cloud (before transformation)", 10, 10, "text_t0", viewport_1);
         viewer.addCoordinateSystem(1.0, "1-1", viewport_1);

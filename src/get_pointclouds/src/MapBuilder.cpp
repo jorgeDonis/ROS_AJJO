@@ -24,15 +24,18 @@
 #include <pcl/common/transforms.h>
 #include <pcl/features/fpfh.h>
 #include <pcl/features/integral_image_normal.h>
+#include <pcl/features/normal_3d_omp.h>
+#include <pcl/features/fpfh_omp.h>
 
 using namespace std;
 
 using PointT = pcl::PointXYZRGB;
-using DescriptorsCloud = pcl::PointCloud<pcl::FPFHSignature33>;
+using DescriptorT = pcl::FPFHSignature33;
+using DescriptorsCloud = pcl::PointCloud<DescriptorT>;
 
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename)
 {
-    bag.open("point_cloud_messages.bag");
+    bag.open(cloud_bag_filename);
     boost::thread(Plotter::simple_vis);
 }
 
@@ -68,6 +71,35 @@ computeCloudResolution(const PointCloud::ConstPtr& cloud)
     return resolution;
 }
 
+void purge_features(DescriptorsCloud::Ptr& features, PointCloud::Ptr& keypoints)
+{
+    DescriptorsCloud::Ptr purgedFeatures(new DescriptorsCloud);
+    PointCloud::Ptr purgedKeypoints(new PointCloud);
+    bool notnan;
+    // Loop histogram of each feature
+    for (int i = 0; i < features->size(); i++)
+    {
+        notnan = true;
+        // Check for nan values
+        for (int j = 0; j < 33; j++)
+        {
+            if (std::isnan(features->points[i].histogram[j]))
+            {
+                notnan = false;
+                break;
+            }
+        }
+        // If notnan, add to purged
+        if (notnan)
+        {
+            purgedFeatures->push_back(features->points[i]);
+            purgedKeypoints->push_back(keypoints->points[i]);
+        }
+    }
+    features = purgedFeatures;
+    keypoints = purgedKeypoints;
+}
+
 DescriptorsCloud::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
@@ -77,14 +109,15 @@ DescriptorsCloud::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::Co
     pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
 
 	// FPFH estimation object.
-    pcl::FPFHEstimation<PointT, pcl::Normal, pcl::FPFHSignature33> fpfh;
+    pcl::FPFHEstimationOMP<PointT, pcl::Normal, pcl::FPFHSignature33> fpfh;
     fpfh.setInputCloud(key_points);
     fpfh.setSearchSurface(full_cloud);
 	fpfh.setInputNormals(normals);
 	fpfh.setSearchMethod(kdtree);
 	// Search radius, to look for neighbors. Note: the value given here has to be
 	// larger than the radius used to estimate the normals.
-	fpfh.setRadiusSearch(0.18);
+	fpfh.setRadiusSearch(0.24);
+    fpfh.setNumberOfThreads(4);
 
 	fpfh.compute(*descriptors);
 
@@ -110,9 +143,9 @@ PointCloud::Ptr get_keypoints(PointCloud::Ptr cloud)
     const auto t_0 = std::chrono::high_resolution_clock::now();
     // Parameters for sift computation
     const float min_scale = 0.005f;
-    const int n_octaves = 8;
-    const int n_scales_per_octave = 10;
-    const float min_contrast = 0.02f;
+    const int n_octaves = 9;
+    const int n_scales_per_octave = 11;
+    const float min_contrast = 0.0f;
 
     // Estimate the sift interest points using Intensity values from RGB values
     pcl::SIFTKeypoint<PointT, pcl::PointWithScale> sift;
@@ -148,11 +181,12 @@ pcl::PointCloud<pcl::Normal>::Ptr get_normals_integral(PointCloud::ConstPtr clou
 pcl::PointCloud<pcl::Normal>::Ptr estimate_normals(PointCloud::Ptr cloud)
 {
     pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
-    pcl::NormalEstimation<PointT, pcl::Normal> ne;
+    pcl::NormalEstimationOMP<PointT, pcl::Normal> ne;
     ne.setInputCloud(cloud);
     pcl::search::KdTree<PointT>::Ptr tree(new pcl::search::KdTree<PointT>());
     ne.setSearchMethod(tree);
-    ne.setRadiusSearch(0.06);
+    ne.setRadiusSearch(0.04);
+    ne.setNumberOfThreads(4);
     ne.compute(*normals);
     return normals;
 }
@@ -160,7 +194,6 @@ pcl::PointCloud<pcl::Normal>::Ptr estimate_normals(PointCloud::Ptr cloud)
 void print(Eigen::Matrix4f const& m)
 {
     using namespace Eigen;
-    using namespace std;
     IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
     cout << m.format(CleanFmt) << endl;
 }
@@ -171,23 +204,30 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
 
-    pcl::SampleConsensusInitialAlignment<PointT, PointT, pcl::FPFHSignature33> scia;
-    scia.setInputTarget(t_0_keypoints);
-    scia.setInputSource(t_1_keypoints);
-    scia.setTargetFeatures(t_0_descriptors);
-    scia.setSourceFeatures(t_1_descriptors);
-    scia.setMinSampleDistance(0.4f);
-    scia.setMaxCorrespondenceDistance(0.001f);
-    scia.setMaximumIterations(10000);
-    pcl::registration::CorrespondenceRejectorDistance::Ptr rej(new pcl::registration::CorrespondenceRejectorDistance);
-    rej->setMaximumDistance(0.001f);
-    rej->setInputSource<PointT>(t_1_keypoints);
-    rej->setInputTarget<PointT>(t_0_keypoints);
-    scia.addCorrespondenceRejector(rej);
-    
-    PointCloud r;
-    scia.align(r);
-    auto transform = scia.getFinalTransformation();
+    pcl::registration::CorrespondenceEstimation<DescriptorT, DescriptorT> ce;
+    pcl::registration::CorrespondenceRejectorSampleConsensus<PointT> crsc;
+    pcl::registration::TransformationEstimationSVD<PointT, PointT> te_svd;
+    pcl::CorrespondencesPtr initial_correspondences(new pcl::Correspondences);
+    pcl::CorrespondencesPtr filtered_correspondences(new pcl::Correspondences);
+
+    ce.setInputSource(t_1_descriptors);
+    ce.setInputTarget(t_0_descriptors);
+    ce.determineReciprocalCorrespondences(*initial_correspondences);
+
+    cout << "Correspondencias antes del filtrado: " << initial_correspondences->size() << endl;
+
+    crsc.setInputSource(t_1_keypoints);
+    crsc.setInputTarget(t_0_keypoints);
+    crsc.setInlierThreshold(0.02);
+    crsc.setMaximumIterations(20000);
+    crsc.setRefineModel(true);
+    crsc.setInputCorrespondences(initial_correspondences);
+    crsc.getCorrespondences(*filtered_correspondences);
+
+    cout << "Correspondencias tras el filtrado: " << filtered_correspondences->size() << endl;
+
+    Eigen::Matrix4f transform;
+    te_svd.estimateRigidTransformation(*t_1_keypoints, *t_0_keypoints, *filtered_correspondences, transform);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
     const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
@@ -197,18 +237,17 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
 
 void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 {
-    PointCloud::Ptr cloud_filtered = downsample(cloud, 0.05); //menor tamaño de hoja, más puntos
+    PointCloud::Ptr cloud_filtered = downsample(cloud, 0.01); //menor tamaño de hoja, más puntos
     pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
     DescriptorsCloud::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
+    purge_features(descriptors, keypoints); //quita los keypoints que tienen descriptores con NaN (también quita los descriptores)
 
-    cout << "Keypoints[i]: " << keypoints->size() << endl;
-    cout << "Características[i]: " << descriptors->size() << endl;
+    cout << "Keypoints: " << keypoints->size() << endl;
 
     if (previous_pc_keypoints != nullptr)
     {   
         const auto transform = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors);
-        print(transform);
         T *= transform;
         PointCloud::Ptr transformed_cloud(new PointCloud);
         pcl::transformPointCloud(*cloud_filtered, *transformed_cloud, T);
@@ -223,6 +262,7 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
         // Plotter::unmerged_clouds = cloud_filtered;
         // Plotter::merged_clouds = transformed_cloud;
         // Plotter::plot_transformation();
+
         Plotter::simple_vis_cloud = transformed_cloud;
     }
     else
@@ -233,9 +273,12 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 
 void MapBuilder::build_map()
 {
+    static uint16_t i = 0;
     for (rosbag::MessageInstance const& m : rosbag::View(bag))
     {
+        ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
-        process_cloud(cloud);
+        if (i >= 0)
+            process_cloud(cloud);
     }
 }

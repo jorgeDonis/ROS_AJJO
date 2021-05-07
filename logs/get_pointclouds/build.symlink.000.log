@@ -1,0 +1,4 @@
+Symlinking /home/jorge/catkin_ws/devel/share/get_pointclouds/cmake/get_pointcloudsConfig-version.cmake
+Symlinking /home/jorge/catkin_ws/devel/share/get_pointclouds/cmake/get_pointcloudsConfig.cmake
+Symlinking /home/jorge/catkin_ws/devel/lib/pkgconfig/get_pointclouds.pc
+Symlinking /home/jorge/catkin_ws/devel/lib/get_pointclouds/get_pointclouds_node

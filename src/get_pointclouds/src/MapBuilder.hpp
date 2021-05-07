@@ -16,9 +16,7 @@ class MapBuilder
 
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
         rosbag::Bag bag;
-
-        inline void sleep(uint16_t milliseconds) { boost::this_thread::sleep(boost::posix_time::milliseconds(milliseconds)); }
-
+        
         void process_cloud(PointCloud::Ptr cloud);
     public:
         MapBuilder(std::string const& cloud_bag_filename);

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(get_pointclouds)
 
 add_compile_options(-std=c++17)
-add_compile_options(-O3 -march=native)
+# add_compile_options(-Os -march=native)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
