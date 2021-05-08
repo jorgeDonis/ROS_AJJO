@@ -64,7 +64,7 @@ void Plotter::plot_transformation()
         viewer.createViewPort(0.5, 0.5, 1, 1, viewport_1);
         viewer.setBackgroundColor(0.0, 0.0, 0.0, viewport_1);
         viewer.addPointCloud(Plotter::unmerged_clouds, "cloud_1", viewport_1);
-        viewer.addText("Known map + new cloud (before transformation)", 10, 10, "text_t0", viewport_1);
+        viewer.addText("previous cloud + new cloud (before transformation)", 10, 10, "text_t0", viewport_1);
         viewer.addCoordinateSystem(1.0, "1-1", viewport_1);
 
         int viewport_2(0);

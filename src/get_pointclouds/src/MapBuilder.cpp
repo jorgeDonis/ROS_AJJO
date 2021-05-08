@@ -1,6 +1,7 @@
 #include "MapBuilder.hpp"
 #include "Plotter.hpp"
 
+#include <sstream>
 #include <chrono>
 #include <rosbag/view.h>
 #include <pcl/filters/voxel_grid.h>
@@ -26,15 +27,22 @@
 #include <pcl/features/integral_image_normal.h>
 #include <pcl/features/normal_3d_omp.h>
 #include <pcl/features/fpfh_omp.h>
+#include <pcl/io/pcd_io.h>
 
 using namespace std;
 
-using PointT = pcl::PointXYZRGB;
-using DescriptorT = pcl::FPFHSignature33;
-using DescriptorsCloud = pcl::PointCloud<DescriptorT>;
-
-MapBuilder::MapBuilder(std::string const &cloud_bag_filename)
+MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
+           double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
+           double sift_min_contrast, double inliner_th)
 {
+    this->vg_leaf = vg_leaf;
+    this->ffph_r = ffph_r;
+    this->sift_min_scale = sift_min_scale;
+    this->sift_octaves = sift_octaves;
+    this->sift_scales_per_octave = sift_scales_per_octave;
+    this->sift_min_contrast = sift_min_contrast;
+    this->inliner_th = inliner_th;
+
     bag.open(cloud_bag_filename);
     boost::thread(Plotter::simple_vis);
 }
@@ -100,7 +108,7 @@ void purge_features(DescriptorsCloud::Ptr& features, PointCloud::Ptr& keypoints)
     keypoints = purgedKeypoints;
 }
 
-DescriptorsCloud::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals)
+DescriptorsCloud::Ptr MapBuilder::get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
 
@@ -114,9 +122,7 @@ DescriptorsCloud::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::Co
     fpfh.setSearchSurface(full_cloud);
 	fpfh.setInputNormals(normals);
 	fpfh.setSearchMethod(kdtree);
-	// Search radius, to look for neighbors. Note: the value given here has to be
-	// larger than the radius used to estimate the normals.
-	fpfh.setRadiusSearch(0.24);
+	fpfh.setRadiusSearch(ffph_r);
     fpfh.setNumberOfThreads(4);
 
 	fpfh.compute(*descriptors);
@@ -138,14 +144,14 @@ PointCloud::Ptr downsample(PointCloud::ConstPtr cloud, float leaf_size)
 	return cloud_filtered;
 }
 
-PointCloud::Ptr get_keypoints(PointCloud::Ptr cloud)
+PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
     // Parameters for sift computation
-    const float min_scale = 0.005f;
-    const int n_octaves = 9;
-    const int n_scales_per_octave = 11;
-    const float min_contrast = 0.0f;
+    const float min_scale = sift_min_scale;
+    const int n_octaves = sift_octaves;
+    const int n_scales_per_octave = sift_scales_per_octave;
+    const float min_contrast = sift_min_contrast;
 
     // Estimate the sift interest points using Intensity values from RGB values
     pcl::SIFTKeypoint<PointT, pcl::PointWithScale> sift;
@@ -178,7 +184,7 @@ pcl::PointCloud<pcl::Normal>::Ptr get_normals_integral(PointCloud::ConstPtr clou
     return normals;
 }
 
-pcl::PointCloud<pcl::Normal>::Ptr estimate_normals(PointCloud::Ptr cloud)
+pcl::PointCloud<pcl::Normal>::Ptr MapBuilder::estimate_normals(PointCloud::Ptr cloud)
 {
     pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
     pcl::NormalEstimationOMP<PointT, pcl::Normal> ne;
@@ -199,8 +205,8 @@ void print(Eigen::Matrix4f const& m)
 }
 
 Eigen::Matrix4f
-align_points(PointCloud::Ptr t_0_keypoints, PointCloud::Ptr t_1_keypoints,
-DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
+MapBuilder::align_points(PointCloud::Ptr t_0_keypoints, PointCloud::Ptr t_1_keypoints,
+DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, float& avg_distance)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
 
@@ -218,8 +224,8 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
 
     crsc.setInputSource(t_1_keypoints);
     crsc.setInputTarget(t_0_keypoints);
-    crsc.setInlierThreshold(0.02);
-    crsc.setMaximumIterations(20000);
+    crsc.setInlierThreshold(inliner_th);
+    crsc.setMaximumIterations(10000);
     crsc.setRefineModel(true);
     crsc.setInputCorrespondences(initial_correspondences);
     crsc.getCorrespondences(*filtered_correspondences);
@@ -229,6 +235,21 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
     Eigen::Matrix4f transform;
     te_svd.estimateRigidTransformation(*t_1_keypoints, *t_0_keypoints, *filtered_correspondences, transform);
 
+    PointCloud::Ptr moved_t_1(new PointCloud);
+    pcl::transformPointCloud(*t_1_keypoints, *moved_t_1, transform);
+    pcl::KdTreeFLANN<PointT> kdtree;
+    kdtree.setInputCloud(moved_t_1);
+    for (const auto point : t_0_keypoints->points)
+    {
+        std::vector<int> pointIdxNKNSearch(1);
+        std::vector<float> pointNKNSquaredDistance(1);
+        if (kdtree.nearestKSearch(point, 1, pointIdxNKNSearch, pointNKNSquaredDistance) > 0)
+            avg_distance += pointNKNSquaredDistance[0];
+    }
+    avg_distance /= t_0_keypoints->size();
+
+    // Plotter::plot_correspondences(moved_t_1, t_0_keypoints, filtered_correspondences);
+
     const auto t_1 = std::chrono::high_resolution_clock::now();
     const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
     printf("Calculado alineación en %.4f segundos\n", seconds_spent);
@@ -237,7 +258,7 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
 
 void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 {
-    PointCloud::Ptr cloud_filtered = downsample(cloud, 0.01); //menor tamaño de hoja, más puntos
+    PointCloud::Ptr cloud_filtered = downsample(cloud, vg_leaf); //menor tamaño de hoja, más puntos
     pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
     DescriptorsCloud::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
@@ -247,22 +268,30 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 
     if (previous_pc_keypoints != nullptr)
     {   
-        const auto transform = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors);
+        float avg_distance;
+        const auto transform = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors, avg_distance);
+        cout << "distancia media entre nubes de puntos después de transformación: " << avg_distance << endl;
         T *= transform;
         PointCloud::Ptr transformed_cloud(new PointCloud);
         pcl::transformPointCloud(*cloud_filtered, *transformed_cloud, T);
+
+        // PointCloud::Ptr new_cloud(new PointCloud);
+        // PointCloud::Ptr unmerged_clouds(new PointCloud);
+        // PointCloud::Ptr merged_clouds(new PointCloud);
+        // pcl::copyPointCloud(*cloud_filtered, *new_cloud);
+        // *merged_clouds = *transformed_cloud + *previous_pc;
+        // *unmerged_clouds = *cloud_filtered + *previous_pc;
+        // Plotter::new_cloud = new_cloud;
+        // Plotter::unmerged_clouds = unmerged_clouds;
+        // Plotter::merged_clouds = merged_clouds;
+        // Plotter::plot_transformation();
+        
         *transformed_cloud += *previous_pc;
         PointCloud::Ptr old_pc = previous_pc;
         previous_pc = transformed_cloud;
-        PointCloud::Ptr t_1_cloud(new PointCloud);
-        pcl::copyPointCloud(*cloud_filtered, *t_1_cloud);
-        *cloud_filtered += *old_pc;
 
-        // Plotter::new_cloud = t_1_cloud;
-        // Plotter::unmerged_clouds = cloud_filtered;
-        // Plotter::merged_clouds = transformed_cloud;
-        // Plotter::plot_transformation();
-
+        if (transformed_cloud->size() > 30000)
+            transformed_cloud = downsample(transformed_cloud, 0.03);
         Plotter::simple_vis_cloud = transformed_cloud;
     }
     else
@@ -278,7 +307,20 @@ void MapBuilder::build_map()
     {
         ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
-        if (i >= 0)
             process_cloud(cloud);
     }
+    pcl::io::savePCDFileASCII(get_filename(), *Plotter::simple_vis_cloud);
+}
+
+std::string MapBuilder::get_filename() const
+{
+    stringstream ss;
+    ss << "vg_" << vg_leaf << "|"
+       << "ffph_r_" << ffph_r << "|"
+       << "sift_contrast_" << sift_min_contrast << "|"
+       << "sift_scale_" << sift_min_scale << "|"
+       << "sift_scales_per_oc_" << sift_scales_per_octave << "|"
+       << "sift_n_oc_" << sift_octaves << "|"
+       << "inliner_th_" << inliner_th << ".pcd";
+    return ss.str();
 }
