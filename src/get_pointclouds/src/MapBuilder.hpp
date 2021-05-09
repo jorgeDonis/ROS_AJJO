@@ -21,7 +21,6 @@ class MapBuilder
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
         rosbag::Bag bag;
 
-        float accumulated_distance = 0.0f;
 
         double vg_leaf;
         double ffph_r;
@@ -44,9 +43,11 @@ class MapBuilder
         void process_cloud(PointCloud::Ptr cloud);
         std::string get_filename() const;
     public:
+        float accumulated_distance = 0.0f;
+        
         MapBuilder(std::string const &cloud_bag_filename,
         double vg_leaf = 0.02, double ffph_r = 0.03, double sift_min_scale = 0.005, double sift_octaves = 9, double sift_scales_per_octave = 11,
-        double sift_min_contrast = 0, double inliner_th = 0.02, double random_sample_keypoints = 1400, double RANSAC_iters = 10000);
+        double sift_min_contrast = 0, double inliner_th = 0.02, double random_sample_keypoints = 14000, double RANSAC_iters = 10000);
         void build_map();
         ~MapBuilder() { bag.close(); }
 };
