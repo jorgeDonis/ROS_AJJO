@@ -44,7 +44,9 @@ MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
     this->inliner_th = inliner_th;
 
     bag.open(cloud_bag_filename);
+    M = PointCloud::Ptr(new PointCloud);
     boost::thread(Plotter::simple_vis);
+    Plotter::simple_vis_cloud = M;
 }
 
 // This function by Tommaso Cavallari and Federico Tombari, taken from the tutorial
@@ -272,30 +274,26 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
         const auto transform = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors, avg_distance);
         cout << "distancia media entre nubes de puntos después de transformación: " << avg_distance << endl;
         T *= transform;
-        PointCloud::Ptr transformed_cloud(new PointCloud);
-        pcl::transformPointCloud(*cloud_filtered, *transformed_cloud, T);
+        PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
+        pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
 
-        // PointCloud::Ptr new_cloud(new PointCloud);
+        // PointCloud::Ptr aligned_t_local_frame(new PointCloud);
         // PointCloud::Ptr unmerged_clouds(new PointCloud);
         // PointCloud::Ptr merged_clouds(new PointCloud);
-        // pcl::copyPointCloud(*cloud_filtered, *new_cloud);
-        // *merged_clouds = *transformed_cloud + *previous_pc;
+        // pcl::transformPointCloud(*cloud_filtered, *aligned_t_local_frame, transform);
+        // *merged_clouds = *aligned_t_local_frame + *previous_pc;
         // *unmerged_clouds = *cloud_filtered + *previous_pc;
-        // Plotter::new_cloud = new_cloud;
+        // Plotter::new_cloud = cloud_filtered;
         // Plotter::unmerged_clouds = unmerged_clouds;
         // Plotter::merged_clouds = merged_clouds;
         // Plotter::plot_transformation();
-        
-        *transformed_cloud += *previous_pc;
-        PointCloud::Ptr old_pc = previous_pc;
-        previous_pc = transformed_cloud;
 
-        if (transformed_cloud->size() > 30000)
-            transformed_cloud = downsample(transformed_cloud, 0.03);
-        Plotter::simple_vis_cloud = transformed_cloud;
+        *M += *aligned_t_1_pc_global_frame;
+        Plotter::simple_vis_cloud = M;
+        if (M->size() > 30000)
+            M = downsample(M, 0.04);
     }
-    else
-        previous_pc = cloud_filtered;
+    previous_pc = cloud_filtered;
 	previous_pc_features = descriptors;
     previous_pc_keypoints = keypoints;
 }
@@ -307,6 +305,10 @@ void MapBuilder::build_map()
     {
         ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
+        // Plotter::simple_vis_cloud = cloud;
+        // Plotter::simple_vis_cloud = downsample(Plotter::simple_vis_cloud, 0.05);
+        // getchar();
+        if (i >= 60)
             process_cloud(cloud);
     }
     pcl::io::savePCDFileASCII(get_filename(), *Plotter::simple_vis_cloud);

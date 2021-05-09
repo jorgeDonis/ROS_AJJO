@@ -17,6 +17,7 @@ class MapBuilder
         PointCloud::Ptr previous_pc_keypoints;
         PointCloud::Ptr previous_pc;
 
+        PointCloud::Ptr M;
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
         rosbag::Bag bag;
 
