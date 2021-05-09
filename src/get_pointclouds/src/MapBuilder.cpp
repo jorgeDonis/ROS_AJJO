@@ -4,37 +4,37 @@
 #include <sstream>
 #include <chrono>
 #include <rosbag/view.h>
-#include <pcl/filters/voxel_grid.h>
 #include <pcl/features/normal_3d.h>
+#include <pcl/features/shot.h>
+#include <pcl/features/intensity_gradient.h>
+#include <pcl/features/rift.h>
+#include <pcl/features/fpfh.h>
+#include <pcl/features/integral_image_normal.h>
+#include <pcl/features/normal_3d_omp.h>
+#include <pcl/features/fpfh_omp.h>
+#include <pcl/features/pfh.h>
 #include <pcl/keypoints/iss_3d.h>
 #include <pcl/keypoints/sift_keypoint.h>
 #include <pcl/keypoints/uniform_sampling.h>
-#include <pcl/features/shot.h>
 #include <pcl/registration/sample_consensus_prerejective.h>
 #include <pcl/registration/correspondence_estimation_backprojection.h>
 #include <pcl/registration/correspondence_rejection_distance.h>
 #include <pcl/registration/ia_ransac.h>
 #include <pcl/registration/correspondence_rejection_median_distance.h>
-#include <pcl/features/intensity_gradient.h>
-#include <pcl/features/rift.h>
-#include <pcl/point_types_conversion.h>
-#include <pcl/features/pfh.h>
-#include <pcl/correspondence.h>
 #include <pcl/registration/correspondence_rejection_sample_consensus.h>
+#include <pcl/point_types_conversion.h>
+#include <pcl/correspondence.h>
 #include <pcl/recognition/cg/geometric_consistency.h>
 #include <pcl/common/transforms.h>
-#include <pcl/features/fpfh.h>
-#include <pcl/features/integral_image_normal.h>
-#include <pcl/features/normal_3d_omp.h>
-#include <pcl/features/fpfh_omp.h>
 #include <pcl/io/pcd_io.h>
+#include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/random_sample.h>
 
 using namespace std;
 
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
            double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
-           double sift_min_contrast, double inliner_th)
+           double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters)
 {
     this->vg_leaf = vg_leaf;
     this->ffph_r = ffph_r;
@@ -43,6 +43,8 @@ MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
     this->sift_scales_per_octave = sift_scales_per_octave;
     this->sift_min_contrast = sift_min_contrast;
     this->inliner_th = inliner_th;
+    this->random_sample_keypoints = random_sample_keypoints;
+    this->RANSAC_iters = RANSAC_iters;
 
     bag.open(cloud_bag_filename);
     M = PointCloud::Ptr(new PointCloud);
@@ -115,11 +117,9 @@ DescriptorsCloud::Ptr MapBuilder::get_descriptors(PointCloud::Ptr key_points, Po
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
 
-    // Object for storing the PFH descriptors for each point.
     DescriptorsCloud::Ptr descriptors(new DescriptorsCloud());
     pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
 
-	// FPFH estimation object.
     pcl::FPFHEstimationOMP<PointT, pcl::Normal, pcl::FPFHSignature33> fpfh;
     fpfh.setInputCloud(key_points);
     fpfh.setSearchSurface(full_cloud);
@@ -155,8 +155,7 @@ PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
 
     pcl::RandomSample<PointT> rs;
     rs.setInputCloud(cloud);
-    cout << "puntos originales de la nube: " << cloud->size() << endl;
-    rs.setSample(17000);
+    rs.setSample(random_sample_keypoints);
     rs.filter(*keypoints);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
@@ -186,6 +185,23 @@ void print(Eigen::Matrix4f const& m)
     cout << m.format(CleanFmt) << endl;
 }
 
+float calculate_distance(Eigen::Matrix4f const& transform, PointCloud::Ptr t_1_keypoints, PointCloud::Ptr t_0_keypoints)
+{
+    float avg_distance = 0;
+    PointCloud::Ptr moved_t_1(new PointCloud);
+    pcl::transformPointCloud(*t_1_keypoints, *moved_t_1, transform);
+    pcl::KdTreeFLANN<PointT> kdtree;
+    kdtree.setInputCloud(moved_t_1);
+    for (const auto point : t_0_keypoints->points)
+    {
+        std::vector<int> pointIdxNKNSearch(1);
+        std::vector<float> pointNKNSquaredDistance(1);
+        if (kdtree.nearestKSearch(point, 1, pointIdxNKNSearch, pointNKNSquaredDistance) > 0)
+            avg_distance += pointNKNSquaredDistance[0];
+    }
+    avg_distance /= t_0_keypoints->size();
+}
+
 Eigen::Matrix4f
 MapBuilder::align_points(PointCloud::Ptr t_0_keypoints, PointCloud::Ptr t_1_keypoints,
 DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, float& avg_distance)
@@ -207,7 +223,7 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     crsc.setInputSource(t_1_keypoints);
     crsc.setInputTarget(t_0_keypoints);
     crsc.setInlierThreshold(inliner_th);
-    crsc.setMaximumIterations(50000);
+    crsc.setMaximumIterations(RANSAC_iters);
     crsc.setRefineModel(true);
     crsc.setInputCorrespondences(initial_correspondences);
     crsc.getCorrespondences(*filtered_correspondences);
@@ -217,20 +233,7 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     Eigen::Matrix4f transform;
     te_svd.estimateRigidTransformation(*t_1_keypoints, *t_0_keypoints, *filtered_correspondences, transform);
 
-    // PointCloud::Ptr moved_t_1(new PointCloud);
-    // pcl::transformPointCloud(*t_1_keypoints, *moved_t_1, transform);
-    // pcl::KdTreeFLANN<PointT> kdtree;
-    // kdtree.setInputCloud(moved_t_1);
-    // for (const auto point : t_0_keypoints->points)
-    // {
-    //     std::vector<int> pointIdxNKNSearch(1);
-    //     std::vector<float> pointNKNSquaredDistance(1);
-    //     if (kdtree.nearestKSearch(point, 1, pointIdxNKNSearch, pointNKNSquaredDistance) > 0)
-    //         avg_distance += pointNKNSquaredDistance[0];
-    // }
-    // avg_distance /= t_0_keypoints->size();
-
-    // Plotter::plot_correspondences(moved_t_1, t_0_keypoints, filtered_correspondences);
+    avg_distance = calculate_distance(transform, t_1_keypoints, t_0_keypoints);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
     const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
@@ -252,21 +255,10 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
     {   
         float avg_distance;
         const auto transform = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors, avg_distance);
-        cout << "distancia media entre nubes de puntos después de transformación: " << avg_distance << endl;
+        accumulated_distance += avg_distance;
         T *= transform;
         PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
         pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
-
-        // PointCloud::Ptr aligned_t_local_frame(new PointCloud);
-        // PointCloud::Ptr unmerged_clouds(new PointCloud);
-        // PointCloud::Ptr merged_clouds(new PointCloud);
-        // pcl::transformPointCloud(*cloud_filtered, *aligned_t_local_frame, transform);
-        // *merged_clouds = *aligned_t_local_frame + *previous_pc;
-        // *unmerged_clouds = *cloud_filtered + *previous_pc;
-        // Plotter::new_cloud = cloud_filtered;
-        // Plotter::unmerged_clouds = unmerged_clouds;
-        // Plotter::merged_clouds = merged_clouds;
-        // Plotter::plot_transformation();
 
         *M += *aligned_t_1_pc_global_frame;
         Plotter::simple_vis_cloud = M;
@@ -279,18 +271,10 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 
 void MapBuilder::build_map()
 {
-    static uint16_t i = 0;
     for (rosbag::MessageInstance const& m : rosbag::View(bag))
     {
-        ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
-        if (i <= 390)
-        {
-            process_cloud(cloud);
-            // Plotter::simple_vis_cloud = cloud;
-            // Plotter::simple_vis_cloud = downsample(Plotter::simple_vis_cloud, 0.05);
-            // getchar();
-        }
+        process_cloud(cloud);
     }
     pcl::io::savePCDFileASCII(get_filename(), *Plotter::simple_vis_cloud);
 }
@@ -304,6 +288,8 @@ std::string MapBuilder::get_filename() const
        << "sift_scale_" << sift_min_scale << "|"
        << "sift_scales_per_oc_" << sift_scales_per_octave << "|"
        << "sift_n_oc_" << sift_octaves << "|"
+       << "ransac_iters" << RANSAC_iters << "|"
+       << "random_sample_kp" << random_sample_keypoints << "|"
        << "inliner_th_" << inliner_th << ".pcd";
     return ss.str();
 }

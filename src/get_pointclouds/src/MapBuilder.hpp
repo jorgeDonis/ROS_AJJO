@@ -21,6 +21,8 @@ class MapBuilder
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
         rosbag::Bag bag;
 
+        float accumulated_distance = 0.0f;
+
         double vg_leaf;
         double ffph_r;
         double sift_min_scale;
@@ -28,6 +30,8 @@ class MapBuilder
         double sift_scales_per_octave;
         double sift_min_contrast;
         double inliner_th;
+        double random_sample_keypoints;
+        double RANSAC_iters;
 
         DescriptorsCloud::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals);
         PointCloud::Ptr get_keypoints(PointCloud::Ptr cloud);
@@ -42,7 +46,7 @@ class MapBuilder
     public:
         MapBuilder(std::string const &cloud_bag_filename,
         double vg_leaf = 0.02, double ffph_r = 0.03, double sift_min_scale = 0.005, double sift_octaves = 9, double sift_scales_per_octave = 11,
-        double sift_min_contrast = 0, double inliner_th = 0.02);
+        double sift_min_contrast = 0, double inliner_th = 0.02, double random_sample_keypoints = 1400, double RANSAC_iters = 10000);
         void build_map();
         ~MapBuilder() { bag.close(); }
 };
