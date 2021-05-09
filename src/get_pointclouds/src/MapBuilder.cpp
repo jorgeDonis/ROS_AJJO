@@ -149,29 +149,43 @@ PointCloud::Ptr downsample(PointCloud::ConstPtr cloud, float leaf_size)
 PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
-    // Parameters for sift computation
-    const float min_scale = sift_min_scale;
-    const int n_octaves = sift_octaves;
-    const int n_scales_per_octave = sift_scales_per_octave;
-    const float min_contrast = sift_min_contrast;
 
-    // Estimate the sift interest points using Intensity values from RGB values
-    pcl::SIFTKeypoint<PointT, pcl::PointWithScale> sift;
-    pcl::PointCloud<pcl::PointWithScale> result;
-    pcl::search::KdTree<PointT>::Ptr tree(new pcl::search::KdTree<PointT>());
-    sift.setSearchMethod(tree);
-    sift.setScales(min_scale, n_octaves, n_scales_per_octave);
-    sift.setMinimumContrast(min_contrast);
-    sift.setInputCloud(cloud);
-    sift.compute(result);
-    PointCloud::Ptr cloud_temp(new PointCloud);
-    pcl::copyPointCloud(result, *cloud_temp);
+    pcl::ISSKeypoint3D<PointT, PointT> iss;
+    pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
+    PointCloud::Ptr keypoints(new PointCloud);
+
+    const double model_resolution = computeCloudResolution(cloud);
+
+    const double salient_radius = 6 * model_resolution;
+    const double non_max_radius = 4 * model_resolution;
+    const double normal_radius = 4 * model_resolution;
+    const double border_radius = 1 * model_resolution;
+    const double gamma_21 = 0.975;
+    const double gamma_32 = 0.975;
+    const double min_neighbors = 5;
+    const int threads = 4;
+    // Prepare detector
+    kdtree->setInputCloud(cloud);
+
+    iss.setSearchMethod(kdtree);
+    iss.setSalientRadius(salient_radius);
+    iss.setNonMaxRadius(non_max_radius);
+    iss.setNormalRadius(normal_radius);
+    iss.setBorderRadius(border_radius);
+    iss.setThreshold21(gamma_21);
+    iss.setThreshold32(gamma_32);
+    iss.setMinNeighbors(min_neighbors);
+    iss.setNumberOfThreads(threads);
+    iss.setInputCloud(cloud);
+
+    // Compute Keypoints
+    iss.compute(*keypoints);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
     const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
     printf("Calculado keypoints en %.4f segundos\n", seconds_spent);
 
-    return cloud_temp;
+    return keypoints;
 }
 
 pcl::PointCloud<pcl::Normal>::Ptr get_normals_integral(PointCloud::ConstPtr cloud)
@@ -227,7 +241,7 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     crsc.setInputSource(t_1_keypoints);
     crsc.setInputTarget(t_0_keypoints);
     crsc.setInlierThreshold(inliner_th);
-    crsc.setMaximumIterations(10000);
+    crsc.setMaximumIterations(20000);
     crsc.setRefineModel(true);
     crsc.setInputCorrespondences(initial_correspondences);
     crsc.getCorrespondences(*filtered_correspondences);
