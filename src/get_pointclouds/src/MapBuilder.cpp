@@ -137,12 +137,13 @@ DescriptorsCloud::Ptr MapBuilder::get_descriptors(PointCloud::Ptr key_points, Po
     return descriptors;
 }
 
-PointCloud::Ptr downsample(PointCloud::ConstPtr cloud, float leaf_size)
+PointCloud::Ptr downsample(PointCloud::ConstPtr cloud, double leaf_size)
 {
 	PointCloud::Ptr cloud_filtered(new PointCloud);
 	pcl::VoxelGrid<PointT> v_grid;
 	v_grid.setInputCloud(cloud);
 	v_grid.setLeafSize(leaf_size, leaf_size, leaf_size);
+    cout << "downsample con " << leaf_size << " a " << cloud->size() << " puntos" << endl;
 	v_grid.filter(*cloud_filtered);
 	return cloud_filtered;
 }
@@ -151,42 +152,22 @@ PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
 
-    pcl::ISSKeypoint3D<PointT, PointT> iss;
-    pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
-    PointCloud::Ptr keypoints(new PointCloud);
-
-    const double model_resolution = computeCloudResolution(cloud);
-
-    const double salient_radius = 6 * model_resolution;
-    const double non_max_radius = 4 * model_resolution;
-    const double normal_radius = 4 * model_resolution;
-    const double border_radius = 1 * model_resolution;
-    const double gamma_21 = 0.975;
-    const double gamma_32 = 0.975;
-    const double min_neighbors = 5;
-    const int threads = 4;
-    // Prepare detector
-    kdtree->setInputCloud(cloud);
-
-    iss.setSearchMethod(kdtree);
-    iss.setSalientRadius(salient_radius);
-    iss.setNonMaxRadius(non_max_radius);
-    iss.setNormalRadius(normal_radius);
-    iss.setBorderRadius(border_radius);
-    iss.setThreshold21(gamma_21);
-    iss.setThreshold32(gamma_32);
-    iss.setMinNeighbors(min_neighbors);
-    iss.setNumberOfThreads(threads);
-    iss.setInputCloud(cloud);
-
-    // Compute Keypoints
-    iss.compute(*keypoints);
+    pcl::SIFTKeypoint<PointT, pcl::PointWithScale> sift;
+    pcl::PointCloud<pcl::PointWithScale> result;
+    pcl::search::KdTree<PointT>::Ptr tree(new pcl::search::KdTree<PointT>());
+    sift.setSearchMethod(tree);
+    sift.setScales(sift_min_scale, sift_octaves, sift_scales_per_octave);
+    sift.setMinimumContrast(sift_min_contrast);
+    sift.setInputCloud(cloud);
+    sift.compute(result);
+    PointCloud::Ptr cloud_temp(new PointCloud);
+    pcl::copyPointCloud(result, *cloud_temp);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
     const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
     printf("Calculado keypoints en %.4f segundos\n", seconds_spent);
 
-    return keypoints;
+    return cloud_temp;
 }
 
 pcl::PointCloud<pcl::Normal>::Ptr MapBuilder::estimate_normals(PointCloud::Ptr cloud)
@@ -268,12 +249,13 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
 void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 {
     PointCloud::Ptr cloud_filtered = downsample(cloud, vg_leaf); //menor tamaño de hoja, más puntos
-    pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
-    DescriptorsCloud::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
-    purge_features(descriptors, keypoints); //quita los keypoints que tienen descriptores con NaN (también quita los descriptores)
 
     cout << "Keypoints: " << keypoints->size() << endl;
+
+    pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
+    DescriptorsCloud::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
+    purge_features(descriptors, keypoints); //quita los keypoints que tienen descriptores con NaN (también quita los descriptores)
 
     if (previous_pc_keypoints != nullptr)
     {   
