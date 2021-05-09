@@ -156,7 +156,7 @@ PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
     pcl::RandomSample<PointT> rs;
     rs.setInputCloud(cloud);
     cout << "puntos originales de la nube: " << cloud->size() << endl;
-    rs.setSample(15000);
+    rs.setSample(17000);
     rs.filter(*keypoints);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
@@ -207,7 +207,7 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     crsc.setInputSource(t_1_keypoints);
     crsc.setInputTarget(t_0_keypoints);
     crsc.setInlierThreshold(inliner_th);
-    crsc.setMaximumIterations(30000);
+    crsc.setMaximumIterations(50000);
     crsc.setRefineModel(true);
     crsc.setInputCorrespondences(initial_correspondences);
     crsc.getCorrespondences(*filtered_correspondences);
@@ -270,8 +270,7 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
 
         *M += *aligned_t_1_pc_global_frame;
         Plotter::simple_vis_cloud = M;
-        if (M->size() > 30000)
-            M = downsample(M, 0.035);
+        M = downsample(M, 0.02);
     }
     previous_pc = cloud_filtered;
 	previous_pc_features = descriptors;
