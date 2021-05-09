@@ -28,6 +28,7 @@
 #include <pcl/features/normal_3d_omp.h>
 #include <pcl/features/fpfh_omp.h>
 #include <pcl/io/pcd_io.h>
+#include <pcl/filters/random_sample.h>
 
 using namespace std;
 
@@ -150,54 +151,19 @@ PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
 {
     const auto t_0 = std::chrono::high_resolution_clock::now();
 
-    pcl::ISSKeypoint3D<PointT, PointT> iss;
-    pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
     PointCloud::Ptr keypoints(new PointCloud);
 
-    const double model_resolution = computeCloudResolution(cloud);
-
-    const double salient_radius = 6 * model_resolution;
-    const double non_max_radius = 4 * model_resolution;
-    const double normal_radius = 4 * model_resolution;
-    const double border_radius = 1 * model_resolution;
-    const double gamma_21 = 0.975;
-    const double gamma_32 = 0.975;
-    const double min_neighbors = 5;
-    const int threads = 4;
-    // Prepare detector
-    kdtree->setInputCloud(cloud);
-
-    iss.setSearchMethod(kdtree);
-    iss.setSalientRadius(salient_radius);
-    iss.setNonMaxRadius(non_max_radius);
-    iss.setNormalRadius(normal_radius);
-    iss.setBorderRadius(border_radius);
-    iss.setThreshold21(gamma_21);
-    iss.setThreshold32(gamma_32);
-    iss.setMinNeighbors(min_neighbors);
-    iss.setNumberOfThreads(threads);
-    iss.setInputCloud(cloud);
-
-    // Compute Keypoints
-    iss.compute(*keypoints);
+    pcl::RandomSample<PointT> rs;
+    rs.setInputCloud(cloud);
+    cout << "puntos originales de la nube: " << cloud->size() << endl;
+    rs.setSample(15000);
+    rs.filter(*keypoints);
 
     const auto t_1 = std::chrono::high_resolution_clock::now();
     const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
     printf("Calculado keypoints en %.4f segundos\n", seconds_spent);
 
     return keypoints;
-}
-
-pcl::PointCloud<pcl::Normal>::Ptr get_normals_integral(PointCloud::ConstPtr cloud)
-{
-    pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
-    pcl::IntegralImageNormalEstimation<PointT, pcl::Normal> ne;
-    ne.setNormalEstimationMethod(ne.COVARIANCE_MATRIX);
-    ne.setMaxDepthChangeFactor(0.02f);
-    ne.setNormalSmoothingSize(10.0f);
-    ne.setInputCloud(cloud);
-    ne.compute(*normals);
-    return normals;
 }
 
 pcl::PointCloud<pcl::Normal>::Ptr MapBuilder::estimate_normals(PointCloud::Ptr cloud)
@@ -241,7 +207,7 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     crsc.setInputSource(t_1_keypoints);
     crsc.setInputTarget(t_0_keypoints);
     crsc.setInlierThreshold(inliner_th);
-    crsc.setMaximumIterations(20000);
+    crsc.setMaximumIterations(30000);
     crsc.setRefineModel(true);
     crsc.setInputCorrespondences(initial_correspondences);
     crsc.getCorrespondences(*filtered_correspondences);
@@ -251,18 +217,18 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     Eigen::Matrix4f transform;
     te_svd.estimateRigidTransformation(*t_1_keypoints, *t_0_keypoints, *filtered_correspondences, transform);
 
-    PointCloud::Ptr moved_t_1(new PointCloud);
-    pcl::transformPointCloud(*t_1_keypoints, *moved_t_1, transform);
-    pcl::KdTreeFLANN<PointT> kdtree;
-    kdtree.setInputCloud(moved_t_1);
-    for (const auto point : t_0_keypoints->points)
-    {
-        std::vector<int> pointIdxNKNSearch(1);
-        std::vector<float> pointNKNSquaredDistance(1);
-        if (kdtree.nearestKSearch(point, 1, pointIdxNKNSearch, pointNKNSquaredDistance) > 0)
-            avg_distance += pointNKNSquaredDistance[0];
-    }
-    avg_distance /= t_0_keypoints->size();
+    // PointCloud::Ptr moved_t_1(new PointCloud);
+    // pcl::transformPointCloud(*t_1_keypoints, *moved_t_1, transform);
+    // pcl::KdTreeFLANN<PointT> kdtree;
+    // kdtree.setInputCloud(moved_t_1);
+    // for (const auto point : t_0_keypoints->points)
+    // {
+    //     std::vector<int> pointIdxNKNSearch(1);
+    //     std::vector<float> pointNKNSquaredDistance(1);
+    //     if (kdtree.nearestKSearch(point, 1, pointIdxNKNSearch, pointNKNSquaredDistance) > 0)
+    //         avg_distance += pointNKNSquaredDistance[0];
+    // }
+    // avg_distance /= t_0_keypoints->size();
 
     // Plotter::plot_correspondences(moved_t_1, t_0_keypoints, filtered_correspondences);
 
@@ -305,7 +271,7 @@ void MapBuilder::process_cloud(PointCloud::Ptr cloud)
         *M += *aligned_t_1_pc_global_frame;
         Plotter::simple_vis_cloud = M;
         if (M->size() > 30000)
-            M = downsample(M, 0.04);
+            M = downsample(M, 0.035);
     }
     previous_pc = cloud_filtered;
 	previous_pc_features = descriptors;
@@ -319,11 +285,13 @@ void MapBuilder::build_map()
     {
         ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
-        // Plotter::simple_vis_cloud = cloud;
-        // Plotter::simple_vis_cloud = downsample(Plotter::simple_vis_cloud, 0.05);
-        // getchar();
-        if (i >= 60)
+        if (i <= 390)
+        {
             process_cloud(cloud);
+            // Plotter::simple_vis_cloud = cloud;
+            // Plotter::simple_vis_cloud = downsample(Plotter::simple_vis_cloud, 0.05);
+            // getchar();
+        }
     }
     pcl::io::savePCDFileASCII(get_filename(), *Plotter::simple_vis_cloud);
 }
