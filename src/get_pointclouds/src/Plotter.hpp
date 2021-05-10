@@ -21,4 +21,6 @@ class Plotter
         static PointCloud::Ptr new_cloud;
         static PointCloud::Ptr merged_clouds;
         static PointCloud::Ptr simple_vis_cloud;
+
+        static bool print_simple_vis;
 };

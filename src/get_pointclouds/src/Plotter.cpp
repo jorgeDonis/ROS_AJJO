@@ -10,7 +10,7 @@ PointCloud::Ptr Plotter::unmerged_clouds = PointCloud::Ptr(new PointCloud);
 PointCloud::Ptr Plotter::new_cloud = PointCloud::Ptr(new PointCloud);
 PointCloud::Ptr Plotter::merged_clouds = PointCloud::Ptr(new PointCloud);
 PointCloud::Ptr Plotter::simple_vis_cloud = PointCloud::Ptr(new PointCloud);
-
+bool Plotter::print_simple_vis = true;
 
 void Plotter::plot_correspondences(PointCloud::Ptr cloud_1, PointCloud::Ptr cloud_2, pcl::CorrespondencesConstPtr correspondences)
 {
@@ -91,7 +91,7 @@ void Plotter::plot_transformation()
 void Plotter::simple_vis()
 {
     pcl::visualization::CloudViewer viewer("Reconstrucción 3D");
-    while (!viewer.wasStopped())
+    while (!viewer.wasStopped() && Plotter::print_simple_vis)
     {
         viewer.showCloud(Plotter::simple_vis_cloud);
         boost::this_thread::sleep(boost::posix_time::milliseconds(10));
