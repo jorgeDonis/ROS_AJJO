@@ -34,23 +34,22 @@
 using namespace std;
 
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
-           double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
-           double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters,
-           double ICP_iters, double ICP_e, double ICP_correspondence_distance)
+                       double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
+                       double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters,
+                       double ICP_iters, double ICP_e, double ICP_correspondence_distance) 
+                       :    vg_leaf(vg_leaf),
+                            ffph_r(ffph_r),
+                            sift_min_scale(sift_min_scale),
+                            sift_octaves(sift_octaves),
+                            sift_scales_per_octave(sift_scales_per_octave),
+                            sift_min_contrast(sift_min_contrast),
+                            inliner_th(inliner_th),
+                            random_sample_keypoints(random_sample_keypoints),
+                            RANSAC_iters(RANSAC_iters),
+                            ICP_e(ICP_e),
+                            ICP_iters(ICP_iters),
+                            ICP_correspondence_distance(ICP_correspondence_distance)
 {
-    this->vg_leaf = vg_leaf;
-    this->ffph_r = ffph_r;
-    this->sift_min_scale = sift_min_scale;
-    this->sift_octaves = sift_octaves;
-    this->sift_scales_per_octave = sift_scales_per_octave;
-    this->sift_min_contrast = sift_min_contrast;
-    this->inliner_th = inliner_th;
-    this->random_sample_keypoints = random_sample_keypoints;
-    this->RANSAC_iters = RANSAC_iters;
-    this->ICP_e = ICP_e;
-    this->ICP_iters = ICP_iters;
-    this->ICP_correspondence_distance = ICP_correspondence_distance;
-
     bag.open(cloud_bag_filename);
     M = PointCloud::Ptr(new PointCloud);
     boost::thread(Plotter::simple_vis);
@@ -250,7 +249,7 @@ Eigen::Matrix4f MapBuilder::ICP(PointNormalCloud::Ptr cloud_t1, PointNormalCloud
     clock.tik();
 
     Eigen::Matrix4f transform_fine = Eigen::Matrix4f::Identity();
-    PointCloud::Ptr foo_cloud(new PointCloud);
+    PointNormalCloud::Ptr foo_cloud(new PointNormalCloud);
     pcl::IterativeClosestPointWithNormals<PointNormalT, PointNormalT> icp;
     icp.setMaxCorrespondenceDistance(ICP_correspondence_distance);
     icp.setMaximumIterations(ICP_iters);
@@ -281,10 +280,10 @@ void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
     if (previous_pc_keypoints != nullptr)
     {   
         const auto transform_coarse = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors);
-        const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
+        // const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
 
-        accumulated_distance += calculate_distance(transform_fine, keypoints, previous_pc_keypoints);
-        T *= transform_fine;
+        accumulated_distance += calculate_distance(transform_coarse, keypoints, previous_pc_keypoints);
+        T *= transform_coarse;
         PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
         pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
 
@@ -317,8 +316,11 @@ std::string MapBuilder::get_filename() const
        << "sift_scale_" << sift_min_scale << "|"
        << "sift_scales_per_oc_" << sift_scales_per_octave << "|"
        << "sift_n_oc_" << sift_octaves << "|"
-       << "ransac_iters" << RANSAC_iters << "|"
-       << "random_sample_kp" << random_sample_keypoints << "|"
+       << "ransac_iters_" << RANSAC_iters << "|"
+       << "random_sample_kp_" << random_sample_keypoints << "|"
+       << "icp_i_" << ICP_iters << "|"
+       << "icp_e_" << ICP_e << "|"
+       << "icp_th_" << ICP_correspondence_distance << "|"
        << "inliner_th_" << inliner_th << ".pcd";
     return ss.str();
 }

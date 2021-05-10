@@ -29,18 +29,19 @@ class MapBuilder
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
         rosbag::Bag bag;
 
-        double vg_leaf;
-        double ffph_r;
-        double sift_min_scale;
-        double sift_octaves;
-        double sift_scales_per_octave;
-        double sift_min_contrast;
-        double inliner_th;
-        double random_sample_keypoints;
-        double RANSAC_iters;
-        double ICP_iters;
-        double ICP_e;
-        double ICP_correspondence_distance;
+
+        const double vg_leaf;
+        const double ffph_r;
+        const double sift_min_scale;
+        const double sift_octaves;
+        const double sift_scales_per_octave;
+        const double sift_min_contrast;
+        const double inliner_th;
+        const double random_sample_keypoints;
+        const double RANSAC_iters;
+        const double ICP_iters;
+        const double ICP_e;
+        const double ICP_correspondence_distance;
 
         DescriptorsCloud::Ptr get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals);
         PointCloud::Ptr get_keypoints(PointCloud::Ptr cloud);
