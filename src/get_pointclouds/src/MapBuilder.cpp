@@ -22,6 +22,7 @@
 #include <pcl/registration/ia_ransac.h>
 #include <pcl/registration/correspondence_rejection_median_distance.h>
 #include <pcl/registration/correspondence_rejection_sample_consensus.h>
+#include <pcl/registration/icp.h>
 #include <pcl/point_types_conversion.h>
 #include <pcl/correspondence.h>
 #include <pcl/recognition/cg/geometric_consistency.h>
@@ -34,7 +35,8 @@ using namespace std;
 
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
            double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
-           double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters)
+           double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters,
+           double ICP_iters, double ICP_correspondence_distance, double ICP_e)
 {
     this->vg_leaf = vg_leaf;
     this->ffph_r = ffph_r;
@@ -45,6 +47,9 @@ MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
     this->inliner_th = inliner_th;
     this->random_sample_keypoints = random_sample_keypoints;
     this->RANSAC_iters = RANSAC_iters;
+    this->ICP_e = ICP_e;
+    this->ICP_iters = ICP_iters;
+    this->ICP_correspondence_distance = ICP_correspondence_distance;
 
     bag.open(cloud_bag_filename);
     M = PointCloud::Ptr(new PointCloud);
@@ -115,7 +120,7 @@ void purge_features(DescriptorsCloud::Ptr& features, PointCloud::Ptr& keypoints)
 
 DescriptorsCloud::Ptr MapBuilder::get_descriptors(PointCloud::Ptr key_points, PointCloud::ConstPtr full_cloud, pcl::PointCloud<pcl::Normal>::Ptr normals)
 {
-    const auto t_0 = std::chrono::high_resolution_clock::now();
+    clock.tik();
 
     DescriptorsCloud::Ptr descriptors(new DescriptorsCloud());
     pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
@@ -130,9 +135,8 @@ DescriptorsCloud::Ptr MapBuilder::get_descriptors(PointCloud::Ptr key_points, Po
 
 	fpfh.compute(*descriptors);
 
-    const auto t_1 = std::chrono::high_resolution_clock::now();
-    const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
-    printf("Calculado descriptores en %.4f segundos\n", seconds_spent);
+    clock.tok();
+    printf("Calculado descriptores en %.4f segundos\n", clock.seconds_spent());
 
     return descriptors;
 }
@@ -143,14 +147,13 @@ PointCloud::Ptr downsample(PointCloud::ConstPtr cloud, double leaf_size)
 	pcl::VoxelGrid<PointT> v_grid;
 	v_grid.setInputCloud(cloud);
 	v_grid.setLeafSize(leaf_size, leaf_size, leaf_size);
-    cout << "downsample con " << leaf_size << " a " << cloud->size() << " puntos" << endl;
 	v_grid.filter(*cloud_filtered);
 	return cloud_filtered;
 }
 
 PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
 {
-    const auto t_0 = std::chrono::high_resolution_clock::now();
+    clock.tik();
 
     pcl::SIFTKeypoint<PointT, pcl::PointWithScale> sift;
     pcl::PointCloud<pcl::PointWithScale> result;
@@ -163,9 +166,8 @@ PointCloud::Ptr MapBuilder::get_keypoints(PointCloud::Ptr cloud)
     PointCloud::Ptr cloud_temp(new PointCloud);
     pcl::copyPointCloud(result, *cloud_temp);
 
-    const auto t_1 = std::chrono::high_resolution_clock::now();
-    const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
-    printf("Calculado keypoints en %.4f segundos\n", seconds_spent);
+    clock.tok();
+    printf("Calculado %lu keypoints en %.4f segundos\n", cloud_temp->size(), clock.seconds_spent());
 
     return cloud_temp;
 }
@@ -209,9 +211,9 @@ float calculate_distance(Eigen::Matrix4f const& transform, PointCloud::Ptr t_1_k
 
 Eigen::Matrix4f
 MapBuilder::align_points(PointCloud::Ptr t_0_keypoints, PointCloud::Ptr t_1_keypoints,
-DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, float& avg_distance)
+DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
 {
-    const auto t_0 = std::chrono::high_resolution_clock::now();
+    clock.tik();
 
     pcl::registration::CorrespondenceEstimation<DescriptorT, DescriptorT> ce;
     pcl::registration::CorrespondenceRejectorSampleConsensus<PointT> crsc;
@@ -238,31 +240,47 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors, fl
     Eigen::Matrix4f transform;
     te_svd.estimateRigidTransformation(*t_1_keypoints, *t_0_keypoints, *filtered_correspondences, transform);
 
-    avg_distance = calculate_distance(transform, t_1_keypoints, t_0_keypoints);
-
-    const auto t_1 = std::chrono::high_resolution_clock::now();
-    const double seconds_spent = std::chrono::duration<double, std::milli>(t_1 - t_0).count() / 1e3;
-    printf("Calculado alineación en %.4f segundos\n", seconds_spent);
+    clock.tok();
+    printf("Calculado alineación (gruesa) en %.4f segundos\n", clock.seconds_spent());
     return transform;
 }
 
-void MapBuilder::process_cloud(PointCloud::Ptr cloud)
+Eigen::Matrix4f MapBuilder::ICP(PointCloud::Ptr cloud_t1, PointCloud::Ptr cloud_t0, Eigen::Matrix4f const& transform_coarse)
+{
+    clock.tik();
+
+    Eigen::Matrix4f transform_fine = Eigen::Matrix4f::Identity();
+    PointCloud::Ptr foo_cloud(new PointCloud);
+    static pcl::IterativeClosestPoint<PointT, PointT> icp;
+    icp.setMaxCorrespondenceDistance(ICP_correspondence_distance);
+    icp.setMaximumIterations(ICP_iters);
+    icp.setTransformationEpsilon(ICP_e);
+    icp.setInputSource(cloud_t1);
+    icp.setInputTarget(cloud_t0);
+    icp.align(*foo_cloud, transform_coarse);
+    transform_fine = icp.getFinalTransformation();
+    print(transform_fine);
+    print(transform_coarse);
+
+    clock.tok();
+    printf("Calculado alineado (fino) en %.4f segundos\n", clock.seconds_spent());
+}
+
+void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
 {
     PointCloud::Ptr cloud_filtered = downsample(cloud, vg_leaf); //menor tamaño de hoja, más puntos
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
-
-    cout << "Keypoints: " << keypoints->size() << endl;
-
     pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
     DescriptorsCloud::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
     purge_features(descriptors, keypoints); //quita los keypoints que tienen descriptores con NaN (también quita los descriptores)
 
     if (previous_pc_keypoints != nullptr)
     {   
-        float avg_distance;
-        const auto transform = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors, avg_distance);
-        accumulated_distance += avg_distance;
-        T *= transform;
+        const auto transform_coarse = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors);
+        const auto transform_fine = ICP(cloud_filtered, previous_pc, transform_coarse);
+
+        accumulated_distance += calculate_distance(transform_fine, keypoints, previous_pc_keypoints);
+        T *= transform_fine;
         PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
         pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
 

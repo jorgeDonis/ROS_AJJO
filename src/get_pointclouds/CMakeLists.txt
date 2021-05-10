@@ -138,6 +138,7 @@ include_directories(
   src/node.cpp
   src/MapBuilder.cpp
   src/Plotter.cpp
+  src/Clock.cpp
  )
 
 ## Add cmake target dependencies of the executable
