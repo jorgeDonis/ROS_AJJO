@@ -54,7 +54,7 @@ MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
     bag.open(cloud_bag_filename);
     M = PointCloud::Ptr(new PointCloud);
     Plotter::print_simple_vis = true;
-    boost::thread(Plotter::simple_vis);
+    // boost::thread(Plotter::simple_vis);
     Plotter::simple_vis_cloud = M;
 }
 
