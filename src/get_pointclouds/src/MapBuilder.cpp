@@ -5,14 +5,10 @@
 #include <chrono>
 #include <rosbag/view.h>
 #include <pcl/features/normal_3d.h>
-#include <pcl/features/shot.h>
-#include <pcl/features/intensity_gradient.h>
-#include <pcl/features/rift.h>
 #include <pcl/features/fpfh.h>
-#include <pcl/features/integral_image_normal.h>
-#include <pcl/features/normal_3d_omp.h>
 #include <pcl/features/fpfh_omp.h>
-#include <pcl/features/pfh.h>
+#include <pcl/features/shot_omp.h>
+#include <pcl/features/normal_3d_omp.h>
 #include <pcl/keypoints/iss_3d.h>
 #include <pcl/keypoints/sift_keypoint.h>
 #include <pcl/keypoints/uniform_sampling.h>
@@ -34,11 +30,11 @@
 using namespace std;
 
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
-                       double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
+                       double vg_leaf, double feature_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
                        double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters,
-                       double ICP_iters, double ICP_e, double ICP_correspondence_distance) 
+                       double ICP_iters, double ICP_e, double ICP_correspondence_distance, std::string filename, bool use_ICP) 
                        :    vg_leaf(vg_leaf),
-                            ffph_r(ffph_r),
+                            feature_r(feature_r),
                             sift_min_scale(sift_min_scale),
                             sift_octaves(sift_octaves),
                             sift_scales_per_octave(sift_scales_per_octave),
@@ -48,7 +44,9 @@ MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
                             RANSAC_iters(RANSAC_iters),
                             ICP_e(ICP_e),
                             ICP_iters(ICP_iters),
-                            ICP_correspondence_distance(ICP_correspondence_distance)
+                            ICP_correspondence_distance(ICP_correspondence_distance),
+                            filename(filename),
+                            use_ICP(use_ICP)
 {
     bag.open(cloud_bag_filename);
     M = PointCloud::Ptr(new PointCloud);
@@ -98,9 +96,9 @@ void purge_features(DescriptorsCloud::Ptr& features, PointCloud::Ptr& keypoints)
     {
         notnan = true;
         // Check for nan values
-        for (int j = 0; j < 33; j++)
+        for (int j = 0; j < 352; j++)
         {
-            if (std::isnan(features->points[i].histogram[j]))
+            if (std::isnan(features->points[i].descriptor[j]))
             {
                 notnan = false;
                 break;
@@ -124,15 +122,15 @@ DescriptorsCloud::Ptr MapBuilder::get_descriptors(PointCloud::Ptr key_points, Po
     DescriptorsCloud::Ptr descriptors(new DescriptorsCloud());
     pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
 
-    pcl::FPFHEstimationOMP<PointT, pcl::Normal, pcl::FPFHSignature33> fpfh;
-    fpfh.setInputCloud(key_points);
-    fpfh.setSearchSurface(full_cloud);
-	fpfh.setInputNormals(normals);
-	fpfh.setSearchMethod(kdtree);
-	fpfh.setRadiusSearch(ffph_r);
-    fpfh.setNumberOfThreads(4);
+    pcl::SHOTEstimationOMP<PointT, NormalT, DescriptorT> shot;
+    shot.setInputCloud(key_points);
+    shot.setSearchSurface(full_cloud);
+	shot.setInputNormals(normals);
+	shot.setSearchMethod(kdtree);
+    shot.setRadiusSearch(feature_r);
+    shot.setNumberOfThreads(4);
 
-	fpfh.compute(*descriptors);
+	shot.compute(*descriptors);
 
     clock.tok();
     printf("Calculado descriptores en %.4f segundos\n", clock.seconds_spent());
@@ -280,7 +278,7 @@ void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
     if (previous_pc_keypoints != nullptr)
     {   
         const auto transform_coarse = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors);
-        // const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
+        const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
 
         accumulated_distance += calculate_distance(transform_coarse, keypoints, previous_pc_keypoints);
         T *= transform_coarse;
@@ -299,9 +297,12 @@ void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
 
 void MapBuilder::build_map()
 {
+    int i = 0;
     for (rosbag::MessageInstance const& m : rosbag::View(bag))
     {
+        ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
+        if (i <= 5)
         process_cloud(cloud);
     }
     pcl::io::savePCDFileASCII(get_filename(), *Plotter::simple_vis_cloud);
@@ -309,18 +310,23 @@ void MapBuilder::build_map()
 
 std::string MapBuilder::get_filename() const
 {
-    stringstream ss;
-    ss << "vg_" << vg_leaf << "|"
-       << "ffph_r_" << ffph_r << "|"
-       << "sift_contrast_" << sift_min_contrast << "|"
-       << "sift_scale_" << sift_min_scale << "|"
-       << "sift_scales_per_oc_" << sift_scales_per_octave << "|"
-       << "sift_n_oc_" << sift_octaves << "|"
-       << "ransac_iters_" << RANSAC_iters << "|"
-       << "random_sample_kp_" << random_sample_keypoints << "|"
-       << "icp_i_" << ICP_iters << "|"
-       << "icp_e_" << ICP_e << "|"
-       << "icp_th_" << ICP_correspondence_distance << "|"
-       << "inliner_th_" << inliner_th << ".pcd";
-    return ss.str();
+    if (filename.empty())
+    {
+        stringstream ss;
+        ss << "vg_" << vg_leaf << "|"
+        << "feature_r_" << feature_r << "|"
+        << "sift_contrast_" << sift_min_contrast << "|"
+        << "sift_scale_" << sift_min_scale << "|"
+        << "sift_scales_per_oc_" << sift_scales_per_octave << "|"
+        << "sift_n_oc_" << sift_octaves << "|"
+        << "ransac_iters_" << RANSAC_iters << "|"
+        << "random_sample_kp_" << random_sample_keypoints << "|"
+        << "icp_i_" << ICP_iters << "|"
+        << "icp_e_" << ICP_e << "|"
+        << "icp_th_" << ICP_correspondence_distance << "|"
+        << "inliner_th_" << inliner_th << ".pcd";
+        return ss.str();
+    }
+    else
+        return filename;
 }

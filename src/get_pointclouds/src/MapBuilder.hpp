@@ -10,7 +10,7 @@
 using PointCloud = pcl::PointCloud<pcl::PointXYZRGB>;
 using PointT = pcl::PointXYZRGB;
 using NormalT = pcl::Normal;
-using DescriptorT = pcl::FPFHSignature33;
+using DescriptorT = pcl::SHOT352;
 using DescriptorsCloud = pcl::PointCloud<DescriptorT>;
 using PointNormalT = pcl::PointXYZRGBNormal;
 using PointNormalCloud = pcl::PointCloud<PointNormalT>;
@@ -20,7 +20,7 @@ class MapBuilder
     private:
         Clock clock;
 
-        pcl::PointCloud<pcl::FPFHSignature33>::Ptr previous_pc_features;
+        pcl::PointCloud<DescriptorT>::Ptr previous_pc_features;
         PointCloud::Ptr previous_pc_keypoints;
         PointCloud::Ptr previous_pc;
         PointNormalCloud::Ptr previous_point_normal_c;
@@ -29,9 +29,11 @@ class MapBuilder
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
         rosbag::Bag bag;
 
+        const bool use_ICP;
+        const std::string filename;
 
         const double vg_leaf;
-        const double ffph_r;
+        const double feature_r;
         const double sift_min_scale;
         const double sift_octaves;
         const double sift_scales_per_octave;
@@ -59,9 +61,9 @@ class MapBuilder
         float accumulated_distance = 0.0f;
         
         MapBuilder(std::string const &cloud_bag_filename,
-        double vg_leaf = 0.02, double ffph_r = 0.03, double sift_min_scale = 0.005, double sift_octaves = 9, double sift_scales_per_octave = 11,
+        double vg_leaf = 0.02, double feature_r = 0.03, double sift_min_scale = 0.005, double sift_octaves = 9, double sift_scales_per_octave = 11,
         double sift_min_contrast = 0, double inliner_th = 0.02, double random_sample_keypoints = 14000, double RANSAC_iters = 10000,
-        double ICP_iters = 500, double ICP_e = 1e-9, double ICP_correspondence_distance = 0.05);
+        double ICP_iters = 500, double ICP_e = 1e-9, double ICP_correspondence_distance = 0.05, std::string filename = "", bool use_ICP = true);
         void build_map();
         ~MapBuilder() { bag.close(); }
 };

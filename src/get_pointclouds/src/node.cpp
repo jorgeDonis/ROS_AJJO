@@ -15,13 +15,13 @@ int main(int argc, char** argv)
 		ros::init(argc, argv, "sub_pcl");
 		Clock clock;
 		MapBuilder map_builder1("/home/jorge/catkin_ws/point_cloud_messages.bag",
-			0.03,		//Voxel grid leaf size
-			0.16,		//FFPH search radius
+			0.02,		//Voxel grid leaf size
+			0.22,		//Feature search radius
 			0.001,		//SIFT3D minimmum scale
 			8,			//SIFT3D nº octaves
 			11,			//SIFT3D number of scales per octave
 			0.001,		//SIFT3D minimmum contrast
-			0.09,		//inlier threshold
+			3,			//inlier threshold
 			2000,		//random_sample nº keypoints
 			60000,		//RANSAC iterations
 			300,		//ICP max iterations
