@@ -36,7 +36,7 @@ using namespace std;
 MapBuilder::MapBuilder(std::string const &cloud_bag_filename,
            double vg_leaf, double ffph_r, double sift_min_scale, double sift_octaves, double sift_scales_per_octave,
            double sift_min_contrast, double inliner_th, double random_sample_keypoints, double RANSAC_iters,
-           double ICP_iters, double ICP_correspondence_distance, double ICP_e)
+           double ICP_iters, double ICP_e, double ICP_correspondence_distance)
 {
     this->vg_leaf = vg_leaf;
     this->ffph_r = ffph_r;
@@ -241,17 +241,17 @@ DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors)
     te_svd.estimateRigidTransformation(*t_1_keypoints, *t_0_keypoints, *filtered_correspondences, transform);
 
     clock.tok();
-    printf("Calculado alineación (gruesa) en %.4f segundos\n", clock.seconds_spent());
+    printf("Calculado alineado (grueso) en %.4f segundos\n", clock.seconds_spent());
     return transform;
 }
 
-Eigen::Matrix4f MapBuilder::ICP(PointCloud::Ptr cloud_t1, PointCloud::Ptr cloud_t0, Eigen::Matrix4f const& transform_coarse)
+Eigen::Matrix4f MapBuilder::ICP(PointNormalCloud::Ptr cloud_t1, PointNormalCloud::Ptr cloud_t0, Eigen::Matrix4f const &transform_coarse)
 {
     clock.tik();
 
     Eigen::Matrix4f transform_fine = Eigen::Matrix4f::Identity();
     PointCloud::Ptr foo_cloud(new PointCloud);
-    static pcl::IterativeClosestPoint<PointT, PointT> icp;
+    pcl::IterativeClosestPointWithNormals<PointNormalT, PointNormalT> icp;
     icp.setMaxCorrespondenceDistance(ICP_correspondence_distance);
     icp.setMaximumIterations(ICP_iters);
     icp.setTransformationEpsilon(ICP_e);
@@ -259,25 +259,29 @@ Eigen::Matrix4f MapBuilder::ICP(PointCloud::Ptr cloud_t1, PointCloud::Ptr cloud_
     icp.setInputTarget(cloud_t0);
     icp.align(*foo_cloud, transform_coarse);
     transform_fine = icp.getFinalTransformation();
-    print(transform_fine);
-    print(transform_coarse);
 
     clock.tok();
     printf("Calculado alineado (fino) en %.4f segundos\n", clock.seconds_spent());
+
+    return transform_fine;
 }
 
 void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
 {
     PointCloud::Ptr cloud_filtered = downsample(cloud, vg_leaf); //menor tamaño de hoja, más puntos
     PointCloud::Ptr keypoints = get_keypoints(cloud_filtered);
+    if (keypoints->empty())
+        return;
     pcl::PointCloud<pcl::Normal>::Ptr normals = estimate_normals(cloud_filtered);
+    PointNormalCloud::Ptr point_normal_c(new PointNormalCloud);
+    pcl::concatenateFields(*cloud_filtered, *normals, *point_normal_c);
     DescriptorsCloud::Ptr descriptors = get_descriptors(keypoints, cloud_filtered, normals);
     purge_features(descriptors, keypoints); //quita los keypoints que tienen descriptores con NaN (también quita los descriptores)
 
     if (previous_pc_keypoints != nullptr)
     {   
         const auto transform_coarse = align_points(previous_pc_keypoints, keypoints, previous_pc_features, descriptors);
-        const auto transform_fine = ICP(cloud_filtered, previous_pc, transform_coarse);
+        const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
 
         accumulated_distance += calculate_distance(transform_fine, keypoints, previous_pc_keypoints);
         T *= transform_fine;
@@ -291,6 +295,7 @@ void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
     previous_pc = cloud_filtered;
 	previous_pc_features = descriptors;
     previous_pc_keypoints = keypoints;
+    previous_point_normal_c = point_normal_c;
 }
 
 void MapBuilder::build_map()

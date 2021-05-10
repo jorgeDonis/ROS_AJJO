@@ -12,6 +12,8 @@ using PointT = pcl::PointXYZRGB;
 using NormalT = pcl::Normal;
 using DescriptorT = pcl::FPFHSignature33;
 using DescriptorsCloud = pcl::PointCloud<DescriptorT>;
+using PointNormalT = pcl::PointXYZRGBNormal;
+using PointNormalCloud = pcl::PointCloud<PointNormalT>;
 
 class MapBuilder
 {
@@ -21,6 +23,7 @@ class MapBuilder
         pcl::PointCloud<pcl::FPFHSignature33>::Ptr previous_pc_features;
         PointCloud::Ptr previous_pc_keypoints;
         PointCloud::Ptr previous_pc;
+        PointNormalCloud::Ptr previous_point_normal_c;
 
         PointCloud::Ptr M;
         Eigen::Matrix4f T = Eigen::Matrix4f::Identity();
@@ -47,7 +50,7 @@ class MapBuilder
         align_points(PointCloud::Ptr t_0_keypoints, PointCloud::Ptr t_1_keypoints,
         DescriptorsCloud::Ptr t_0_descriptors, DescriptorsCloud::Ptr t_1_descriptors);
 
-        Eigen::Matrix4f ICP(PointCloud::Ptr cloud_t1, PointCloud::Ptr cloud_t0, Eigen::Matrix4f const& transform_coarse);
+        Eigen::Matrix4f ICP(PointNormalCloud::Ptr cloud_t1, PointNormalCloud::Ptr cloud_t0, Eigen::Matrix4f const &transform_coarse);
 
         void process_cloud(PointCloud::Ptr& cloud);
         std::string get_filename() const;
