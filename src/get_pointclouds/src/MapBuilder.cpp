@@ -473,13 +473,10 @@ void MapBuilder::build_map()
 {
     Clock global_clock;
     global_clock.tik();
-    int i = 0;
     for (rosbag::MessageInstance const& m : rosbag::View(bag))
     {
-        ++i;
         PointCloud::Ptr cloud = m.instantiate<PointCloud>();
-        if (i <= 3)
-            process_cloud(cloud);
+        process_cloud(cloud);
     }
     global_clock.tok();
     total_time_spent_reconstruction = global_clock.seconds_spent();
