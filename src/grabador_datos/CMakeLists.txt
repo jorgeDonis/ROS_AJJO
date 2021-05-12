@@ -220,17 +220,17 @@ find_package(catkin REQUIRED COMPONENTS
 add_compile_options(-std=c++17)
 
 
-add_executable(${PROJECT_NAME} 
+add_executable(${PROJECT_NAME}
     src/main.cpp
     src/RobotController.cpp
-  ) 
+  )
 
 target_link_libraries(
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${SDL_LIBRARY}
   ${OpenCV_LIBRARIES}
-) 
+)
 
 include_directories(
   include/grabador_datos

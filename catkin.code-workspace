@@ -9,7 +9,11 @@
 			"/opt/ros/kinetic/lib/python2.7/dist-packages"
 		],
 		"files.associations": {
-			"chrono": "cpp"
-		}
+			"chrono": "cpp",
+			"filesystem": "cpp"
+		},
+		"python.analysis.extraPaths": [
+			"/opt/ros/kinetic/lib/python2.7/dist-packages"
+		]
 	}
 }

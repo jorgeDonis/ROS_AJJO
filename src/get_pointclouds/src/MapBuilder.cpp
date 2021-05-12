@@ -178,15 +178,15 @@ FFPHCloud::Ptr MapBuilder::get_descriptors_ffph(PointCloud::Ptr key_points, Poin
     FFPHCloud::Ptr descriptors(new FFPHCloud());
     pcl::search::KdTree<PointT>::Ptr kdtree(new pcl::search::KdTree<PointT>);
 
-    pcl::FPFHEstimationOMP<PointT, NormalT, FFPH> shot;
-    shot.setInputCloud(key_points);
-    shot.setSearchSurface(full_cloud);
-    shot.setInputNormals(normals);
-    shot.setSearchMethod(kdtree);
-    shot.setRadiusSearch(feature_r);
-    shot.setNumberOfThreads(4);
+    pcl::FPFHEstimationOMP<PointT, NormalT, FFPH> fpfh;
+    fpfh.setInputCloud(key_points);
+    fpfh.setSearchSurface(full_cloud);
+    fpfh.setInputNormals(normals);
+    fpfh.setSearchMethod(kdtree);
+    fpfh.setRadiusSearch(feature_r);
+    fpfh.setNumberOfThreads(4);
 
-    shot.compute(*descriptors);
+    fpfh.compute(*descriptors);
 
     clock.tok();
     printf("Calculado descriptores en %.4f segundos\n", clock.seconds_spent());
@@ -425,42 +425,28 @@ void MapBuilder::process_cloud(PointCloud::Ptr& cloud)
     }
     if (previous_pc_keypoints != nullptr)
     {   
+        Eigen::Matrix4f transform_coarse;
+        Eigen::Matrix4f transform;
+        if (feature_detector == FeatureDetector::FFPH)
+            transform_coarse = align_points_ffph(previous_pc_keypoints, keypoints, previous_pc_ffph_features, ffph_features);
+        else
+            transform_coarse = align_points_shot(previous_pc_keypoints, keypoints, previous_pc_shot_features, shot_features);
         if (use_ICP)
         {
-            Eigen::Matrix4f transform_coarse;
-            if (feature_detector == FeatureDetector::FFPH)
-                transform_coarse = align_points_ffph(previous_pc_keypoints, keypoints, previous_pc_ffph_features, ffph_features);
-            else
-                transform_coarse = align_points_shot(previous_pc_keypoints, keypoints, previous_pc_shot_features, shot_features);
             const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
-
-            accumulated_distance += calculate_distance(transform_fine, keypoints, previous_pc_keypoints);
-            T *= transform_fine;
-            PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
-            pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
-
-            *M += *aligned_t_1_pc_global_frame;
-            Plotter::simple_vis_cloud = M;
-            M = downsample(M, 0.02);
+            transform = transform_fine;
         }
         else
-        {
-            Eigen::Matrix4f transform_coarse;
-            if (feature_detector == FeatureDetector::FFPH)
-                transform_coarse = align_points_ffph(previous_pc_keypoints, keypoints, previous_pc_ffph_features, ffph_features);
-            else
-                transform_coarse = align_points_shot(previous_pc_keypoints, keypoints, previous_pc_shot_features, shot_features);
-            const auto transform_fine = ICP(point_normal_c, previous_point_normal_c, transform_coarse);
+            transform = transform_coarse;
 
-            accumulated_distance += calculate_distance(transform_coarse, keypoints, previous_pc_keypoints);
-            T *= transform_coarse;
-            PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
-            pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
+        accumulated_distance += calculate_distance(transform, keypoints, previous_pc_keypoints);
+        T *= transform;
+        PointCloud::Ptr aligned_t_1_pc_global_frame(new PointCloud);
+        pcl::transformPointCloud(*cloud_filtered, *aligned_t_1_pc_global_frame, T);
 
-            *M += *aligned_t_1_pc_global_frame;
-            Plotter::simple_vis_cloud = M;
-            M = downsample(M, 0.02);
-        }
+        *M += *aligned_t_1_pc_global_frame;
+        Plotter::simple_vis_cloud = M;
+        M = downsample(M, 0.02);
     }
     previous_pc = cloud_filtered;
 	previous_pc_ffph_features = ffph_features;

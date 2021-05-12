@@ -147,7 +147,8 @@ include_directories(
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(get_pointclouds_node
-   ${catkin_LIBRARIES} 
+    ${catkin_LIBRARIES} 
+    stdc++fs
  )
 
 #############
