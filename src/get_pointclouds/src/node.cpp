@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	try
 	{
 		ros::init(argc, argv, "sub_pcl");
-		MapBuilder map_builder("/home/jorge/catkin_ws/point_cloud_messages.bag",
+		MapBuilder map_builder("./point_cloud_messages.bag",
 			0.02,						//Voxel grid leaf size
 			0.17,						//Feature search radius
 			0.001,						//SIFT3D minimmum scale

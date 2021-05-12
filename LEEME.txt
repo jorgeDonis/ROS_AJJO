@@ -1,0 +1,10 @@
+## INSTRUCCIONES DE COMPILACIÓN ##
+
+1.- añadir src/ al directorio catkin_ws
+2.- compilar con catkin_make -DCMAKE_BUILD_TYPE=Release
+3.- source devel/setup.bash
+3.- ejecutar el grabador de datos con rosrun grabador_datos grabador_datos
+    (se guardará una nube de datos catkin_ws/point_cloud_messages.bag=
+4.- ejecutar la reconstrucción 3D con rosrun get_pointclouds 
+    get_pointclouds_node 
+
