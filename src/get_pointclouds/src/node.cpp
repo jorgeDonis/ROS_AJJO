@@ -14,15 +14,15 @@ int main(int argc, char** argv)
 	{
 		ros::init(argc, argv, "sub_pcl");
 		MapBuilder map_builder("./point_cloud_messages.bag",
-			0.02,						//Voxel grid leaf size
+			0.025,						//Voxel grid leaf size
 			0.17,						//Feature search radius
 			0.001,						//SIFT3D minimmum scale
 			8,							//SIFT3D nº octaves
 			11,							//SIFT3D number of scales per octave
 			0.001,						//SIFT3D minimmum contrast
-			0.05,						//inlier threshold
+			0.09,						//inlier threshold
 			2000,						//random_sample nº keypoints
-			60000,						//RANSAC iterations
+			2000,						//RANSAC iterations
 			500,						//ICP max iterations
 			1e-11,						//ICP maximmum epsilon for convergence
 			0.2,						//ICP maximmum correspondence distance
