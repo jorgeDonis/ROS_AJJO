@@ -1,2 +1,0 @@
-- Hay alguna forma de mover ortogonal completo?
-- Posible mejora
